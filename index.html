@@ -92,6 +92,143 @@ body.overlay-on .nd-link .vendor-overlay{display:block}body.overlay-coverage .nd
 body.overlay-identity .nd-link .nd{opacity:.45;filter:saturate(.6)}body.overlay-identity .nd-link[data-identity="true"] .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(167,139,250,.75),0 0 22px rgba(167,139,250,.22)}body.overlay-spine .nd-link .nd{opacity:.38;filter:saturate(.55)}body.overlay-spine .nd-link[data-spine]:not([data-spine=""]) .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(244,63,94,.75),0 0 22px rgba(244,63,94,.22)}
 body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-link[data-coverage="none"] .vendor-overlay{display:none}
 @media print{.overlay-panel{display:none} body.overlay-on .vendor-overlay{display:none} .nd{box-shadow:none!important;opacity:1!important;filter:none!important}}
+
+/* Human-friendly layer explanation panels */
+.reading-guide {
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(251,191,36,.16), transparent 28%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid var(--zone-exec-border);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 26px;
+  box-shadow: 0 10px 32px rgba(0,0,0,.30);
+}
+.reading-guide:before {
+  content: "START HERE";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--bg);
+  background: var(--zone-exec);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.reading-guide h3 {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.reading-guide p {
+  color: var(--text2);
+  line-height: 1.6;
+  margin: 5px 0;
+}
+.reading-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+.reading-step {
+  border: 1px solid var(--border-hi);
+  background: rgba(255,255,255,.025);
+  border-radius: 8px;
+  padding: 12px;
+}
+.reading-step b {
+  display: block;
+  color: var(--text);
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+.reading-step span {
+  color: var(--text2);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.layer-desc {
+  display: grid;
+  grid-template-columns: 54px 1fr 300px;
+  gap: 14px;
+  align-items: stretch;
+  background:
+    linear-gradient(135deg, rgba(16,22,31,.90), rgba(10,14,20,.92));
+  border: 1px solid var(--border-hi);
+  border-radius: 9px;
+  padding: 13px 15px;
+  margin: -4px 0 14px;
+  color: var(--text2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+.layer-desc .layer-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--bg);
+  background: var(--zone-exec);
+  box-shadow: 0 0 22px rgba(251,191,36,.20);
+}
+.layer-desc h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+.layer-desc p {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+.layer-desc .why {
+  border-left: 2px solid var(--border-hi);
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.layer-desc .why b {
+  color: var(--text);
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 5px;
+}
+.layer-desc .why span {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text2);
+}
+.layer-desc.exec { border-color: var(--zone-exec-border); }
+.layer-desc.exec .layer-icon { background: var(--zone-exec); }
+.layer-desc.data { border-color: var(--zone-data-border); }
+.layer-desc.data .layer-icon { background: var(--zone-data); }
+.layer-desc.runtime { border-color: var(--zone-runtime-border); }
+.layer-desc.runtime .layer-icon { background: var(--zone-runtime); }
+.layer-desc.identity { border-color: var(--zone-identity-border); }
+.layer-desc.identity .layer-icon { background: var(--zone-identity); }
+.layer-desc.detect { border-color: var(--zone-detect-border); }
+.layer-desc.detect .layer-icon { background: var(--zone-detect); }
+.layer-desc.matrix-desc { border-color: var(--matrix-border); }
+.layer-desc.matrix-desc .layer-icon { background: var(--matrix); color: white; }
+.layer-desc.gateway { border-color: var(--zone-gateway-border); }
+.layer-desc.gateway .layer-icon { background: var(--zone-gateway); }
+@media print {
+  .reading-flow { grid-template-columns: 1fr; }
+  .layer-desc { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -120,7 +257,27 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 
 <div class="narrative-block"><h3>What is depicted?</h3><p>This model defines a <strong>target-state reference architecture</strong> for governing and securing enterprise AI agents as managed digital workers. It intentionally separates business governance, supply-chain provenance, machine-readable policy contracts, SDLC validation, runtime enforcement, human accountability, evidence, detection, resilience and assurance. The model is designed as a <strong>north-star architecture</strong>, not a claim that every control is mature or fully available today.</p><div class="principles"><div class="principle"><b>1. Govern before build</b>Agents require business purpose, owner, risk tier and approval before engineering begins.</div><div class="principle"><b>2. Prodspec is the contract</b>Every runtime control consumes the same machine-readable policy contract.</div><div class="principle"><b>3. Tool use is the action boundary</b>Agent risk materialises through tools, data access and external commitments.</div><div class="principle"><b>4. Reduce blast radius</b>Prompt injection and semantic attacks are reduced through layered controls, not declared solved.</div><div class="principle"><b>5. Evidence over assertion</b>Every capability must produce testable evidence and have a named owner.</div></div></div>
+
+
+<div class="reading-guide">
+<h3>How to read this architecture</h3>
+<p>This model is organised from top to bottom. It starts with business accountability and trust, then moves into engineering, runtime enforcement, decision governance, monitoring and resilience.</p>
+<div class="reading-flow">
+  <div class="reading-step"><b>1 · Govern</b><span>The upper layers define ownership, approval, risk appetite, trusted components and the policy contract.</span></div>
+  <div class="reading-step"><b>2 · Enforce</b><span>The middle layers translate policy into controls over identity, data, tools, SaaS, memory, cost and execution.</span></div>
+  <div class="reading-step"><b>3 · Assure</b><span>The lower layers generate evidence, detect threats, support incident response and continuously test control effectiveness.</span></div>
+</div>
+<p><strong>Policies flow downward.</strong> Telemetry, evidence and assurance flow upward. Together these layers create a <strong>secure, governed, observable and accountable operating model for enterprise-scale AI agents.</strong></p>
+</div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -4: AI Workforce Governance (Business Control Plane)</div><div class="sec-line"></div></div>
+<div class="layer-desc exec">
+  <div class="layer-icon">L-4</div>
+  <div>
+    <h3>AI Workforce Governance</h3>
+    <p>Defines who owns AI agents, why they exist, how they create value and who is accountable for their decisions and risks.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Creates a controlled portfolio of AI workers aligned to business objectives, risk appetite and regulatory obligations.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="01" data-coverage="partial" data-identity="true" data-products="Idira Secure AI Agents | Cortex dashboards / XSIAM (evidence) | Unit 42 advisory" data-spine="1 Discover &amp; govern agents" data-theme="Governance / Identity" data-value="Partial support for discovery, agent context and evidence; operating model remains enterprise-owned." href="pages/box-01-workforce-lifecycle-portfolio-hub.html" title="Open detail page for Workforce Lifecycle &amp; Portfolio Hub"><div class="nd zone-exec">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Workforce Hub</div><div class="badge mat Gap">Gap</div></div><div class="nd-num">01</div></div>
@@ -140,6 +297,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -3: AI Supply Chain &amp; Provenance (Foundation of Trust)</div><div class="sec-line"></div></div>
+<div class="layer-desc data">
+  <div class="layer-icon">L-3</div>
+  <div>
+    <h3>AI Supply Chain & Provenance</h3>
+    <p>Establishes trust in models, datasets, prompts, tools and third-party components before they are used.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Ensures every AI component has known provenance, ownership, approval status and supply-chain visibility.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="04" data-coverage="partial" data-identity="false" data-products="Prisma AIRS Model Security | Protect AI capabilities | Portkey AI Gateway | Idira Secure AI Agents" data-spine="" data-theme="Supply Chain / Runtime" data-value="Strong model and agent discovery support; full enterprise registry and approval workflow still requires integration." href="pages/box-04-model-dataset-tool-registries.html" title="Open detail page for Model, Dataset &amp; Tool Registries"><div class="nd zone-data">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Provenance Gov.</div><div class="badge mat Gap">Gap</div></div><div class="nd-num">04</div></div>
@@ -164,6 +329,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -2: Prodspec Control Contract (Machine-Readable Policy Anchor)</div><div class="sec-line"></div></div>
+<div class="layer-desc identity">
+  <div class="layer-icon">L-2</div>
+  <div>
+    <h3>Prodspec Control Contract</h3>
+    <p>Creates a machine-readable contract defining how an AI agent may behave, what it can access and what it can do.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Turns governance intent into enforceable policy that runtime controls can consume automatically.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="08" data-coverage="partial" data-identity="true" data-products="Prisma AIRS policies | Portkey AI Gateway | Idira Secure AI Agents | Cortex evidence feeds" data-spine="2 Bind to Prodspec" data-theme="Control Contract" data-value="Can enforce parts of the control contract, but the full Prodspec schema should remain vendor-neutral." href="pages/box-08-agentic-prodspec-control-contract.html" title="Open detail page for Agentic Prodspec Control Contract"><div class="nd zone-data">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">AI-SPM / Policy</div><div class="badge mat Gap">Gap</div></div><div class="nd-num">08</div></div>
@@ -188,6 +361,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -1: SDLC &amp; Pre-Deployment Validation</div><div class="sec-line"></div></div>
+<div class="layer-desc runtime">
+  <div class="layer-icon">L-1</div>
+  <div>
+    <h3>SDLC & Pre-Deployment Validation</h3>
+    <p>Validates AI systems before production through testing, assurance and approval controls.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Ensures only tested, approved and evidenced AI systems reach production.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="12" data-coverage="partial" data-identity="false" data-products="Prisma AIRS | Portkey AI Gateway | Cortex Cloud" data-spine="" data-theme="Engineering Governance" data-value="Supports AI app governance and gateway control; prompt lifecycle process remains SDLC-owned." href="pages/box-12-prompt-use-case-lifecycle-management.html" title="Open detail page for Prompt &amp; Use-Case Lifecycle Management"><div class="nd neutral">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">CI/CD / GitOps</div><div class="badge mat Existing">Existing</div></div><div class="nd-num">12</div></div>
@@ -212,6 +393,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 0: Enterprise AI Consumers &amp; Agent Attack Surface</div><div class="sec-line"></div></div>
+<div class="layer-desc gateway">
+  <div class="layer-icon">L0</div>
+  <div>
+    <h3>Enterprise AI Consumers & Attack Surface</h3>
+    <p>Represents the people, devices, agents and external parties interacting with AI capabilities.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Makes every interaction point visible, classified and governed.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="16" data-coverage="direct" data-identity="true" data-products="Prisma Browser | Cortex XDR | Idira EPM" data-spine="" data-theme="Endpoint / Browser" data-value="Strong fit for managed endpoint and browser AI controls." href="pages/box-16-workforce-managed-devices.html" title="Open detail page for Workforce - Managed Devices"><div class="nd neutral">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Managed</div><div class="badge mat Existing">Existing</div></div><div class="nd-num">16</div></div>
@@ -241,6 +430,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 1: Declarative Execution Baseline</div><div class="sec-line"></div></div>
+<div class="layer-desc identity">
+  <div class="layer-icon">L1</div>
+  <div>
+    <h3>Declarative Execution Baseline</h3>
+    <p>Provides the trusted technical foundation including identity, secrets, workload controls and runtime integrity.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Ensures AI agents operate in trusted and continuously verified execution environments.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="21" data-coverage="direct" data-identity="true" data-products="Idira EPM | Cortex XDR | Prisma Browser" data-spine="" data-theme="Endpoint / Browser" data-value="Strong fit for endpoint privilege, local execution and browser controls." href="pages/box-21-managed-endpoint-enforcement.html" title="Open detail page for Managed Endpoint Enforcement"><div class="nd merged">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">EPM &amp; Browser</div><div class="badge mat Existing">Existing</div></div><div class="nd-num">21</div></div>
@@ -265,6 +462,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 2: Runtime, Data, Tool, SaaS, Memory &amp; Cost Enforcement</div><div class="sec-line"></div></div>
+<div class="layer-desc data">
+  <div class="layer-icon">L2</div>
+  <div>
+    <h3>Runtime, Data, Tool, SaaS, Memory & Cost Enforcement</h3>
+    <p>Controls what AI agents can do while operating, including data access, tools, SaaS features, memory and cost.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Keeps agents within defined security, privacy, operational and economic boundaries.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="25" data-coverage="direct" data-identity="false" data-products="Prisma AIRS AI Runtime Firewall | AI Access Security | Prisma Browser" data-spine="5 Inspect prompt/output" data-theme="AI Runtime" data-value="Strong fit for prompt/output inspection and runtime AI protection." href="pages/box-25-prompt-output-inspection.html" title="Open detail page for Prompt &amp; Output Inspection"><div class="nd zone-runtime">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">AI Firewall</div><div class="badge mat Limited">Existing / Limited</div></div><div class="nd-num">25</div></div>
@@ -299,6 +504,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Threshold Routing Matrix: Deterministic, Probabilistic &amp; High-Impact Response</div><div class="sec-line"></div></div>
+<div class="layer-desc matrix-desc">
+  <div class="layer-icon">TRM</div>
+  <div>
+    <h3>Threshold Routing Matrix</h3>
+    <p>Determines how the organisation responds when AI activity exceeds approved thresholds or enters uncertain territory.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Provides consistent risk-based responses: contain hard breaches, evaluate ambiguity, and escalate high-impact actions.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="31" data-coverage="direct" data-identity="true" data-products="Idira kill-switch / access denial patterns | Cortex XDR | Cortex XSOAR | Prisma AIRS" data-spine="6 Contain / revoke" data-theme="Control Spine / Response" data-value="Strong fit for containment, revocation, endpoint response and playbook automation." href="pages/box-31-terminate-contain-compensate-hard.html" title="Open detail page for Terminate, Contain &amp; Compensate - Hard"><div class="nd matrix">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Infrastructure Enforcer</div><div class="badge mat Maturing">Maturing</div></div><div class="nd-num">31</div></div>
@@ -318,6 +531,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 3: Cognitive Governance, Human Accountability &amp; Evidence</div><div class="sec-line"></div></div>
+<div class="layer-desc exec">
+  <div class="layer-icon">L3</div>
+  <div>
+    <h3>Cognitive Governance, Human Accountability & Evidence</h3>
+    <p>Provides human oversight, policy evaluation, decision accountability and evidence generation.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Ensures significant AI decisions can be traced, reviewed, challenged and defended.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="34" data-coverage="direct" data-identity="true" data-products="Idira Privilege Management | Idira EPM | Idira Secure AI Agents | Cortex XSOAR" data-spine="7 Accountable approval" data-theme="Identity Spine" data-value="Core Idira story: human accountability, dual control and accountable approval." href="pages/box-34-human-accountability-dual-control.html" title="Open detail page for Human Accountability &amp; Dual Control"><div class="nd merged">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">HITL / IAM</div><div class="badge mat Maturing">Maturing</div></div><div class="nd-num">34</div></div>
@@ -342,6 +563,14 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 4: Observability, Incident Response, Assurance &amp; Resilience</div><div class="sec-line"></div></div>
+<div class="layer-desc detect">
+  <div class="layer-icon">L4</div>
+  <div>
+    <h3>Observability, Incident Response, Assurance & Resilience</h3>
+    <p>Monitors AI behaviour, detects threats, manages incidents and validates control effectiveness over time.</p>
+  </div>
+  <div class="why"><b>Outcome</b><span>Creates continuous visibility, rapid response and long-term operational resilience.</span></div>
+</div>
 <div class="row">
 <a class="nd-link" data-box="38" data-coverage="direct" data-identity="true" data-products="Cortex XSIAM | Cortex XDR | Prisma AIRS telemetry | Cortex Data Lake" data-spine="8 Telemetry" data-theme="SOC / Runtime" data-value="Strong fit for structured telemetry, correlation and agent/security event collection." href="pages/box-38-structured-agentic-telemetry-collection.html" title="Open detail page for Structured Agentic Telemetry Collection"><div class="nd zone-gateway">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">LLM Observability</div><div class="badge mat Maturing">Maturing</div></div><div class="nd-num">38</div></div>
