@@ -246,6 +246,82 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 .backlog-card ul{margin-left:17px;display:flex;flex-direction:column;gap:5px;font-size:11px}
 @media print{.backlog-grid{grid-template-columns:1fr}}
 
+
+/* Decision Routing Gateway - visually distinct from architecture layers */
+.routing-gateway {
+  position: relative;
+  margin: 20px auto 22px;
+  max-width: 980px;
+  border: 1px solid rgba(244,63,94,.48);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at top left, rgba(244,63,94,.18), transparent 26%),
+    linear-gradient(135deg, rgba(22,12,20,.96), rgba(10,14,20,.96));
+  box-shadow: 0 12px 36px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.04);
+  padding: 16px 18px;
+}
+.routing-gateway:before {
+  content: "CONTROL JUNCTION — NOT A LAYER";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: white;
+  background: var(--matrix);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.routing-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.routing-sub {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.routing-paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+.routing-path {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035);
+  border-radius: 8px;
+  padding: 11px 12px;
+}
+.routing-path b {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+.routing-path span {
+  color: var(--text2);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.routing-path.hard { border-color: rgba(244,63,94,.40); }
+.routing-path.soft { border-color: rgba(245,200,66,.36); }
+.routing-path.high { border-color: rgba(96,165,250,.36); }
+.matrix-note {
+  margin-top: 10px;
+  color: var(--text3);
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -527,10 +603,18 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 <div class="vendor-overlay"></div></div></a>
 </div>
 <div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Threshold Routing Matrix: Deterministic, Probabilistic &amp; High-Impact Response</div><div class="sec-line"></div></div>
-<div class="layer-desc matrix-desc">
-  <div class="layer-icon">TRM</div>
-  <div>
+
+<div class="routing-gateway">
+  <div class="routing-title">Decision Routing Gateway: Hard Breach · Soft Deviation · High-Impact Escalation</div>
+  <div class="routing-sub">This gateway is not a separate architecture layer. It is a runtime decision junction that routes agent behaviour when policy is breached, confidence is uncertain, or business impact is material.</div>
+  <div class="routing-paths">
+    <div class="routing-path hard"><b>Hard breach</b><span>Deterministic rule violation. Terminate, contain, revoke or compensate immediately.</span></div>
+    <div class="routing-path soft"><b>Soft deviation</b><span>Probabilistic uncertainty or behavioural drift. Evaluate, tune, re-score or route to review.</span></div>
+    <div class="routing-path high"><b>High-impact action</b><span>Material business consequence. Pause, escalate, require human accountability or dual control.</span></div>
+  </div>
+  <div class="matrix-note">Runtime events flow into this gateway from Layer 2 and are routed toward Layer 3 accountability and Layer 4 response.</div>
+</div>
+<div>
     <h3>Threshold Routing Matrix</h3>
     <p>Determines how the organisation responds when AI activity exceeds approved thresholds or enters uncertain territory.</p>
   </div>
