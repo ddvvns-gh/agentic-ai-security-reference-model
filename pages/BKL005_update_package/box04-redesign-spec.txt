@@ -1,0 +1,26 @@
+
+AI PROVENANCE & SUPPLY CHAIN ASSURANCE
+
+Scope:
+- Models
+- Datasets
+- Prompts
+- Agents
+- Tools / MCP
+- Evaluators
+- Memory stores
+- SaaS AI services
+- Human-generated artefacts
+- AI-generated artefacts
+
+Core Questions:
+1. What is it?
+2. Where did it come from?
+3. Who owns it?
+4. Who approved it?
+5. What depends on it?
+6. Has it changed?
+7. Can it still be trusted?
+
+Trust Chain:
+Artefact Trust + Identity Trust + Execution Trust + Decision Trust

@@ -1,0 +1,40 @@
+
+BKL-005 UPDATE PACKAGE
+
+This package is a design-ready change set derived from review of the current site.
+
+INDEX.HTML CHANGES
+- Rename Box 04 from 'Model, Dataset & Tool Registries'
+  to 'AI Provenance & Supply Chain Assurance'
+- Add Trust Chain concept:
+  Artefact Trust -> Identity Trust -> Execution Trust -> Decision Trust
+- Add architectural principles:
+  * Semantic Blast-Radius Isolation
+  * State-Locked Validation
+  * Memory Epoch Isolation
+- Add backlog items BKL-021, BKL-022, BKL-023
+
+CAPABILITY PAGES TO UPDATE
+- Box 04: major rewrite and rename
+- Box 10: Structured Agent Payload Boundary
+- Box 19: Child Agent Semantic Containment
+- Box 22: Trust Chain integration
+- Box 25: Semantic Payload Inspection
+- Box 29: Memory Epoch Isolation
+- Box 30: State-Locked Validation
+- Box 35: Validation Authority Hierarchy
+- Box 36: Intent / State / Semantic Provenance
+- Box 40: Memory Hygiene Monitoring
+
+NEW RISKS
+R-PROV-001..003
+R-STATE-001
+R-MEM-001..002
+R-A2A-005
+
+NEW CONTROLS
+C-PROV-001..004
+C-A2A-007
+C-DEC-009
+C-MEM-005
+C-MEM-006

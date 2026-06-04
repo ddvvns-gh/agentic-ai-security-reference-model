@@ -9,7 +9,7 @@
 <meta name="classification" content="Internal Architecture Reference"/>
 <meta name="rating" content="General"/>
 <meta name="referrer" content="no-referrer"/>
-<title>Enterprise Agentic AI Security &amp; Governance Reference Architecture v18</title>
+<title>Enterprise Agentic AI Security &amp; Governance Reference Architecture v17</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 :root {
@@ -322,112 +322,12 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
   text-align: center;
 }
 
-
-/* Externalized deterministic enforcement clarification */
-.security-stance {
-  background:
-    radial-gradient(circle at top left, rgba(244,63,94,.18), transparent 28%),
-    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
-  border: 1px solid rgba(244,63,94,.46);
-  border-radius: 10px;
-  padding: 17px 20px;
-  margin: 20px 0 24px;
-}
-.security-stance h3 {
-  color: var(--text);
-  font-size: 16px;
-  margin-bottom: 9px;
-}
-.security-stance p {
-  color: var(--text2);
-  line-height: 1.58;
-  margin: 6px 0;
-}
-.stance-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 9px;
-  margin-top: 13px;
-}
-.stance-card {
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  border-radius: 8px;
-  padding: 11px 12px;
-}
-.stance-card b {
-  display: block;
-  color: var(--text);
-  font-size: 11px;
-  margin-bottom: 5px;
-}
-.stance-card span {
-  color: var(--text2);
-  font-size: 10.5px;
-  line-height: 1.42;
-}
-@media print { .stance-grid { grid-template-columns: 1fr; } }
-
-
-/* v18 Trust Chain & Provenance Hardening */
-.v18-trust-chain {
-  background:
-    radial-gradient(circle at top left, rgba(56,189,248,.16), transparent 30%),
-    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
-  border: 1px solid rgba(56,189,248,.42);
-  border-radius: 10px;
-  padding: 18px 20px;
-  margin: 20px 0 24px;
-  box-shadow: 0 10px 32px rgba(0,0,0,.28);
-}
-.v18-trust-chain h3 { color: var(--text); font-size: 16px; margin-bottom: 8px; }
-.v18-trust-chain p { color: var(--text2); line-height: 1.58; margin: 6px 0; }
-.v18-chain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 13px; }
-.v18-chain-card {
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  border-radius: 8px;
-  padding: 12px;
-}
-.v18-chain-card b {
-  display: block;
-  color: var(--text);
-  font-size: 11px;
-  margin-bottom: 5px;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-.v18-chain-card span { color: var(--text2); font-size: 10.5px; line-height: 1.42; }
-.v18-hardening {
-  background: rgba(56,189,248,.06);
-  border: 1px solid rgba(56,189,248,.28);
-  border-radius: 9px;
-  padding: 14px 16px;
-  color: var(--text2);
-  line-height: 1.56;
-  margin: 12px 0 18px;
-}
-.v18-hardening h3 { color: var(--text); font-size: 14px; margin-bottom: 8px; }
-.v18-hardening ul { margin-left: 18px; display: flex; flex-direction: column; gap: 6px; }
-.v18-pill {
-  display:inline-block;
-  border:1px solid rgba(56,189,248,.36);
-  background:rgba(56,189,248,.10);
-  color:#bae6fd;
-  border-radius:999px;
-  padding:4px 8px;
-  font-size:10px;
-  margin:3px 4px 3px 0;
-  font-family:'DM Mono', monospace;
-}
-@media print { .v18-chain-grid { grid-template-columns: 1fr; } }
-
 </style>
 </head>
 <body>
-<div class="hdr"><div><div class="hdr-title">Enterprise Agentic AI Security &amp; Governance Reference Architecture v18<br/><span>Target-State Industry North Star · Boardroom to Runtime</span></div><div class="hdr-sub">Vendor-neutral capability map · Ready for detailed control expansion</div></div></div></div><div class="navbar">
+<div class="hdr"><div><div class="hdr-title">Enterprise Agentic AI Security &amp; Governance Reference Architecture v17<br/><span>Target-State Industry North Star · Boardroom to Runtime</span></div><div class="hdr-sub">Vendor-neutral capability map · Ready for detailed control expansion</div></div></div></div><div class="navbar">
 <a href="#">Architecture</a>
+<a href="pages/box-01-workforce-lifecycle-portfolio-hub.html">Layer -4 Capability Pages</a>
 <a href="risks/">Risks</a>
 <a href="controls/">Controls</a>
 <a href="metrics/">Metrics</a>
@@ -469,19 +369,6 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 </div>
 <p><strong>Policies flow downward.</strong> Telemetry, evidence and assurance flow upward. Together these layers create a <strong>secure, governed, observable and accountable operating model for enterprise-scale AI agents.</strong></p>
 </div>
-
-<div class="security-stance">
-  <h3>Security stance: agents reason, external controls enforce</h3>
-  <p>This reference model explicitly treats LLMs and agents as probabilistic reasoning engines, not deterministic security boundaries. Prompt instructions, self-reflection and evaluator models may assist with classification, scoring and review, but security-critical enforcement must occur outside the agentic reasoning loop.</p>
-  <div class="stance-grid">
-    <div class="stance-card"><b>1 · LLMs are not security boundaries</b><span>Safety prompts and model self-policing are advisory, not enforceable controls.</span></div>
-    <div class="stance-card"><b>2 · External deterministic control plane</b><span>Inputs, tool calls, outputs and commitments are mediated by gateways, policy engines and sandboxes.</span></div>
-    <div class="stance-card"><b>3 · Agentic Identity Mesh</b><span>Agents use short-lived, task-scoped, cryptographically bound identities rather than inherited broad user privilege.</span></div>
-    <div class="stance-card"><b>4 · Dual-engine validation</b><span>High-consequence ingress and egress are independently checked by policy-as-code and constrained evaluators.</span></div>
-    <div class="stance-card"><b>5 · Intent provenance</b><span>Decision lineage captures the why behind tool use, not only static execution logs.</span></div>
-  </div>
-</div>
-
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -4: AI Workforce Governance (Business Control Plane)</div><div class="sec-line"></div></div>
 <div class="layer-desc exec">
   <div class="layer-icon">L-4</div>
@@ -519,10 +406,10 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
   <div class="why"><b>Outcome</b><span>Ensures every AI component has known provenance, ownership, approval status and supply-chain visibility.</span></div>
 </div>
 <div class="row">
-<a class="nd-link" data-box="04" data-coverage="partial" data-identity="false" data-products="Prisma AIRS Model Security | Protect AI capabilities | Portkey AI Gateway | Idira Secure AI Agents" data-spine="" data-theme="Supply Chain / Runtime" data-value="Strong model and agent discovery support; full enterprise registry and approval workflow still requires integration." href="pages/box-04-model-dataset-tool-registries.html" title="Open detail page for AI Provenance &amp; Supply Chain Assurance"><div class="nd zone-data">
+<a class="nd-link" data-box="04" data-coverage="partial" data-identity="false" data-products="Prisma AIRS Model Security | Protect AI capabilities | Portkey AI Gateway | Idira Secure AI Agents" data-spine="" data-theme="Supply Chain / Runtime" data-value="Strong model and agent discovery support; full enterprise registry and approval workflow still requires integration." href="pages/box-04-model-dataset-tool-registries.html" title="Open detail page for Model, Dataset &amp; Tool Registries"><div class="nd zone-data">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Provenance Gov.</div><div class="badge mat Gap">Gap</div></div><div class="nd-num">04</div></div>
-<div class="nd-title">AI Provenance &amp; Supply Chain Assurance</div>
-<div class="ps-block"><div><strong>Function:</strong> Provenance, approval, dependency and cryptographic trust assurance for models, datasets, prompts, agents, tools, MCP servers, memory stores, evaluators, SaaS AI and AI-generated artefacts.</div><div><strong class="prob">Problem:</strong> Untrusted models, datasets or tools can introduce vulnerabilities before engineering starts.</div><div><strong class="sol">Control Pattern:</strong> Restrict builds to approved registries with provenance, licence, classification, consent and trust metadata.</div><div><strong class="evid">Evidence Hook:</strong> Registry approvals; provenance records; source trust scores; licence records.</div></div>
+<div class="nd-title">Model, Dataset &amp; Tool Registries</div>
+<div class="ps-block"><div><strong>Function:</strong> Approved registries for models, datasets, prompts, tools, APIs, plugins and agent frameworks.</div><div><strong class="prob">Problem:</strong> Untrusted models, datasets or tools can introduce vulnerabilities before engineering starts.</div><div><strong class="sol">Control Pattern:</strong> Restrict builds to approved registries with provenance, licence, classification, consent and trust metadata.</div><div><strong class="evid">Evidence Hook:</strong> Registry approvals; provenance records; source trust scores; licence records.</div></div>
 <div class="vendor-overlay"></div></div></a>
 <a class="nd-link" data-box="05" data-coverage="partial" data-identity="false" data-products="Cortex Cloud | Prisma Cloud | Prisma AIRS Model Security | Koi capabilities" data-spine="" data-theme="Supply Chain / Cloud" data-value="Supports code, dependency, runtime and model artefact checks; complete signing policy remains architectural design." href="pages/box-05-artefact-signing-dependency-control.html" title="Open detail page for Artefact Signing &amp; Dependency Control"><div class="nd zone-identity">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Artefact Auth</div><div class="badge mat Maturing">Maturing</div></div><div class="nd-num">05</div></div>
@@ -850,7 +737,7 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
   <h3>Reference Model Development Backlog</h3>
   <p>This backlog records the next major expansion items for turning the architecture diagram into a full security, risk, control and assurance reference model. It is intentionally separate from the architecture itself so that the model remains stable while the supporting libraries mature.</p>
   <div class="backlog-grid">
-    <div class="backlog-card"><span class="prio p1">P1</span><h4>Capability page standardisation</h4><ul><li>Apply the detailed capability-page format to all 42 boxes.</li><li>Remove Layer -4 Capability Pages navigation link from the top navigation.</li><li>Individualise purpose, placement, risks, controls and examples.</li></ul></div>
+    <div class="backlog-card"><span class="prio p1">P1</span><h4>Capability page standardisation</h4><ul><li>Apply the detailed capability-page format to all 42 boxes.</li><li>Individualise purpose, placement, risks, controls and examples.</li></ul></div>
     <div class="backlog-card"><span class="prio p1">P1</span><h4>Central libraries</h4><ul><li>Create linked repositories for risks, controls, metrics and evidence.</li><li>Reference each item from capability pages rather than duplicating content.</li></ul></div>
     <div class="backlog-card"><span class="prio p2">P2</span><h4>Service-domain navigation</h4><ul><li>Group capabilities into stable architecture service domains.</li><li>Support executive, security, risk and engineering navigation paths.</li></ul></div>
     <div class="backlog-card"><span class="prio p2">P2</span><h4>Overlays and mappings</h4><ul><li>Refine Palo Alto / Idira coverage, identity lens and control-spine overlays.</li><li>Add future APRA, NIST AI RMF and ISO 42001 mappings.</li></ul></div>

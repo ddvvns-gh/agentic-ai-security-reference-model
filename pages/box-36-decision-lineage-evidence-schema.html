@@ -19,6 +19,61 @@ table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}th{b
 .tag{display:inline-block;border:1px solid var(--border-hi);background:rgba(255,255,255,.025);border-radius:999px;padding:4px 8px;font-size:10px;color:var(--text2);margin:3px}.example{border:1px solid var(--border-hi);background:rgba(255,255,255,.025);border-radius:8px;padding:13px}.example h4{color:var(--text);font-size:13px;margin-bottom:6px}.example .split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.low{border-left:3px solid var(--green);padding-left:10px}.high{border-left:3px solid var(--red);padding-left:10px}
 .stance{border:1px solid rgba(244,63,94,.42);background:rgba(244,63,94,.08);border-radius:8px;padding:14px 16px;color:var(--text2);line-height:1.55;margin:14px 0}.stance b{color:var(--text)}
 .footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:18px;border-top:1px solid var(--border)}@media print{body{min-width:0;padding:18px}.navbar,.footer-nav{display:none}.grid-2,.grid-3,.hero-grid{grid-template-columns:1fr}.card,.example{break-inside:avoid}}
+
+/* v18 Trust Chain & Provenance Hardening */
+.v18-trust-chain {
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,.16), transparent 30%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid rgba(56,189,248,.42);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 20px 0 24px;
+  box-shadow: 0 10px 32px rgba(0,0,0,.28);
+}
+.v18-trust-chain h3 { color: var(--text); font-size: 16px; margin-bottom: 8px; }
+.v18-trust-chain p { color: var(--text2); line-height: 1.58; margin: 6px 0; }
+.v18-chain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 13px; }
+.v18-chain-card {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  padding: 12px;
+}
+.v18-chain-card b {
+  display: block;
+  color: var(--text);
+  font-size: 11px;
+  margin-bottom: 5px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.v18-chain-card span { color: var(--text2); font-size: 10.5px; line-height: 1.42; }
+.v18-hardening {
+  background: rgba(56,189,248,.06);
+  border: 1px solid rgba(56,189,248,.28);
+  border-radius: 9px;
+  padding: 14px 16px;
+  color: var(--text2);
+  line-height: 1.56;
+  margin: 12px 0 18px;
+}
+.v18-hardening h3 { color: var(--text); font-size: 14px; margin-bottom: 8px; }
+.v18-hardening ul { margin-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.v18-pill {
+  display:inline-block;
+  border:1px solid rgba(56,189,248,.36);
+  background:rgba(56,189,248,.10);
+  color:#bae6fd;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:10px;
+  margin:3px 4px 3px 0;
+  font-family:'DM Mono', monospace;
+}
+@media print { .v18-chain-grid { grid-template-columns: 1fr; } }
+
 </style></head><body>
 <div class="hdr"><div><div class="hdr-title">36 · Decision Lineage &amp; Evidence Schema<br/><span>Capability Detail Page</span></div><div class="hdr-sub">Layer 3 · Cognitive Governance, Human Accountability &amp; Evidence</div></div></div>
 <div class="navbar"><a href="../index.html">← Back to architecture</a><a href="../risks/">Risk library</a><a href="../controls/">Control library</a><a href="../metrics/">Metric library</a><a href="../pages/box-35-policy-constitutional-evaluation.html">← Previous capability</a><a href="../pages/box-37-explainability-challenge-appeal.html">Next capability →</a></div>
@@ -28,14 +83,35 @@ table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}th{b
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Architectural placement</div><div class="sec-line"></div></div><div class="card"><h3>Why this sits here</h3><p>This sits in Layer 3 because it captures cognitive governance and accountability evidence that goes beyond infrastructure logging.</p><div class="callout">Traditional logs say what happened; agentic lineage must also preserve why the action was attempted.</div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Problem statement</div><div class="sec-line"></div></div><div class="card"><p>When an agent chains 15 API calls with synthetic sub-steps, raw logs become insufficient. Investigators need structured provenance of intent and authority.</p></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Capability description</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>What the capability does</h3><ul><li>Captures user request, agent identity, delegated authority and task purpose.</li><li>Records plan summary, retrieved context references and tool intent.</li><li>Links policy decisions, approvals, outputs and final commitments.</li><li>Preserves session-chain lineage across child agents and tools.</li><li>Stores tamper-evident evidence for audit and incident response.</li></ul></div><div class="card"><h3>What the capability does not do</h3><ul><li>It does not require storing hidden chain-of-thought.</li><li>It does not prove the decision was correct.</li><li>It does not replace raw telemetry or system logs.</li></ul></div></div>
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Referenced risks</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Risk ID</th><th>Risk</th><th>Basic description</th><th>Primary impact</th></tr></thead><tbody><tr><td><a href="../risks/r-evid-001-decision-evidence-gap.html"><span class="badge badge-risk">R-EVID-001</span></a></td><td>Decision evidence gap</td><td>Material AI decision cannot be reconstructed.</td><td>Audit and regulatory exposure.</td></tr><tr><td><a href="../risks/r-evid-004-intent-provenance-loss.html"><span class="badge badge-risk">R-EVID-004</span></a></td><td>Intent provenance loss</td><td>Tool calls are logged without the purpose or authority that caused them.</td><td>Investigation failure.</td></tr><tr><td><a href="../risks/r-evid-002-fragmented-evidence.html"><span class="badge badge-risk">R-EVID-002</span></a></td><td>Fragmented evidence</td><td>Evidence is spread across tools without common schema.</td><td>Slow investigation.</td></tr></tbody></table></div>
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Controls delivered or used</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Control ID</th><th>Control name</th><th>Basic description</th><th>Control type</th></tr></thead><tbody><tr><td><a href="../controls/c-evid-001-decision-lineage-capture.html"><span class="badge badge-control">C-EVID-001</span></a></td><td>Decision lineage capture</td><td>Material AI decisions must capture structured lineage evidence.</td><td>Evidentiary</td></tr><tr><td><a href="../controls/c-evid-005-intent-provenance-capture.html"><span class="badge badge-control">C-EVID-005</span></a></td><td>Intent provenance capture</td><td>Tool calls must record intended purpose, initiating request and delegated authority.</td><td>Evidentiary</td></tr><tr><td><a href="../controls/c-evid-006-session-chain-linkage.html"><span class="badge badge-control">C-EVID-006</span></a></td><td>Session-chain linkage</td><td>Evidence must link human, agent, child agent, tool and final action.</td><td>Evidentiary</td></tr><tr><td><a href="../controls/c-evid-003-evidence-integrity-protection.html"><span class="badge badge-control">C-EVID-003</span></a></td><td>Evidence integrity protection</td><td>Decision records must be tamper-evident and access controlled.</td><td>Preventive / Evidentiary</td></tr></tbody></table></div>
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Referenced metrics</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Metric ID</th><th>Metric</th><th>Basic description</th><th>Target / signal</th></tr></thead><tbody><tr><td><a href="../metrics/m-evid-001-lineage-coverage.html"><span class="badge badge-metric">M-EVID-001</span></a></td><td>Lineage coverage</td><td>Material AI decisions with complete lineage record.</td><td>Target: 100%</td></tr><tr><td><a href="../metrics/m-evid-004-intent-provenance-completeness.html"><span class="badge badge-metric">M-EVID-004</span></a></td><td>Intent provenance completeness</td><td>Tool calls with purpose and authority context.</td><td>Target: 100%</td></tr><tr><td><a href="../metrics/m-evid-005-session-chain-completeness.html"><span class="badge badge-metric">M-EVID-005</span></a></td><td>Session-chain completeness</td><td>Material actions with full human-agent-tool chain.</td><td>Target: 100%</td></tr></tbody></table></div>
+
+<div class="v18-hardening">
+  <h3>v18 hardening — Intent, State and Semantic Provenance</h3>
+  <p>Decision lineage now explicitly captures three provenance dimensions: <strong>intent provenance</strong> (why a tool call or action was attempted), <strong>state provenance</strong> (the immutable context and policy snapshot used for validation/execution), and <strong>semantic provenance</strong> (prompt, context, memory, agent-to-agent payload and output sources).</p>
+  <ul>
+    <li><strong>Intent provenance:</strong> initiating user, delegated agent, task purpose, proposed action, tool intent and commitment rationale.</li>
+    <li><strong>State provenance:</strong> policy version, Prodspec version, environment variables, tool parameters, token scope, approval state and validation envelope.</li>
+    <li><strong>Semantic provenance:</strong> prompt source, retrieved-context source, memory epoch, agent-to-agent payload source and output derivation trail.</li>
+  </ul>
+</div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Referenced risks</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Risk ID</th><th>Risk</th><th>Basic description</th><th>Primary impact</th></tr></thead><tbody><tr><td><a href="../risks/r-evid-001-decision-evidence-gap.html"><span class="badge badge-risk">R-EVID-001</span></a></td><td>Decision evidence gap</td><td>Material AI decision cannot be reconstructed.</td><td>Audit and regulatory exposure.</td></tr><tr><td><a href="../risks/r-evid-004-intent-provenance-loss.html"><span class="badge badge-risk">R-EVID-004</span></a></td><td>Intent provenance loss</td><td>Tool calls are logged without the purpose or authority that caused them.</td><td>Investigation failure.</td></tr><tr><td><a href="../risks/r-evid-002-fragmented-evidence.html"><span class="badge badge-risk">R-EVID-002</span></a></td><td>Fragmented evidence</td><td>Evidence is spread across tools without common schema.</td><td>Slow investigation.</td></tr>
+<tr><td><a href="../risks/r-evid-005-state-provenance-loss.html"><span class="badge badge-risk">R-EVID-005</span></a></td><td>State provenance loss</td><td>Decision evidence does not preserve the state snapshot used during validation and execution.</td><td>Audit gap and inability to prove approved state matched execution.</td></tr>
+<tr><td><a href="../risks/r-evid-006-semantic-provenance-loss.html"><span class="badge badge-risk">R-EVID-006</span></a></td><td>Semantic provenance loss</td><td>Prompt, memory, retrieved-context or agent-to-agent payload source cannot be reconstructed.</td><td>Inability to trace contamination or injection path.</td></tr>
+</tbody></table></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Controls delivered or used</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Control ID</th><th>Control name</th><th>Basic description</th><th>Control type</th></tr></thead><tbody><tr><td><a href="../controls/c-evid-001-decision-lineage-capture.html"><span class="badge badge-control">C-EVID-001</span></a></td><td>Decision lineage capture</td><td>Material AI decisions must capture structured lineage evidence.</td><td>Evidentiary</td></tr><tr><td><a href="../controls/c-evid-005-intent-provenance-capture.html"><span class="badge badge-control">C-EVID-005</span></a></td><td>Intent provenance capture</td><td>Tool calls must record intended purpose, initiating request and delegated authority.</td><td>Evidentiary</td></tr><tr><td><a href="../controls/c-evid-006-session-chain-linkage.html"><span class="badge badge-control">C-EVID-006</span></a></td><td>Session-chain linkage</td><td>Evidence must link human, agent, child agent, tool and final action.</td><td>Evidentiary</td></tr><tr><td><a href="../controls/c-evid-003-evidence-integrity-protection.html"><span class="badge badge-control">C-EVID-003</span></a></td><td>Evidence integrity protection</td><td>Decision records must be tamper-evident and access controlled.</td><td>Preventive / Evidentiary</td></tr>
+<tr><td><a href="../controls/c-evid-007-state-provenance-capture.html"><span class="badge badge-control">C-EVID-007</span></a></td><td>State provenance capture</td><td>Decision lineage must capture policy, Prodspec, token, parameter, environment and approval state used at validation and execution.</td><td>Evidentiary</td></tr>
+<tr><td><a href="../controls/c-evid-008-semantic-provenance-capture.html"><span class="badge badge-control">C-EVID-008</span></a></td><td>Semantic provenance capture</td><td>Decision lineage must capture the source of prompts, memory, retrieved context, agent payloads and outputs where material.</td><td>Evidentiary</td></tr>
+</tbody></table></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Referenced metrics</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Metric ID</th><th>Metric</th><th>Basic description</th><th>Target / signal</th></tr></thead><tbody><tr><td><a href="../metrics/m-evid-001-lineage-coverage.html"><span class="badge badge-metric">M-EVID-001</span></a></td><td>Lineage coverage</td><td>Material AI decisions with complete lineage record.</td><td>Target: 100%</td></tr><tr><td><a href="../metrics/m-evid-004-intent-provenance-completeness.html"><span class="badge badge-metric">M-EVID-004</span></a></td><td>Intent provenance completeness</td><td>Tool calls with purpose and authority context.</td><td>Target: 100%</td></tr><tr><td><a href="../metrics/m-evid-005-session-chain-completeness.html"><span class="badge badge-metric">M-EVID-005</span></a></td><td>Session-chain completeness</td><td>Material actions with full human-agent-tool chain.</td><td>Target: 100%</td></tr>
+<tr><td><a href="../metrics/m-evid-006-state-provenance-completeness.html"><span class="badge badge-metric">M-EVID-006</span></a></td><td>State provenance completeness</td><td>Material decisions with complete validation and execution state evidence.</td><td>Target: 100%</td></tr>
+<tr><td><a href="../metrics/m-evid-007-semantic-provenance-completeness.html"><span class="badge badge-metric">M-EVID-007</span></a></td><td>Semantic provenance completeness</td><td>Material decisions with traceable prompt, context, memory and agent-payload sources.</td><td>Target: 100%</td></tr>
+</tbody></table></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Outcomes delivered</div><div class="sec-line"></div></div><div class="grid-3"><div class="card"><h3>Reconstructability</h3><p>Investigators can understand why actions occurred.</p></div><div class="card"><h3>Audit defensibility</h3><p>Evidence links intent, authority, policy and action.</p></div><div class="card"><h3>Accountability</h3><p>Actors and delegated authority are visible.</p></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Enterprise examples</div><div class="sec-line"></div></div><div class="grid-2"><div class="example"><h4>15 API call workflow</h4><p>Agent orchestrates multiple services.</p><div class="split"><div class="low"><strong>Normal / desired state:</strong><br/>Evidence records task purpose, tool intent and approvals for each call.</div><div class="high"><strong>Risk / control concern:</strong><br/>Logs show calls but not why they happened.</div></div></div><div class="example"><h4>Child agent task</h4><p>Parent agent delegates work.</p><div class="split"><div class="low"><strong>Normal / desired state:</strong><br/>Lineage records parent, child, token scope and result.</div><div class="high"><strong>Risk / control concern:</strong><br/>Child action appears as unrelated service account activity.</div></div></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Failure scenarios</div><div class="sec-line"></div></div><div class="grid-3"><div class="card"><h3>Log-only evidence</h3><p>Only endpoint/API logs exist.</p></div><div class="card"><h3>Missing intent</h3><p>Tool call cannot be linked to business purpose.</p></div><div class="card"><h3>Broken session chain</h3><p>Human initiator is lost after child-agent handoff.</p></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Dependencies</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Upstream dependencies</h3><ul><li>22 · Ephemeral Secrets & Workload Lineage</li><li>10 · Agent-to-Agent Communication Governance</li><li>38 · Structured Agentic Telemetry Collection</li></ul></div><div class="card"><h3>Downstream dependencies</h3><ul><li>39 · Correlated AI Threat Detection & IR</li><li>37 · Explainability, Challenge & Appeal</li><li>42 · Assurance, Audit & Reference Model Expansion Backlog</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Evidence produced</div><div class="sec-line"></div></div><div class="card"><p><a href="../evidence/e-lin-001-decision-lineage-record.html"><span class="badge badge-evidence">E-LIN-001</span></a> Decision lineage record — Structured end-to-end decision evidence.</p><p><a href="../evidence/e-lin-003-intent-provenance-record.html"><span class="badge badge-evidence">E-LIN-003</span></a> Intent provenance record — Purpose, plan summary, tool intent and authority evidence.</p></div>
+<div class="v18-hardening"><h3>v18 additional evidence</h3><p><a href="../evidence/e-lin-004-state-provenance-record.html"><span class="badge badge-evidence">E-LIN-004</span></a> State provenance record — policy, Prodspec, token, parameter and approval snapshot.</p><p><a href="../evidence/e-lin-005-semantic-provenance-record.html"><span class="badge badge-evidence">E-LIN-005</span></a> Semantic provenance record — source chain for prompt, memory, retrieved context and agent payloads.</p></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Technology patterns</div><div class="sec-line"></div></div><div class="card"><span class="tag">Evidence schema</span><span class="tag">Intent provenance</span><span class="tag">Trace IDs</span><span class="tag">Immutable ledger</span><span class="tag">Event correlation</span><span class="tag">Audit store</span><span class="tag">Session graph</span></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk, resilience and accountability.</li><li>APRA CPS 234: information security capability and control assurance.</li><li>Privacy Act / OAIC APPs: privacy and evidence obligations where personal information is involved.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Govern, Map, Measure and Manage functions.</li><li>ISO/IEC 42001: AI management system controls.</li><li>OWASP LLM / Agentic AI risks where applicable.</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every material AI action has a tamper-evident record of intent, authority, policy decision, tool use and outcome.</p></div>
