@@ -4,6 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet"/>
+<meta name="author" content="Enterprise Agentic AI Security Reference Model"/>
+<meta name="classification" content="Internal Architecture Reference"/>
+<meta name="rating" content="General"/>
+<meta name="referrer" content="no-referrer"/>
 <title>Enterprise Agentic AI Security &amp; Governance Reference Architecture v17</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap');
@@ -229,10 +234,29 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
   .layer-desc { grid-template-columns: 1fr; }
 }
 
+
+/* Backlog cards */
+.backlog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.backlog-card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:14px 16px;color:var(--text2);line-height:1.5}
+.backlog-card h4{color:var(--text);font-size:13px;margin-bottom:7px}
+.backlog-card .prio{display:inline-block;font-family:'DM Mono';font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:4px;margin-bottom:8px}
+.backlog-card .p1{background:rgba(244,63,94,.14);color:#fb7185;border:1px solid rgba(244,63,94,.4)}
+.backlog-card .p2{background:rgba(245,200,66,.14);color:#f5c842;border:1px solid rgba(245,200,66,.4)}
+.backlog-card .p3{background:rgba(96,165,250,.14);color:#60a5fa;border:1px solid rgba(96,165,250,.4)}
+.backlog-card ul{margin-left:17px;display:flex;flex-direction:column;gap:5px;font-size:11px}
+@media print{.backlog-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
-<div class="hdr"><div><div class="hdr-title">Enterprise Agentic AI Security &amp; Governance Reference Architecture v17<br/><span>Target-State Industry North Star · Boardroom to Runtime</span></div><div class="hdr-sub">Vendor-neutral capability map · Ready for detailed control expansion</div></div><div class="version">Updated from v16<br/>Language softened from absolute prevention to enforceable risk reduction<br/>Every box includes evidence hooks for control-catalogue expansion</div></div><div class="navbar"><a href="#">Home</a><a href="pages/box-01-workforce-lifecycle-portfolio-hub.html">Capability pages</a><a href="../agentic_ai_reference_model_site_detailed.zip">ZIP package</a></div>
+<div class="hdr"><div><div class="hdr-title">Enterprise Agentic AI Security &amp; Governance Reference Architecture v17<br/><span>Target-State Industry North Star · Boardroom to Runtime</span></div><div class="hdr-sub">Vendor-neutral capability map · Ready for detailed control expansion</div></div></div></div><div class="navbar">
+<a href="#">Architecture</a>
+<a href="pages/box-01-workforce-lifecycle-portfolio-hub.html">Layer -4 Capability Pages</a>
+<a href="risks/">Risks</a>
+<a href="controls/">Controls</a>
+<a href="metrics/">Metrics</a>
+<a href="evidence/">Evidence</a>
+</div>
 <div class="overlay-panel" id="overlayPanel">
 <div class="overlay-head">
 <div>
@@ -624,6 +648,18 @@ body.overlay-products .vendor-overlay{display:block}body.overlay-products .nd-li
 <tr><td>Residual risk</td><td>What remains imperfect and who accepts it.</td></tr>
 <tr><td>Regulatory mapping</td><td>APRA CPS 230/234/220, Privacy Act, CDR, SOCI, EU AI Act, NIST AI RMF, ISO 42001 or internal policy.</td></tr>
 </tbody></table></div>
+
+<div class="narrative-block" style="margin-top:24px">
+  <h3>Reference Model Development Backlog</h3>
+  <p>This backlog records the next major expansion items for turning the architecture diagram into a full security, risk, control and assurance reference model. It is intentionally separate from the architecture itself so that the model remains stable while the supporting libraries mature.</p>
+  <div class="backlog-grid">
+    <div class="backlog-card"><span class="prio p1">P1</span><h4>Capability page standardisation</h4><ul><li>Apply the detailed capability-page format to all 42 boxes.</li><li>Individualise purpose, placement, risks, controls and examples.</li></ul></div>
+    <div class="backlog-card"><span class="prio p1">P1</span><h4>Central libraries</h4><ul><li>Create linked repositories for risks, controls, metrics and evidence.</li><li>Reference each item from capability pages rather than duplicating content.</li></ul></div>
+    <div class="backlog-card"><span class="prio p2">P2</span><h4>Service-domain navigation</h4><ul><li>Group capabilities into stable architecture service domains.</li><li>Support executive, security, risk and engineering navigation paths.</li></ul></div>
+    <div class="backlog-card"><span class="prio p2">P2</span><h4>Overlays and mappings</h4><ul><li>Refine Palo Alto / Idira coverage, identity lens and control-spine overlays.</li><li>Add future APRA, NIST AI RMF and ISO 42001 mappings.</li></ul></div>
+  </div>
+</div>
+
 <div class="footer">Generated as a modified v17 HTML reference model. The model deliberately avoids absolute claims such as “fully prevents prompt injection” or “proves model reasoning”; it uses enforceable control, evidence and risk-reduction language suitable for further architecture expansion.</div>
 
 <script>
