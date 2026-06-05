@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet"/>
+<meta name="author" content="Enterprise Agentic AI Security Reference Model"/>
+<meta name="classification" content="Internal Architecture Reference"/>
+<meta name="rating" content="General"/>
+<meta name="referrer" content="no-referrer"/><title>29 · Agent Memory Governance</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root{--bg:#05070a;--surface:#0a0e14;--surface2:#10161f;--border:#1a2332;--border-hi:#253445;--zone-exec:#fbbf24;--zone-gateway:#00c8d4;--zone-runtime:#fa6e1e;--zone-identity:#a78bfa;--zone-detect:#3dd68c;--zone-data:#38bdf8;--matrix:#f43f5e;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;--green:#3dd68c;--amber:#f5c842;--red:#f43f5e;--blue:#60a5fa}
+*{box-sizing:border-box;margin:0;padding:0} body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:32px 28px 60px;min-width:1180px} a{color:var(--zone-gateway);text-decoration:none} a:hover{color:var(--zone-exec)}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:18px}.hdr-title{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1.22}.hdr-title span{font-weight:400;color:var(--text2)}.hdr-sub{margin-top:8px;font-size:11px;color:var(--zone-exec);font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.navbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.navbar a{color:var(--text);border:1px solid var(--border-hi);background:var(--surface2);padding:7px 10px;border-radius:4px;font-size:11px}.navbar a:hover{border-color:rgba(251,191,36,.45);color:var(--zone-exec)}
+.hero{background:radial-gradient(circle at top left, rgba(251,191,36,.16), transparent 30%),linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));border:1px solid rgba(251,191,36,.45);border-radius:10px;padding:20px 22px;margin-bottom:18px;box-shadow:0 10px 32px rgba(0,0,0,.32)}.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:stretch}.hero h1{font-size:22px;margin-bottom:8px}.hero p{color:var(--text2);line-height:1.62;font-size:13px}
+.meta-card{border:1px solid var(--border-hi);background:rgba(0,0,0,.18);border-radius:8px;padding:13px 14px}.meta-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);padding:7px 0;font-size:11px}.meta-row:last-child{border-bottom:none}.meta-row b{color:var(--text);font-family:'DM Mono';text-transform:uppercase;font-size:9px;letter-spacing:.08em}.meta-row span{color:var(--text2);text-align:right}
+.sec{display:flex;align-items:center;gap:10px;margin:26px 0 12px}.sec-line{flex:1;height:1px;background:var(--border)}.sec-label{font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text2);text-transform:uppercase;white-space:nowrap}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:15px 16px;color:var(--text2);line-height:1.55}.card h3{font-size:14px;color:var(--text);margin-bottom:8px}.card ul{margin-left:18px;display:flex;flex-direction:column;gap:6px}
+.callout{border-left:3px solid var(--zone-exec);background:rgba(251,191,36,.09);padding:12px 14px;border-radius:5px;color:var(--text);margin:12px 0}.table-container{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}th{background:var(--surface2);color:var(--text);font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:11px 13px;border-bottom:1px solid var(--border)}td{padding:11px 13px;border-bottom:1px solid var(--border-hi);vertical-align:top;line-height:1.45}tr:last-child td{border-bottom:none}
+.badge{display:inline-block;font-family:'DM Mono';font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:4px;margin:2px 4px 2px 0}.badge-risk{color:#fda4af;background:rgba(244,63,94,.14);border:1px solid rgba(244,63,94,.38)}.badge-control{color:#93c5fd;background:rgba(96,165,250,.14);border:1px solid rgba(96,165,250,.38)}.badge-metric{color:#f5c842;background:rgba(245,200,66,.14);border:1px solid rgba(245,200,66,.38)}.badge-evidence{color:#c4b5fd;background:rgba(167,139,250,.14);border:1px solid rgba(167,139,250,.38)}
+.tag{display:inline-block;border:1px solid var(--border-hi);background:rgba(255,255,255,.025);border-radius:999px;padding:4px 8px;font-size:10px;color:var(--text2);margin:3px}.example{border:1px solid var(--border-hi);background:rgba(255,255,255,.025);border-radius:8px;padding:13px}.example h4{color:var(--text);font-size:13px;margin-bottom:6px}.example .split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.low{border-left:3px solid var(--green);padding-left:10px}.high{border-left:3px solid var(--red);padding-left:10px}
+.footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:18px;border-top:1px solid var(--border)}@media print{body{min-width:0;padding:18px}.navbar,.footer-nav{display:none}.grid-2,.grid-3,.hero-grid{grid-template-columns:1fr}.card,.example{break-inside:avoid}}
+
+/* v18 Trust Chain & Provenance Hardening */
+.v18-trust-chain {
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,.16), transparent 30%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid rgba(56,189,248,.42);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 20px 0 24px;
+  box-shadow: 0 10px 32px rgba(0,0,0,.28);
+}
+.v18-trust-chain h3 { color: var(--text); font-size: 16px; margin-bottom: 8px; }
+.v18-trust-chain p { color: var(--text2); line-height: 1.58; margin: 6px 0; }
+.v18-chain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 13px; }
+.v18-chain-card {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  padding: 12px;
+}
+.v18-chain-card b {
+  display: block;
+  color: var(--text);
+  font-size: 11px;
+  margin-bottom: 5px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.v18-chain-card span { color: var(--text2); font-size: 10.5px; line-height: 1.42; }
+.v18-hardening {
+  background: rgba(56,189,248,.06);
+  border: 1px solid rgba(56,189,248,.28);
+  border-radius: 9px;
+  padding: 14px 16px;
+  color: var(--text2);
+  line-height: 1.56;
+  margin: 12px 0 18px;
+}
+.v18-hardening h3 { color: var(--text); font-size: 14px; margin-bottom: 8px; }
+.v18-hardening ul { margin-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.v18-pill {
+  display:inline-block;
+  border:1px solid rgba(56,189,248,.36);
+  background:rgba(56,189,248,.10);
+  color:#bae6fd;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:10px;
+  margin:3px 4px 3px 0;
+  font-family:'DM Mono', monospace;
+}
+@media print { .v18-chain-grid { grid-template-columns: 1fr; } }
+
+</style></head><body>
+<div class="hdr"><div><div class="hdr-title">29 · Agent Memory Governance<br/><span>Capability Detail Page</span></div><div class="hdr-sub">Layer 2 · Runtime, Data, Tool, SaaS, Memory &amp; Cost Enforcement</div></div></div>
+<div class="navbar"><a href="../index.html">← Back to architecture</a><a href="../risks/">Risk library</a><a href="../controls/">Control library</a><a href="../metrics/">Metric library</a><a href="../pages/box-28-finops-runtime-cost-controls.html">← Previous capability</a><a href="../pages/box-30-output-commitment-control.html">Next capability →</a></div>
+<div class="hero"><div class="hero-grid"><div><h1>Control what agents can remember, retrieve, expire and forget.</h1><p>This capability governs session and persistent memory, including write permissions, provenance, classification, retention, poisoning detection, deletion and re-scoring of memory entries.</p></div><div class="meta-card"><div class="meta-row"><b>Box</b><span>29</span></div><div class="meta-row"><b>Layer</b><span>Layer 2 · Runtime, Data, Tool, SaaS, Memory &amp; Cost Enforcement</span></div><div class="meta-row"><b>Domain</b><span>Agent Memory Governance</span></div><div class="meta-row"><b>Maturity</b><span>Gap / Emerging</span></div><div class="meta-row"><b>Primary owners</b><span>Security, Architecture, Product, Risk, Data Owner</span></div><div class="meta-row"><b>Primary pattern</b><span>Runtime governance and control enforcement</span></div></div></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Purpose and strategic objective</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Purpose</h3><p>To prevent agent memory from becoming an unmanaged store of sensitive data, poisoned instructions or stale context.</p></div><div class="card"><h3>Strategic objective</h3><p>Enable useful personalisation and continuity while preserving privacy, integrity and control over persistent context.</p></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Architectural placement</div><div class="sec-line"></div></div><div class="card"><h3>Why this sits here</h3><p>This sits in Layer 2 because memory risk materialises during runtime reads and writes, and persists beyond individual sessions.</p><div class="callout">Memory is data, context and instruction history; it must be governed like a high-risk store.</div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Problem statement</div><div class="sec-line"></div></div><div class="card"><p>Agent memory can retain personal information, sensitive business context or malicious instructions over time. It may influence future actions without users realising why.</p></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Capability description</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>What the capability does</h3><ul><li>Controls memory read and write permissions.</li><li>Classifies and provenance-tags memory entries.</li><li>Applies retention, expiry and deletion rules.</li><li>Quarantines or re-scores suspicious memory.</li><li>Records memory decisions and evidence.</li></ul></div><div class="card"><h3>What the capability does not do</h3><ul><li>It does not guarantee all poisoned memory is detected.</li><li>It does not replace data governance.</li><li>It does not expose hidden chain-of-thought.</li></ul></div></div>
+
+<div class="v18-hardening">
+  <h3>v18 hardening — Memory Epoch Isolation</h3>
+  <p>Persistent memory is now treated as a time-bounded and provenance-sensitive store. Memory entries must be segmented into epochs with TTL, source provenance, policy classification, recall eligibility and revalidation state. Semantic cleaning must not rely only on a model; it should combine TTL, deterministic expiry, provenance checks, policy classifiers, constrained semantic evaluators and quarantine workflow.</p>
+</div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Referenced risks</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Risk ID</th><th>Risk</th><th>Basic description</th><th>Primary impact</th></tr></thead><tbody><tr><td><a href="../risks/r-mem-001-memory-poisoning.html"><span class="badge badge-risk">R-MEM-001</span></a></td><td>Memory poisoning</td><td>Malicious or incorrect context is stored and influences future behaviour.</td><td>Persistent compromise.</td></tr><tr><td><a href="../risks/r-mem-002-sensitive-memory-retention.html"><span class="badge badge-risk">R-MEM-002</span></a></td><td>Sensitive memory retention</td><td>Agent stores sensitive data longer than allowed.</td><td>Privacy breach.</td></tr><tr><td><a href="../risks/r-mem-003-unexplainable-memory-influence.html"><span class="badge badge-risk">R-MEM-003</span></a></td><td>Unexplainable memory influence</td><td>Decision is influenced by memory without traceability.</td><td>Audit gap.</td></tr>
+<tr><td><a href="../risks/r-mem-001-persistent-memory-poisoning.html"><span class="badge badge-risk">R-MEM-001</span></a></td><td>Persistent memory poisoning</td><td>Malicious or misleading content is stored in persistent memory and later recalled as trusted context.</td><td>Latent compromise and unsafe future behaviour.</td></tr>
+<tr><td><a href="../risks/r-mem-002-stale-context-recall.html"><span class="badge badge-risk">R-MEM-002</span></a></td><td>Stale context recall</td><td>Expired, superseded or low-trust memory is recalled into a new decision context without revalidation.</td><td>Incorrect decisions and policy drift.</td></tr>
+</tbody></table></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Controls delivered or used</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Control ID</th><th>Control name</th><th>Basic description</th><th>Control type</th></tr></thead><tbody><tr><td><a href="../controls/c-mem-001-memory-write-control.html"><span class="badge badge-control">C-MEM-001</span></a></td><td>Memory write control</td><td>Memory writes must be authorised, classified and provenance-tagged.</td><td>Preventive</td></tr><tr><td><a href="../controls/c-mem-002-memory-retention-and-expiry.html"><span class="badge badge-control">C-MEM-002</span></a></td><td>Memory retention and expiry</td><td>Memory entries must expire or be reviewed according to policy.</td><td>Corrective</td></tr><tr><td><a href="../controls/c-mem-003-memory-quarantine.html"><span class="badge badge-control">C-MEM-003</span></a></td><td>Memory quarantine</td><td>Suspicious or policy-violating memory entries must be quarantined.</td><td>Corrective</td></tr><tr><td><a href="../controls/c-mem-004-memory-access-logging.html"><span class="badge badge-control">C-MEM-004</span></a></td><td>Memory access logging</td><td>Memory reads and writes must be logged.</td><td>Detective / Evidentiary</td></tr>
+<tr><td><a href="../controls/c-mem-005-memory-epoch-isolation.html"><span class="badge badge-control">C-MEM-005</span></a></td><td>Memory epoch isolation</td><td>Persistent memory must be segmented into time-bounded epochs with TTL, provenance, revalidation and recall eligibility rules.</td><td>Preventive / Corrective</td></tr>
+<tr><td><a href="../controls/c-mem-006-semantic-memory-sanitisation.html"><span class="badge badge-control">C-MEM-006</span></a></td><td>Semantic memory sanitisation</td><td>Memory stores must undergo scheduled policy and semantic review to identify latent prompt injection, stale context and sensitive data retention.</td><td>Detective / Corrective</td></tr>
+</tbody></table></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Referenced metrics</div><div class="sec-line"></div></div><div class="table-container"><table><thead><tr><th>Metric ID</th><th>Metric</th><th>Basic description</th><th>Target / signal</th></tr></thead><tbody><tr><td><a href="../metrics/m-mem-001-memory-policy-coverage.html"><span class="badge badge-metric">M-MEM-001</span></a></td><td>Memory policy coverage</td><td>Agents with defined memory policy.</td><td>Target: 100%</td></tr><tr><td><a href="../metrics/m-mem-002-quarantined-memory-entries.html"><span class="badge badge-metric">M-MEM-002</span></a></td><td>Quarantined memory entries</td><td>Entries quarantined due to policy or poisoning risk.</td><td>Review trend</td></tr><tr><td><a href="../metrics/m-mem-003-memory-deletion-sla.html"><span class="badge badge-metric">M-MEM-003</span></a></td><td>Memory deletion SLA</td><td>Deletion/expiry actions completed within SLA.</td><td>Target: 100%</td></tr>
+<tr><td><a href="../metrics/m-mem-004-memory-ttl-compliance.html"><span class="badge badge-metric">M-MEM-004</span></a></td><td>Memory TTL compliance</td><td>Persistent memory entries with valid TTL and lifecycle status.</td><td>Target: 100%</td></tr>
+<tr><td><a href="../metrics/m-mem-005-memory-poisoning-detection-rate.html"><span class="badge badge-metric">M-MEM-005</span></a></td><td>Memory poisoning detection rate</td><td>Potentially poisoned memory entries detected, quarantined or expired through review loops.</td><td>Track and trend</td></tr>
+<tr><td><a href="../metrics/m-mem-006-stale-memory-reuse.html"><span class="badge badge-metric">M-MEM-006</span></a></td><td>Stale memory reuse</td><td>Attempts to recall expired or non-revalidated memory into active context.</td><td>Target: 0</td></tr>
+</tbody></table></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Outcomes delivered</div><div class="sec-line"></div></div><div class="grid-3"><div class="card"><h3>Safe continuity</h3><p>Agents can remember useful context without uncontrolled persistence.</p></div><div class="card"><h3>Privacy control</h3><p>Sensitive data is minimised, expired or deleted.</p></div><div class="card"><h3>Poisoning resilience</h3><p>Risky memory can be quarantined.</p></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Enterprise examples</div><div class="sec-line"></div></div><div class="grid-2"><div class="example"><h4>Employee assistant</h4><p>Agent remembers user preferences.</p><div class="split"><div class="low"><strong>Normal / desired state:</strong><br/>Only low-risk preferences persist with expiry.</div><div class="high"><strong>Risk / control concern:</strong><br/>Agent stores health or HR details without policy.</div></div></div><div class="example"><h4>Workflow agent</h4><p>Agent remembers prior task context.</p><div class="split"><div class="low"><strong>Normal / desired state:</strong><br/>Memory is provenance-tagged and scoped.</div><div class="high"><strong>Risk / control concern:</strong><br/>A malicious instruction persists across sessions.</div></div></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Failure scenarios</div><div class="sec-line"></div></div><div class="grid-3"><div class="card"><h3>Toxic memory persistence</h3><p>Prompt injection writes future instructions into memory.</p></div><div class="card"><h3>No deletion path</h3><p>User asks to delete memory but system cannot comply.</p></div><div class="card"><h3>Sensitive context leak</h3><p>Memory from one user influences another user session.</p></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Dependencies</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Upstream dependencies</h3><ul><li>11 · Data Residency, Privacy & Records Policy</li><li>26 · Data Boundary & RAG Governance</li><li>25 · Prompt & Output Inspection</li></ul></div><div class="card"><h3>Downstream dependencies</h3><ul><li>36 · Decision Lineage & Evidence Schema</li><li>38 · Structured Agentic Telemetry Collection</li></ul></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Evidence produced</div><div class="sec-line"></div></div><div class="card"><p><a href="../evidence/e-mem-001-memory-ledger.html"><span class="badge badge-evidence">E-MEM-001</span></a> Memory ledger — Memory write/read, classification and expiry evidence.</p><p><a href="../evidence/e-mem-002-memory-quarantine-record.html"><span class="badge badge-evidence">E-MEM-002</span></a> Memory quarantine record — Suspicious memory review evidence.</p></div>
+<div class="v18-hardening"><h3>v18 additional evidence</h3><p><a href="../evidence/e-mem-003-memory-epoch-record.html"><span class="badge badge-evidence">E-MEM-003</span></a> Memory epoch record — TTL, provenance, revalidation state, recall eligibility and quarantine decision.</p></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Technology patterns</div><div class="sec-line"></div></div><div class="card"><span class="tag">Memory store</span><span class="tag">Vector DB</span><span class="tag">Retention engine</span><span class="tag">Provenance tagging</span><span class="tag">DLP</span><span class="tag">Policy engine</span><span class="tag">Deletion workflow</span></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk, resilience and third-party/service management relevance.</li><li>APRA CPS 234: information security capability and control assurance.</li><li>Privacy Act / OAIC APPs: privacy, data minimisation and evidence obligations where personal information is involved.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Govern, Map, Measure and Manage functions.</li><li>ISO/IEC 42001: AI management system controls.</li><li>OWASP LLM / Agentic AI risks where applicable.</li></ul></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every persistent memory entry is authorised, classified, provenance-tagged, reviewable and deletable.</p></div>
+<div class="footer-nav"><a href="../pages/box-28-finops-runtime-cost-controls.html">← Previous capability</a><a href="../index.html">Back to architecture</a><a href="../pages/box-30-output-commitment-control.html">Next capability →</a></div></body></html>
