@@ -1,0 +1,14 @@
+Slide 01 — Agentic AI: The Next Security Control Plane
+Good morning. This is intended as a conversation opener rather than a full architecture walkthrough. Traditional enterprise security was built around people, applications, infrastructure and data. Agentic AI introduces a new actor: the autonomous or semi-autonomous agent. Agents can plan, delegate work, invoke tools, interact with memory and influence outcomes. The CISO-level question is therefore changing: how do we govern decisions and commitments produced through AI-mediated systems?
+
+Slide 02 — The Security Challenge Has Changed
+In a traditional environment, we often reason about security using a stable pattern: user, application and data. Agentic AI changes that pattern. A user request may trigger a primary agent, one or more child agents, tool calls, memory retrievals and external system interactions. The execution path may be different every time. That creates a new class of security and assurance challenge.
+
+Slide 03 — Why Existing AI Security Approaches Are Incomplete
+A lot of industry discussion focuses on prompt injection, model security, data leakage and guardrails. Those are important, but they do not fully answer the governance problem. The CISO will need to know why an agent acted, under whose authority, what artefacts and memory influenced the action, what tools were used, and whether the outcome can be reconstructed. This moves the discussion from AI protection to AI outcome governance.
+
+Slide 04 — A Trust-Centric Operating Model
+The proposed operating model is trust-centric, but not in a vague or optimistic sense. Trust is not assumed. Trust is established through controls, evidenced through telemetry and lineage, and assured through testing and monitoring. The model looks across artefacts, identities, execution and decisions. The objective is not to trust AI. The objective is to establish enough control evidence and assurance to trust the outcomes AI produces.
+
+Slide 05 — Discussion With Security Leaders
+This final slide is designed to open the conversation. It asks what becomes the new security boundary, how delegated authority should be governed, what evidence auditors will require and which controls must remain outside AI reasoning engines. The intent is to create a shared language for the CISO discussion and then, if there is interest, move into the full reference architecture.
