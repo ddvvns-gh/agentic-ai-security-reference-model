@@ -87,6 +87,341 @@ td:nth-child(1){color:var(--text);font-weight:700} .coverage{font-weight:700;col
 .footer-nav a { color:var(--zone-gateway); text-decoration:none; }
 @media print { body { min-width:0; } .navbar,.footer-nav { display:none; } .detail-grid { grid-template-columns:1fr; } }
 
+/* Optional Palo Alto / Idira overlay controls */
+
+.overlay-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:10px}
+.overlay-title{font-family:'DM Mono';font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--zone-exec);font-weight:700}.overlay-note{font-size:11px;color:var(--text2);line-height:1.4}.overlay-btn:hover,
+.overlay-on .dot-none{background:#64748b}.dot-idira{background:#a78bfa}
+.vendor-chip{display:inline-block;margin:3px 4px 0 0;border:1px solid rgba(148,163,184,.25);background:rgba(148,163,184,.09);color:var(--text);border-radius:999px;padding:3px 6px;font-family:'DM Mono';font-size:9px}.coverage-chip{display:inline-block;border-radius:4px;padding:3px 6px;font-family:'DM Mono';font-size:9px;font-weight:800;text-transform:uppercase;margin-bottom:5px}.cov-direct{background:rgba(61,214,140,.16);color:#3dd68c;border:1px solid rgba(61,214,140,.4)}.cov-partial{background:rgba(245,200,66,.16);color:#f5c842;border:1px solid rgba(245,200,66,.4)}.cov-adjacent{background:rgba(96,165,250,.16);color:#60a5fa;border:1px solid rgba(96,165,250,.4)}.cov-none{background:rgba(100,116,139,.16);color:#94a3b8;border:1px solid rgba(100,116,139,.4)}.idira-chip{background:rgba(167,139,250,.16);color:#c4b5fd;border-color:rgba(167,139,250,.45)}.spine-chip{background:rgba(244,63,94,.16);color:#fb7185;border-color:rgba(244,63,94,.45)}
+body.overlay-on .nd-link body.overlay-coverage .nd-link[data-coverage="direct"] .nd{box-shadow:0 0 0 2px rgba(61,214,140,.65),0 0 18px rgba(61,214,140,.16)}body.overlay-coverage .nd-link[data-coverage="partial"] .nd{box-shadow:0 0 0 2px rgba(245,200,66,.65),0 0 18px rgba(245,200,66,.13)}body.overlay-coverage .nd-link[data-coverage="adjacent"] .nd{box-shadow:0 0 0 2px rgba(96,165,250,.65),0 0 18px rgba(96,165,250,.14)}body.overlay-coverage .nd-link[data-coverage="none"] .nd{opacity:.72;filter:saturate(.65)}
+body.overlay-identity .nd-link .nd{opacity:.45;filter:saturate(.6)}body.overlay-identity .nd-link[data-identity="true"] .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(167,139,250,.75),0 0 22px rgba(167,139,250,.22)}body.overlay-spine .nd-link .nd{opacity:.38;filter:saturate(.55)}body.overlay-spine .nd-link[data-spine]:not([data-spine=""]) .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(244,63,94,.75),0 0 22px rgba(244,63,94,.22)}
+body.overlay-products body.overlay-products .nd-link[data-coverage="none"] 
+@media print{ body.overlay-on  .nd{box-shadow:none!important;opacity:1!important;filter:none!important}}
+
+/* Human-friendly layer explanation panels */
+.reading-guide {
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(251,191,36,.16), transparent 28%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid var(--zone-exec-border);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 26px;
+  box-shadow: 0 10px 32px rgba(0,0,0,.30);
+}
+.reading-guide:before {
+  content: "START HERE";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--bg);
+  background: var(--zone-exec);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.reading-guide h3 {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.reading-guide p {
+  color: var(--text2);
+  line-height: 1.6;
+  margin: 5px 0;
+}
+.reading-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+.reading-step {
+  border: 1px solid var(--border-hi);
+  background: rgba(255,255,255,.025);
+  border-radius: 8px;
+  padding: 12px;
+}
+.reading-step b {
+  display: block;
+  color: var(--text);
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+.reading-step span {
+  color: var(--text2);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.layer-desc {
+  display: grid;
+  grid-template-columns: 54px 1fr 300px;
+  gap: 14px;
+  align-items: stretch;
+  background:
+    linear-gradient(135deg, rgba(16,22,31,.90), rgba(10,14,20,.92));
+  border: 1px solid var(--border-hi);
+  border-radius: 9px;
+  padding: 13px 15px;
+  margin: -4px 0 14px;
+  color: var(--text2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+.layer-desc .layer-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--bg);
+  background: var(--zone-exec);
+  box-shadow: 0 0 22px rgba(251,191,36,.20);
+}
+.layer-desc h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+.layer-desc p {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+.layer-desc .why {
+  border-left: 2px solid var(--border-hi);
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.layer-desc .why b {
+  color: var(--text);
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 5px;
+}
+.layer-desc .why span {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text2);
+}
+.layer-desc.exec { border-color: var(--zone-exec-border); }
+.layer-desc.exec .layer-icon { background: var(--zone-exec); }
+.layer-desc.data { border-color: var(--zone-data-border); }
+.layer-desc.data .layer-icon { background: var(--zone-data); }
+.layer-desc.runtime { border-color: var(--zone-runtime-border); }
+.layer-desc.runtime .layer-icon { background: var(--zone-runtime); }
+.layer-desc.identity { border-color: var(--zone-identity-border); }
+.layer-desc.identity .layer-icon { background: var(--zone-identity); }
+.layer-desc.detect { border-color: var(--zone-detect-border); }
+.layer-desc.detect .layer-icon { background: var(--zone-detect); }
+.layer-desc.matrix-desc { border-color: var(--matrix-border); }
+.layer-desc.matrix-desc .layer-icon { background: var(--matrix); color: white; }
+.layer-desc.gateway { border-color: var(--zone-gateway-border); }
+.layer-desc.gateway .layer-icon { background: var(--zone-gateway); }
+@media print {
+  .reading-flow { grid-template-columns: 1fr; }
+  .layer-desc { grid-template-columns: 1fr; }
+}
+
+
+/* Backlog cards */
+.backlog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.backlog-card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:14px 16px;color:var(--text2);line-height:1.5}
+.backlog-card h4{color:var(--text);font-size:13px;margin-bottom:7px}
+.backlog-card .prio{display:inline-block;font-family:'DM Mono';font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:4px;margin-bottom:8px}
+.backlog-card .p1{background:rgba(244,63,94,.14);color:#fb7185;border:1px solid rgba(244,63,94,.4)}
+.backlog-card .p2{background:rgba(245,200,66,.14);color:#f5c842;border:1px solid rgba(245,200,66,.4)}
+.backlog-card .p3{background:rgba(96,165,250,.14);color:#60a5fa;border:1px solid rgba(96,165,250,.4)}
+.backlog-card ul{margin-left:17px;display:flex;flex-direction:column;gap:5px;font-size:11px}
+@media print{.backlog-grid{grid-template-columns:1fr}}
+
+
+/* Decision Routing Gateway - visually distinct from architecture layers */
+.routing-gateway {
+  position: relative;
+  margin: 20px auto 22px;
+  max-width: 980px;
+  border: 1px solid rgba(244,63,94,.48);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at top left, rgba(244,63,94,.18), transparent 26%),
+    linear-gradient(135deg, rgba(22,12,20,.96), rgba(10,14,20,.96));
+  box-shadow: 0 12px 36px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.04);
+  padding: 16px 18px;
+}
+.routing-gateway:before {
+  content: "CONTROL JUNCTION — NOT A LAYER";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: white;
+  background: var(--matrix);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.routing-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.routing-sub {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.routing-paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+.routing-path {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035);
+  border-radius: 8px;
+  padding: 11px 12px;
+}
+.routing-path b {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+.routing-path span {
+  color: var(--text2);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.routing-path.hard { border-color: rgba(244,63,94,.40); }
+.routing-path.soft { border-color: rgba(245,200,66,.36); }
+.routing-path.high { border-color: rgba(96,165,250,.36); }
+.matrix-note {
+  margin-top: 10px;
+  color: var(--text3);
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  text-align: center;
+}
+
+
+/* Externalized deterministic enforcement clarification */
+.security-stance {
+  background:
+    radial-gradient(circle at top left, rgba(244,63,94,.18), transparent 28%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid rgba(244,63,94,.46);
+  border-radius: 10px;
+  padding: 17px 20px;
+  margin: 20px 0 24px;
+}
+.security-stance h3 {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+.security-stance p {
+  color: var(--text2);
+  line-height: 1.58;
+  margin: 6px 0;
+}
+.stance-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 9px;
+  margin-top: 13px;
+}
+.stance-card {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  padding: 11px 12px;
+}
+.stance-card b {
+  display: block;
+  color: var(--text);
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+.stance-card span {
+  color: var(--text2);
+  font-size: 10.5px;
+  line-height: 1.42;
+}
+@media print { .stance-grid { grid-template-columns: 1fr; } }
+
+
+/* v18 Trust Chain & Provenance Hardening */
+.v18-trust-chain {
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,.16), transparent 30%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid rgba(56,189,248,.42);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 20px 0 24px;
+  box-shadow: 0 10px 32px rgba(0,0,0,.28);
+}
+.v18-trust-chain h3 { color: var(--text); font-size: 16px; margin-bottom: 8px; }
+.v18-trust-chain p { color: var(--text2); line-height: 1.58; margin: 6px 0; }
+.v18-chain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 13px; }
+.v18-chain-card {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  padding: 12px;
+}
+.v18-chain-card b {
+  display: block;
+  color: var(--text);
+  font-size: 11px;
+  margin-bottom: 5px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.v18-chain-card span { color: var(--text2); font-size: 10.5px; line-height: 1.42; }
+.v18-hardening {
+  background: rgba(56,189,248,.06);
+  border: 1px solid rgba(56,189,248,.28);
+  border-radius: 9px;
+  padding: 14px 16px;
+  color: var(--text2);
+  line-height: 1.56;
+  margin: 12px 0 18px;
+}
+.v18-hardening h3 { color: var(--text); font-size: 14px; margin-bottom: 8px; }
+.v18-hardening ul { margin-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.v18-pill {
+  display:inline-block;
+  border:1px solid rgba(56,189,248,.36);
+  background:rgba(56,189,248,.10);
+  color:#bae6fd;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:10px;
+  margin:3px 4px 3px 0;
+  font-family:'DM Mono', monospace;
+}
+@media print { .v18-chain-grid { grid-template-columns: 1fr; } }
 
 </style>
 </head>
@@ -99,20 +434,8 @@ td:nth-child(1){color:var(--text);font-weight:700} .coverage{font-weight:700;col
 <a href="metrics/">Metrics</a>
 <a href="evidence/">Evidence</a>
 </div>
-<div class="overlay-actions">
-<button class="overlay-btn active" data-mode="architecture">Architecture</button>
-<button class="overlay-btn" data-mode="coverage">Palo Coverage</button>
-<button class="overlay-btn" data-mode="products">Palo Products</button>
-<button class="overlay-btn" data-mode="identity">Identity Lens</button>
-<button class="overlay-btn" data-mode="spine">Control Spine</button>
+<div class="overlay-note">Default view remains vendor-neutral. Use these temporary overlays to demonstrate where Palo Alto and Idira can support the reference architecture without changing the architecture itself.</div>
 </div>
-</div>
-<div class="overlay-legend">
-<span class="legend-pill"><span class="legend-dot dot-direct"></span>Direct product fit</span>
-<span class="legend-pill"><span class="legend-dot dot-partial"></span>Partial product fit</span>
-<span class="legend-pill"><span class="legend-dot dot-adjacent"></span>Adjacent / integration fit</span>
-<span class="legend-pill"><span class="legend-dot dot-idira"></span>Identity lens</span>
-<span class="legend-pill"><span class="legend-dot dot-spine"></span>Control spine</span>
 </div>
 </div>
 
@@ -474,6 +797,5 @@ td:nth-child(1){color:var(--text);font-weight:700} .coverage{font-weight:700;col
   </div>
 </div>
 
-<div class="footer">The model deliberately avoids absolute claims such as “fully prevents prompt injection” or “proves model reasoning”; it uses enforceable control, evidence and risk-reduction language suitable for further architecture expansion.</div>
-
+<div class="footer">Generated as a modified v17 HTML reference model. The model deliberately avoids absolute claims such as “fully prevents prompt injection” or “proves model reasoning”; it uses enforceable control, evidence and risk-reduction language suitable for further architecture expansion.</div>
 </body></html>
