@@ -1,1 +1,4 @@
-Modified box-01 through box-07. Rendering repair included.
+# PACKAGE_MANIFEST.md
+Modified 21 pages (Boxes 08-28).
+No navigation changes.
+No hierarchy changes.
