@@ -1,9 +1,8 @@
 # backlog.md
 Completed
-- Boxes 01-07 Gold Standard Alignment
-- Boxes 08-28 Gold Standard Alignment
+- Boxes 01-35 Gold Standard Alignment rollout
 
 Next
-- L0 Enterprise AI Consumers
-- L1 Declarative Execution Baseline
-- Full consistency review
+- Full Box 30 consistency review
+- Governance artefact review
+- Traceability review

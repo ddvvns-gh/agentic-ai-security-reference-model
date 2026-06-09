@@ -1,12 +1,12 @@
 # current_state.md
-Current Accepted Version: v18
 Completed:
-- L-4 Workforce Governance (01-03)
-- L-3 Supply Chain & Provenance (04-07)
+- L-4 (01-03)
+- L-3 (04-07)
+- L-2 (08-15)
+- L-1 (16-28)
 
 Current Package:
-L-2 Prodspec Control Contract (08-15)
-L-1 SDLC & Pre-Deployment (16-28)
+L0/L1 Gold Standard Alignment (29-35)
 
-Gold Standard Reference:
-Box 30 Output Commitment Control
+Next:
+Full architecture consistency review.
