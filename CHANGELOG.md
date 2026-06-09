@@ -1,3 +1,1 @@
-# CHANGELOG.md
-Added Box 30 governance sections to:
-01,02,03,04,05,06,07
+Removed malformed appended content. Added governance alignment sections inside page template.
