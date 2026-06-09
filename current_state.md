@@ -1,12 +1,16 @@
 # current_state.md
+
+Current Accepted Version: v18
+
 Completed:
-- L-4 (01-03)
-- L-3 (04-07)
-- L-2 (08-15)
-- L-1 (16-28)
+- Structural alignment Boxes 01-35
+- Architecture-wide Box 30 consistency review
 
 Current Package:
-L0/L1 Gold Standard Alignment (29-35)
+L4 Full Depth Box 30 Upgrade
+
+Scope:
+Boxes 01-03
 
 Next:
-Full architecture consistency review.
+L3 Full Depth Upgrade (Boxes 04-07)

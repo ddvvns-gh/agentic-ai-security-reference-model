@@ -1,8 +1,12 @@
 # backlog.md
+
 Completed
-- Boxes 01-35 Gold Standard Alignment rollout
+- Structural rollout 01-35
+- Consistency review
+- L4 full depth upgrade (01-03)
 
 Next
-- Full Box 30 consistency review
-- Governance artefact review
-- Traceability review
+- L3 full depth upgrade (04-07)
+- L2 full depth upgrade (08-15)
+- L1 full depth upgrade (16-28)
+- Runtime full depth upgrade (29-35)
