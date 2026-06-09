@@ -1,12 +1,30 @@
 # PACKAGE_MANIFEST.md
 
-Package:
-L4_Full_Depth_Box30_Upgrade
+## Package
+L4_Full_Depth_Box30_Upgrade_REPAIR
 
-Modified Pages:
-- box-01-workforce-lifecycle-portfolio-hub.html
-- box-02-economics-continuous-performance.html
-- box-03-executive-grc-attestation-plane.html
+## Package Type
+Repair + deployable HTML update
 
-No navigation changes.
-No hierarchy changes.
+## Modified Pages
+- pages/box-01-workforce-lifecycle-portfolio-hub.html
+- pages/box-02-economics-continuous-performance.html
+- pages/box-03-executive-grc-attestation-plane.html
+
+## Project Control Files
+- current_state.md
+- backlog.md
+- CHANGELOG.md
+- PACKAGE_MANIFEST.md
+
+## Navigation Changes
+None
+
+## Layer Changes
+None
+
+## Box Numbering Changes
+None
+
+## Rollback
+Restore previous accepted version of Boxes 01-03 and project control files.

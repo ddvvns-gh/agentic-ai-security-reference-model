@@ -1,19 +1,17 @@
 # CHANGELOG.md
 
-L4 Full Depth Box 30 Upgrade
+## L4 Full Depth Box 30 Upgrade Repair
 
-Updated:
-- Box 01
-- Box 02
-- Box 03
+Status:
+Ready for deployment
 
-Added:
-- Control objectives
-- Risk catalogue
-- Threat events
-- Threshold integration
-- Preventive/Detective/Corrective controls
-- Metrics and evidence
-- Traceability
-- Maturity model
-- Audit procedures
+Changed:
+- Repaired Boxes 01-03 rendering issue.
+- Removed malformed content rendered below footer navigation.
+- Added full-depth Box 30 governance content inside native page template.
+- Preserved existing page shell and footer navigation.
+
+Pages:
+- box-01-workforce-lifecycle-portfolio-hub.html
+- box-02-economics-continuous-performance.html
+- box-03-executive-grc-attestation-plane.html
