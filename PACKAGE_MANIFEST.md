@@ -1,24 +1,21 @@
 # PACKAGE_MANIFEST.md
 
 ## Package
-Architecture_Integrity_Recovery_v2
+Architecture_HTML_Final_Cleanup_v1
 
 ## Package Type
-Focused site integrity fix
+Focused public architecture page cleanup
 
 ## Modified Files
 - architecture.html
-- index.html
-- theindex.html
 - current_state.md
-- backlog.md
 - CHANGELOG.md
 - PACKAGE_MANIFEST.md
-- integrity_validation_v2.json
-- integrity_audit_report_v2.md
+- architecture_html_final_cleanup_report.md
+- architecture_html_final_cleanup_validation.json
 
 ## /pages Changes
 None.
 
 ## Box Numbering Changes
-None. Uses existing 51-box reconciled numbering.
+None.

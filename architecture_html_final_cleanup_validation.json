@@ -1,0 +1,14 @@
+{
+  "architecture_unique_box_refs": 51,
+  "missing_numbers": [],
+  "duplicate_numbers": {},
+  "contains_integrity_banner": false,
+  "contains_vendor_or_overlay_public_text": false,
+  "contains_package_or_reconciliation_prose": false,
+  "contains_v17": false,
+  "contains_42_boxes": false,
+  "contains_stale_bracket_30_34_36": false,
+  "contains_box30_prose": false,
+  "contains_rich_architecture_cards": true,
+  "architecture_card_count": 51
+}
