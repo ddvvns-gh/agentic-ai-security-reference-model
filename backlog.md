@@ -1,10 +1,13 @@
 # backlog.md
-Completed:
-- Wave 1 (Boxes 07,09,10)
-- Wave 2 (Boxes 11,12,13)
-- Wave 3 (Boxes 14,15)
 
-Next:
-- Consolidated L3/L2 review
-- Merge package
-- L1 Full Depth Upgrade
+## In Progress
+- Deploy and verify Architecture_Numbering_Reconciliation_v2.
+
+## Next
+- Confirm one-box-one-page integrity.
+- Resume L3/L2 consolidated architecture review.
+
+## Future
+- L1 Full Depth Upgrade.
+- Runtime Full Depth Upgrade.
+- Central traceability matrix.

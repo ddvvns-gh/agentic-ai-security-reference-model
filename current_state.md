@@ -1,5 +1,22 @@
 # current_state.md
-Current Package: L3_L2_Full_Depth_Box30_Upgrade_v3_Wave3
-Scope: Boxes 14,15
-Purpose: Capability-specific Box 30 depth implementation.
-Next: Consolidated L3/L2 architecture review and merge package.
+
+## Current Package
+Architecture_Numbering_Reconciliation_v2
+
+## Purpose
+Restore one-box-one-page integrity with complete deployable replacement pages.
+
+## Rule
+AR-001: One Box Number = One Capability = One URL = One Canonical Page.
+
+## Completed
+- Canonical sequential numbering from Box 01 to Box 51.
+- Replacement pages generated for all canonical box pages.
+- Fragment-only pages wrapped into complete site page shells.
+- Duplicate old filenames listed for deletion after deployment.
+
+## Gold Standard Reference
+pages/box-33-output-commitment-control.html
+
+## Next
+Deploy, verify integrity, then resume L3/L2 review.
