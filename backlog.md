@@ -3,12 +3,13 @@
 ## Completed
 - Structural rollout Boxes 01-35
 - Architecture-wide Box 30 consistency review
+- L4 full-depth upgrade repair for Boxes 01-03
+- L4 review comments incorporated into Boxes 01-03
 
 ## In Progress
-- L4 full-depth repair and upgrade for Boxes 01-03
+- Deploy and verify L4_Review_Comments_HTML_Update
 
 ## Next
-- Deploy and verify L4_Full_Depth_Box30_Upgrade_REPAIR
 - L3 Full Depth Upgrade for Boxes 04-07
 
 ## Future

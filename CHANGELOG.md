@@ -1,17 +1,18 @@
 # CHANGELOG.md
 
-## L4 Full Depth Box 30 Upgrade Repair
+## L4 Review Comments HTML Update
 
 Status:
 Ready for deployment
 
-Changed:
-- Repaired Boxes 01-03 rendering issue.
-- Removed malformed content rendered below footer navigation.
-- Added full-depth Box 30 governance content inside native page template.
-- Preserved existing page shell and footer navigation.
+Scope:
+Boxes 01-03
 
-Pages:
-- box-01-workforce-lifecycle-portfolio-hub.html
-- box-02-economics-continuous-performance.html
-- box-03-executive-grc-attestation-plane.html
+Changes:
+- Box 01: Added Dynamic Semantic Lineage Dependency Mapping, upstream mutation detection, Agent Semantic Dependency Graph and Re-certification Required lifecycle state.
+- Box 02: Added Runaway Recursive Loop threat event, Runtime Financial Circuit Breaker, Operational Velocity Guardrail and cost/reasoning velocity metrics.
+- Box 03: Added Structured Decision Lineage Capture, Cryptographic Decision Provenance, lineage-backed attestation and immutable decision lineage evidence.
+
+No navigation changes.
+No layer changes.
+No box numbering changes.

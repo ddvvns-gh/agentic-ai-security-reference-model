@@ -46,45 +46,25 @@
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk and service sustainability.</li><li>APRA CPS 220: risk management and oversight.</li><li>CPS 234: control effectiveness and reporting support.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Measure and Manage functions.</li><li>ISO/IEC 42001: AI performance evaluation.</li><li>TBM / FinOps: cost transparency and accountability.</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every AI agent has an economic profile and a value scorecard. Agents are promoted, tuned, restricted or retired based on evidence rather than enthusiasm.</p></div>
 
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment</div><div class="sec-line"></div></div>
-<div class="hero"><p>This section upgrades the capability to the Box 30 governance depth while preserving the existing page shell, navigation and visual language.</p></div>
-
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment — review incorporated</div><div class="sec-line"></div></div>
+<div class="hero"><p><strong>Review update:</strong> Expanded to address runaway recursive execution, token explosion and operational denial-of-service risks. Economic governance now includes runtime circuit breakers, not only retrospective cost review.</p></div>
 <div class="grid-2">
-<div class="card"><h3>Control objective</h3><p>Ensure AI workforce, platform and agent economics are continuously measured, governed and linked to performance, risk and value outcomes.</p></div>
-<div class="card"><h3>Control statement</h3><p>The enterprise must maintain defined ownership, thresholds, evidence, metrics and assurance routines for this capability before it can be treated as operating within the accepted AI security architecture baseline.</p></div>
+<div class="card"><h3>Control objective</h3><p>Ensure AI economics, performance and runtime consumption are governed through real-time cost, velocity and operational safety controls that can halt runaway execution before material loss or service degradation occurs.</p></div>
+<div class="card"><h3>Control statement</h3><p>Autonomous agents and high-consumption AI workloads must enforce financial and operational circuit breakers based on token velocity, reasoning-loop depth, tool invocation frequency, backend API pressure and cost per transaction block.</p></div>
 </div>
-
 <div class="grid-2">
-<div class="card"><h3>Risk catalogue</h3><ul><li>AI capability consumes material cost without value accountability</li><li>Cost optimisation undermines safety, resilience or assurance controls</li><li>Performance targets are disconnected from risk and customer outcomes</li><li>Economic signals drive excessive autonomy or unsafe scaling</li></ul></div>
-<div class="card"><h3>Threat events</h3><ul><li>Autonomous workloads scale without budget or policy constraints</li><li>A cost-saving change removes human oversight for a high-risk activity</li><li>Usage grows materially without corresponding service owner accountability</li><li>Performance optimisation increases response speed but reduces validation quality</li></ul></div>
+<div class="card"><h3>Expanded risk catalogue</h3><ul><li><strong>R-ECO-001:</strong> AI capability consumes material cost without value accountability.</li><li><strong>R-ECO-002:</strong> Cost optimisation undermines safety, resilience or assurance.</li><li><strong>R-ECO-003:</strong> Performance targets are disconnected from risk and customer outcomes.</li><li><strong>R-ECO-004:</strong> Economic signals drive excessive autonomy or unsafe scaling.</li><li><strong>R-ECO-005:</strong> Recursive execution cascade causes rapid budget depletion.</li><li><strong>R-ECO-006:</strong> Agent loop overwhelms internal backend APIs or dependent services.</li></ul></div>
+<div class="card"><h3>Threat events</h3><ul><li><strong>T-ECO-001:</strong> Autonomous workload scales without budget or policy constraints.</li><li><strong>T-ECO-002:</strong> Cost-saving change removes human oversight for high-risk activity.</li><li><strong>T-ECO-003:</strong> Usage grows materially without service owner accountability.</li><li><strong>T-ECO-004:</strong> Performance optimisation increases response speed but reduces validation quality.</li><li><strong>T-ECO-006:</strong> Recursive agent execution cascade leads to operational denial of service and rapid budget depletion.</li></ul></div>
 </div>
-
 <div class="grid-2">
-<div class="card"><h3>Threshold integration</h3><p>Threshold treatment is aligned to the enterprise threshold matrix and should consider financial, regulatory, customer, operational, reputational and strategic impact.</p><ul><li>T0/T1: record and monitor where material.</li><li>T2: accountable owner and evidence record required.</li><li>T3: formal review and governance reporting required.</li><li>T4/T5: executive visibility, exception treatment and enhanced assurance required.</li></ul></div>
-<div class="card"><h3>Preventive controls</h3><ul><li>Defined ownership and RACI.</li><li>Policy and standard alignment.</li><li>Threshold-based approval and escalation.</li><li>Role-based accountability and exception controls.</li></ul></div>
+<div class="card"><h3>New control: C-ECO-006 Runtime Financial Circuit Breaker</h3><p>The runtime must halt or restrict an active agent execution session when cost or reasoning velocity exceeds approved thresholds for a distinct transaction block.</p><ul><li>Hard limit on reasoning steps per transaction block.</li><li>Hard limit on token spend per transaction block.</li><li>Hard limit on tool invocations per time window.</li><li>Automatic suspension of active execution on breach.</li></ul></div>
+<div class="card"><h3>New control: C-ECO-007 Operational Velocity Guardrail</h3><p>Agent orchestration must monitor runtime loop behavior and backend service pressure. Ambiguous tool outputs, malformed database entries or repeated validation errors must trigger loop dampening, fallback handling or containment.</p><ul><li>Loop-depth detection.</li><li>Repeated-error pattern detection.</li><li>API storm detection.</li><li>Containment and escalation workflow.</li></ul></div>
 </div>
-
 <div class="grid-2">
-<div class="card"><h3>Detective controls</h3><ul><li>Periodic control conformance review.</li><li>Exception, drift and coverage monitoring.</li><li>Evidence completeness checks.</li><li>Assurance review against material risk thresholds.</li></ul></div>
-<div class="card"><h3>Corrective controls</h3><ul><li>Remediation plan and owner assignment.</li><li>Escalation to governance forum.</li><li>Temporary restriction or suspension where risk exceeds tolerance.</li><li>Post-remediation validation and evidence refresh.</li></ul></div>
+<div class="card"><h3>Metrics</h3><ul><li><strong>M-ECO-001:</strong> Material AI workload showback coverage = 100%.</li><li><strong>M-ECO-002:</strong> Cost attribution coverage ≥ 95%.</li><li><strong>M-ECO-008:</strong> Cost per transaction block monitored for in-scope agents.</li><li><strong>M-ECO-009:</strong> Reasoning steps per transaction block monitored for in-scope agents.</li><li><strong>M-ECO-010:</strong> Circuit breaker activation rate tracked and reviewed.</li><li><strong>M-ECO-011:</strong> Mean time to contain runaway execution within defined SLA.</li></ul></div>
+<div class="card"><h3>Evidence requirements</h3><ul><li><strong>E-ECO-001:</strong> FinOps dashboards.</li><li><strong>E-ECO-002:</strong> Runtime cost and token telemetry.</li><li><strong>E-ECO-003:</strong> Tool invocation and API pressure logs.</li><li><strong>E-ECO-004:</strong> Circuit breaker activation records.</li><li><strong>E-ECO-005:</strong> Containment and remediation records.</li><li><strong>E-ECO-006:</strong> Post-event economic impact assessment.</li></ul></div>
 </div>
-
-<div class="grid-2">
-<div class="card"><h3>Metrics</h3><ul><li>Cost attribution coverage ≥ 95%</li><li>Material AI workload showback coverage = 100%</li><li>Performance exception closure ≥ 95%</li><li>Cost/risk threshold breach notifications = 100%</li></ul></div>
-<div class="card"><h3>Evidence requirements</h3><ul><li>FinOps dashboards</li><li>Service performance reports</li><li>Budget threshold approvals</li><li>Cost exception records</li><li>Risk acceptance and trade-off decisions</li></ul></div>
-</div>
-
-<div class="grid-2">
-<div class="card"><h3>Failure modes</h3><ul><li>Ownership not assigned or not current.</li><li>Threshold misclassification.</li><li>Governance forum receives incomplete evidence.</li><li>Control activity exists but is not measurable.</li></ul></div>
-<div class="card"><h3>Residual risks</h3><ul><li>Human judgement and escalation quality.</li><li>Cross-platform ownership ambiguity.</li><li>Lag between operating-model change and governance update.</li><li>Evidence quality variation across teams.</li></ul></div>
-</div>
-
-<div class="hero"><h3>Traceability</h3><p><strong>Risk → Threshold → Control → Metric → Evidence</strong></p><p>Each material risk must map to a threshold treatment, a defined preventive/detective/corrective control, a measurable metric and retained evidence.</p></div>
-
-<div class="grid-2">
-<div class="card"><h3>Maturity model</h3><ul><li><strong>Level 1:</strong> ad hoc ownership and inconsistent evidence.</li><li><strong>Level 2:</strong> defined ownership and basic reporting.</li><li><strong>Level 3:</strong> managed workflow, metrics and exceptions.</li><li><strong>Level 4:</strong> measured control effectiveness and assurance integration.</li><li><strong>Level 5:</strong> adaptive, threshold-driven and continuously governed.</li></ul></div>
-<div class="card"><h3>Audit procedures</h3><ul><li>Validate design effectiveness against policy and threshold expectations.</li><li>Sample operating evidence for material items.</li><li>Confirm ownership, approval and exception records are current.</li><li>Test traceability from risk to metric and evidence.</li></ul></div>
-</div>
+<div class="hero"><h3>Traceability</h3><p><strong>Risk:</strong> Recursive execution cascade → <strong>Threshold:</strong> velocity or cost breach → <strong>Control:</strong> Runtime Financial Circuit Breaker → <strong>Metric:</strong> reasoning steps / cost per transaction block → <strong>Evidence:</strong> circuit breaker and runtime telemetry records.</p></div>
 
 <div class="footer-nav"><a href="../pages/box-01-workforce-lifecycle-portfolio-hub.html">← Previous capability</a><a href="../index.html">Back to architecture</a><a href="../pages/box-03-executive-grc-attestation-plane.html">Next capability →</a></div>
 </body></html>

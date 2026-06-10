@@ -1,10 +1,10 @@
 # PACKAGE_MANIFEST.md
 
 ## Package
-L4_Full_Depth_Box30_Upgrade_REPAIR
+L4_Review_Comments_HTML_Update
 
 ## Package Type
-Repair + deployable HTML update
+Deployable HTML update
 
 ## Modified Pages
 - pages/box-01-workforce-lifecycle-portfolio-hub.html
@@ -26,5 +26,8 @@ None
 ## Box Numbering Changes
 None
 
+## Rendering Guardrail
+Content is inserted before footer navigation using native page components. Prior malformed appended sections are removed if present.
+
 ## Rollback
-Restore previous accepted version of Boxes 01-03 and project control files.
+Restore previous accepted versions of Boxes 01-03 and project control files.

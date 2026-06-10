@@ -4,16 +4,17 @@
 v18
 
 ## Current Package
-L4_Full_Depth_Box30_Upgrade_REPAIR
+L4_Review_Comments_HTML_Update
 
 ## Purpose
-Repair Boxes 01-03 after full-depth content rendered below bottom navigation.
+Incorporate review comments into the L-4 Full Depth Box 30 upgrade for Boxes 01-03.
 
-## Completed
-- Removed malformed appended governance content from Boxes 01-03.
-- Removed prior generic governance-alignment fragments where present.
-- Reinserted Box 30 full-depth content inside the native page structure before footer navigation.
-- Preserved existing navigation, layer model and box numbering.
+## Completed in This Package
+- Box 01 expanded with Semantic Lineage Dependency Mapping and Re-certification Required lifecycle state.
+- Box 02 expanded with Runtime Financial Circuit Breaker and Operational Velocity Guardrail for runaway recursive loops.
+- Box 03 expanded with Structured Decision Lineage Capture and Cryptographic Decision Provenance for forensic reconstructability.
+- Existing navigation, layer structure and box numbering preserved.
+- Content inserted before footer navigation using native page components.
 
 ## Gold Standard Reference
 pages/box-30-output-commitment-control.html

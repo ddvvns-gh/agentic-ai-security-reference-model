@@ -46,45 +46,25 @@
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk management and accountability.</li><li>APRA CPS 234: information asset ownership and security control accountability.</li><li>Privacy Act: decommissioning and data-retention obligations.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Govern function.</li><li>ISO/IEC 42001: AI management system governance.</li><li>COBIT / ITIL: service ownership and lifecycle control.</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every AI agent is known, owned, risk-classified, lifecycle-managed and removable. No agent can operate outside enterprise visibility.</p></div>
 
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment</div><div class="sec-line"></div></div>
-<div class="hero"><p>This section upgrades the capability to the Box 30 governance depth while preserving the existing page shell, navigation and visual language.</p></div>
-
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment — review incorporated</div><div class="sec-line"></div></div>
+<div class="hero"><p><strong>Review update:</strong> Expanded to address the dynamic system lineage and semantic drift gap. The Agent Register is no longer treated as static inventory; it now requires active semantic lineage and dependency-state awareness.</p></div>
 <div class="grid-2">
-<div class="card"><h3>Control objective</h3><p>Ensure every AI workforce role, agent ownership model and lifecycle accountability point is defined, maintained, reviewed and evidenced across the enterprise portfolio.</p></div>
-<div class="card"><h3>Control statement</h3><p>The enterprise must maintain defined ownership, thresholds, evidence, metrics and assurance routines for this capability before it can be treated as operating within the accepted AI security architecture baseline.</p></div>
+<div class="card"><h3>Control objective</h3><p>Ensure every AI workforce role, agent ownership model and lifecycle accountability point is linked to an actively maintained semantic dependency map covering models, prompts, tools, schemas, policy contexts and external API contracts.</p></div>
+<div class="card"><h3>Control statement</h3><p>All registered agents and high-risk AI capabilities must maintain an authoritative owner, lifecycle state and semantic lineage record. Material mutation of upstream prompts, model dependencies, data schemas, tool contracts or third-party API response semantics must automatically trigger a <strong>Re-certification Required</strong> lifecycle state.</p></div>
 </div>
-
 <div class="grid-2">
-<div class="card"><h3>Risk catalogue</h3><ul><li>AI capability or agent operates without accountable owner</li><li>Workforce role not aligned to AI risk tier or delegated authority</li><li>Unqualified or uncertified personnel administer high-risk AI systems</li><li>Lifecycle responsibility is lost during ownership, platform or operating-model change</li></ul></div>
-<div class="card"><h3>Threat events</h3><ul><li>A critical AI agent remains active after its business owner changes role</li><li>A high-risk capability is operated by staff without required AI governance training</li><li>A portfolio-level AI service has no named accountable executive or delegate</li><li>Decommissioning responsibilities are unclear, leaving dormant agents or tooling active</li></ul></div>
+<div class="card"><h3>Expanded risk catalogue</h3><ul><li><strong>R-GOV-001:</strong> Agent operates without accountable owner.</li><li><strong>R-GOV-002:</strong> Workforce role not aligned to AI risk tier or delegated authority.</li><li><strong>R-GOV-003:</strong> Agent lifecycle state is stale or incorrectly represented.</li><li><strong>R-GOV-004:</strong> High-risk AI capability operated by uncertified personnel.</li><li><strong>R-GOV-005:</strong> Undetected semantic dependency drift causes agent reasoning degradation.</li><li><strong>R-GOV-006:</strong> Upstream software or data contract mutation invalidates prior agent certification.</li></ul></div>
+<div class="card"><h3>Threat events</h3><ul><li><strong>T-GOV-001:</strong> A critical AI agent continues operating after its human owner exits or changes role.</li><li><strong>T-GOV-002:</strong> A high-risk capability is administered by staff without required AI governance certification.</li><li><strong>T-GOV-003:</strong> A portfolio-level AI service lacks a named accountable executive or delegate.</li><li><strong>T-GOV-004:</strong> A database schema, prompt file or external API response format changes without agent re-certification.</li><li><strong>T-GOV-005:</strong> Tool-contract mutation causes semantic failure in the agent reasoning loop without breaking traditional application syntax.</li></ul></div>
 </div>
-
 <div class="grid-2">
-<div class="card"><h3>Threshold integration</h3><p>Threshold treatment is aligned to the enterprise threshold matrix and should consider financial, regulatory, customer, operational, reputational and strategic impact.</p><ul><li>T0/T1: record and monitor where material.</li><li>T2: accountable owner and evidence record required.</li><li>T3: formal review and governance reporting required.</li><li>T4/T5: executive visibility, exception treatment and enhanced assurance required.</li></ul></div>
-<div class="card"><h3>Preventive controls</h3><ul><li>Defined ownership and RACI.</li><li>Policy and standard alignment.</li><li>Threshold-based approval and escalation.</li><li>Role-based accountability and exception controls.</li></ul></div>
+<div class="card"><h3>New control: C-GOV-006 Semantic Lineage Dependency Mapping</h3><p>The Portfolio Hub must maintain a dependency graph for every material AI capability and agent, including model versions, prompt assets, system contexts, tool schemas, API contracts, data schemas, policy files and runtime configuration dependencies.</p><ul><li>Dependency mutations must be detected through integration with software delivery, data catalogue, API catalogue and model registry sources.</li><li>Material semantic changes must update the Agent Register state to <strong>Re-certification Required</strong>.</li><li>Agents in Re-certification Required state must be prevented from expanding scope or performing higher-threshold actions until reviewed.</li></ul></div>
+<div class="card"><h3>Lifecycle state control expansion</h3><p><strong>C-GOV-003 Lifecycle State Control</strong> is expanded to include Registered, Certified, Active, Restricted, <strong>Re-certification Required</strong>, Suspended and Retired states.</p></div>
 </div>
-
 <div class="grid-2">
-<div class="card"><h3>Detective controls</h3><ul><li>Periodic control conformance review.</li><li>Exception, drift and coverage monitoring.</li><li>Evidence completeness checks.</li><li>Assurance review against material risk thresholds.</li></ul></div>
-<div class="card"><h3>Corrective controls</h3><ul><li>Remediation plan and owner assignment.</li><li>Escalation to governance forum.</li><li>Temporary restriction or suspension where risk exceeds tolerance.</li><li>Post-remediation validation and evidence refresh.</li></ul></div>
+<div class="card"><h3>Metrics</h3><ul><li><strong>M-GOV-001:</strong> AI capability owner coverage = 100%.</li><li><strong>M-GOV-002:</strong> High-risk role certification coverage ≥ 95%.</li><li><strong>M-GOV-003:</strong> Unowned AI assets = 0.</li><li><strong>M-GOV-006:</strong> Semantic lineage coverage for material agents ≥ 95%.</li><li><strong>M-GOV-007:</strong> Mean time to detect dependency drift within defined SLA.</li><li><strong>M-GOV-008:</strong> Re-certification Required items with owner assigned = 100%.</li></ul></div>
+<div class="card"><h3>Evidence requirements</h3><ul><li><strong>E-GOV-001:</strong> Agent Register.</li><li><strong>E-GOV-002:</strong> Workforce role and delegated authority matrix.</li><li><strong>E-GOV-003:</strong> Training and certification records.</li><li><strong>E-GOV-004:</strong> Agent Semantic Dependency Graph.</li><li><strong>E-GOV-005:</strong> Dependency drift event log.</li><li><strong>E-GOV-006:</strong> Re-certification workflow records.</li></ul></div>
 </div>
-
-<div class="grid-2">
-<div class="card"><h3>Metrics</h3><ul><li>AI capability owner coverage = 100%</li><li>High-risk role certification coverage ≥ 95%</li><li>Unowned AI assets = 0</li><li>Lifecycle review completion ≥ 95% per review cycle</li></ul></div>
-<div class="card"><h3>Evidence requirements</h3><ul><li>AI portfolio ownership register</li><li>Role and responsibility matrix</li><li>Training and certification records</li><li>Lifecycle review attestations</li><li>Exception and remediation records</li></ul></div>
-</div>
-
-<div class="grid-2">
-<div class="card"><h3>Failure modes</h3><ul><li>Ownership not assigned or not current.</li><li>Threshold misclassification.</li><li>Governance forum receives incomplete evidence.</li><li>Control activity exists but is not measurable.</li></ul></div>
-<div class="card"><h3>Residual risks</h3><ul><li>Human judgement and escalation quality.</li><li>Cross-platform ownership ambiguity.</li><li>Lag between operating-model change and governance update.</li><li>Evidence quality variation across teams.</li></ul></div>
-</div>
-
-<div class="hero"><h3>Traceability</h3><p><strong>Risk → Threshold → Control → Metric → Evidence</strong></p><p>Each material risk must map to a threshold treatment, a defined preventive/detective/corrective control, a measurable metric and retained evidence.</p></div>
-
-<div class="grid-2">
-<div class="card"><h3>Maturity model</h3><ul><li><strong>Level 1:</strong> ad hoc ownership and inconsistent evidence.</li><li><strong>Level 2:</strong> defined ownership and basic reporting.</li><li><strong>Level 3:</strong> managed workflow, metrics and exceptions.</li><li><strong>Level 4:</strong> measured control effectiveness and assurance integration.</li><li><strong>Level 5:</strong> adaptive, threshold-driven and continuously governed.</li></ul></div>
-<div class="card"><h3>Audit procedures</h3><ul><li>Validate design effectiveness against policy and threshold expectations.</li><li>Sample operating evidence for material items.</li><li>Confirm ownership, approval and exception records are current.</li><li>Test traceability from risk to metric and evidence.</li></ul></div>
-</div>
+<div class="hero"><h3>Traceability</h3><p><strong>Risk:</strong> Undetected semantic dependency drift → <strong>Threshold:</strong> material dependency mutation → <strong>Control:</strong> Semantic Lineage Dependency Mapping → <strong>Metric:</strong> lineage coverage / drift detection SLA → <strong>Evidence:</strong> dependency graph and re-certification record.</p></div>
 
 <div class="footer-nav"><a href="../index.html">← Previous capability</a><a href="../index.html">Back to architecture</a><a href="../pages/box-02-economics-continuous-performance.html">Next capability →</a></div>
 </body></html>
