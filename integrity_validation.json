@@ -1,0 +1,12 @@
+{
+  "architecture_unique_box_refs": 51,
+  "canonical_box_count": 51,
+  "architecture_missing_canonical_files": [],
+  "architecture_duplicate_numbers": {},
+  "architecture_missing_numbers": [],
+  "public_architecture_contains_palo_alto_or_idira": false,
+  "public_architecture_contains_v17": false,
+  "index_contains_old_layer_taxonomy": false,
+  "index_mentions_51_sequential_boxes": true,
+  "theindex_marked_internal": true
+}

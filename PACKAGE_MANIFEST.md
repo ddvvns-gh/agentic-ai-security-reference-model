@@ -1,24 +1,30 @@
 # PACKAGE_MANIFEST.md
 
 ## Package
-Architecture_Numbering_Reconciliation_v4_Restore_Architecture_HTML
+Architecture_Integrity_Recovery_v1
 
 ## Package Type
-Site integrity repair
+Site integrity and coherence fix
 
 ## Modified Files
 - architecture.html
-- architecture_html_restore_audit.md
+- index.html
+- theindex.html
 - current_state.md
 - backlog.md
 - CHANGELOG.md
 - PACKAGE_MANIFEST.md
+- integrity_audit_report.md
+- integrity_validation.json
 
-## Pages Modified
-None under /pages.
+## /pages Changes
+None.
 
 ## Box Numbering Changes
-None. Uses canonical numbering from reconciliation v2.
+None. Uses the existing 51-box reconciled numbering.
 
-## Rollback
-Restore architecture.html from the previous deployment or revert this package.
+## Validation Focus
+- architecture.html renders 51 canonical boxes.
+- index.html layer taxonomy aligns with architecture.html.
+- public architecture page no longer exposes vendor overlay messaging.
+- v17 language removed from public context.

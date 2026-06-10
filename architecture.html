@@ -87,12 +87,12 @@ td:nth-child(1){color:var(--text);font-weight:700} .coverage{font-weight:700;col
 .footer-nav a { color:var(--zone-gateway); text-decoration:none; }
 @media print { body { min-width:0; } .navbar,.footer-nav { display:none; } .detail-grid { grid-template-columns:1fr; } }
 
-/* Optional Palo Alto / Idira overlay controls */
+/* Internal working overlay controls removed from public architecture view */
 
 .overlay-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:10px}
 .overlay-title{font-family:'DM Mono';font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--zone-exec);font-weight:700}.overlay-note{font-size:11px;color:var(--text2);line-height:1.4}.overlay-btn:hover,
-.overlay-on .dot-none{background:#64748b}.dot-idira{background:#a78bfa}
-.vendor-chip{display:inline-block;margin:3px 4px 0 0;border:1px solid rgba(148,163,184,.25);background:rgba(148,163,184,.09);color:var(--text);border-radius:999px;padding:3px 6px;font-family:'DM Mono';font-size:9px}.coverage-chip{display:inline-block;border-radius:4px;padding:3px 6px;font-family:'DM Mono';font-size:9px;font-weight:800;text-transform:uppercase;margin-bottom:5px}.cov-direct{background:rgba(61,214,140,.16);color:#3dd68c;border:1px solid rgba(61,214,140,.4)}.cov-partial{background:rgba(245,200,66,.16);color:#f5c842;border:1px solid rgba(245,200,66,.4)}.cov-adjacent{background:rgba(96,165,250,.16);color:#60a5fa;border:1px solid rgba(96,165,250,.4)}.cov-none{background:rgba(100,116,139,.16);color:#94a3b8;border:1px solid rgba(100,116,139,.4)}.idira-chip{background:rgba(167,139,250,.16);color:#c4b5fd;border-color:rgba(167,139,250,.45)}.spine-chip{background:rgba(244,63,94,.16);color:#fb7185;border-color:rgba(244,63,94,.45)}
+.overlay-on .dot-none{background:#64748b}.dot-internal{background:#a78bfa}
+.vendor-chip{display:inline-block;margin:3px 4px 0 0;border:1px solid rgba(148,163,184,.25);background:rgba(148,163,184,.09);color:var(--text);border-radius:999px;padding:3px 6px;font-family:'DM Mono';font-size:9px}.coverage-chip{display:inline-block;border-radius:4px;padding:3px 6px;font-family:'DM Mono';font-size:9px;font-weight:800;text-transform:uppercase;margin-bottom:5px}.cov-direct{background:rgba(61,214,140,.16);color:#3dd68c;border:1px solid rgba(61,214,140,.4)}.cov-partial{background:rgba(245,200,66,.16);color:#f5c842;border:1px solid rgba(245,200,66,.4)}.cov-adjacent{background:rgba(96,165,250,.16);color:#60a5fa;border:1px solid rgba(96,165,250,.4)}.cov-none{background:rgba(100,116,139,.16);color:#94a3b8;border:1px solid rgba(100,116,139,.4)}.internal-chip{background:rgba(167,139,250,.16);color:#c4b5fd;border-color:rgba(167,139,250,.45)}.spine-chip{background:rgba(244,63,94,.16);color:#fb7185;border-color:rgba(244,63,94,.45)}
 body.overlay-on .nd-link body.overlay-coverage .nd-link[data-coverage="direct"] .nd{box-shadow:0 0 0 2px rgba(61,214,140,.65),0 0 18px rgba(61,214,140,.16)}body.overlay-coverage .nd-link[data-coverage="partial"] .nd{box-shadow:0 0 0 2px rgba(245,200,66,.65),0 0 18px rgba(245,200,66,.13)}body.overlay-coverage .nd-link[data-coverage="adjacent"] .nd{box-shadow:0 0 0 2px rgba(96,165,250,.65),0 0 18px rgba(96,165,250,.14)}body.overlay-coverage .nd-link[data-coverage="none"] .nd{opacity:.72;filter:saturate(.65)}
 body.overlay-identity .nd-link .nd{opacity:.45;filter:saturate(.6)}body.overlay-identity .nd-link[data-identity="true"] .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(167,139,250,.75),0 0 22px rgba(167,139,250,.22)}body.overlay-spine .nd-link .nd{opacity:.38;filter:saturate(.55)}body.overlay-spine .nd-link[data-spine]:not([data-spine=""]) .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(244,63,94,.75),0 0 22px rgba(244,63,94,.22)}
 body.overlay-products body.overlay-products .nd-link[data-coverage="none"] 
@@ -426,7 +426,7 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 </style>
 </head>
 <body>
-<div class="hdr"><div><div class="hdr-title">Enterprise Agentic AI Security &amp; Governance Reference Architecture v18<br/><span>Target-State Industry North Star · Boardroom to Runtime</span></div><div class="hdr-sub">Vendor-neutral capability map · Ready for detailed control expansion</div></div></div><div class="navbar">
+<div class="hdr"><div><div class="hdr-title">Enterprise Agentic AI Security &amp; Governance Reference Architecture v18<br/><span>Target-State Industry North Star · Boardroom to Runtime</span></div><div class="hdr-sub">Vendor-neutral capability map · Ready for detailed control expansion</div></div></div><div class="hero integrity-note"><p><strong>Integrity status:</strong> v18 reconciled model. Canonical inventory contains <strong>51 sequential boxes</strong>. Public architecture view, box pages, and project control files use the same numbering. Vendor overlay notes have been removed from this public architecture page.</p></div><div class="navbar">
 <a href="index.html">Home</a>
 <a href="architecture.html">Architecture</a>
 <a href="risks/">Risks</a>
@@ -434,10 +434,7 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <a href="metrics/">Metrics</a>
 <a href="evidence/">Evidence</a>
 </div>
-<div class="overlay-note">Default view remains vendor-neutral. Use these temporary overlays to demonstrate where Palo Alto and Idira can support the reference architecture without changing the architecture itself.</div>
-
-
-
+<div class="overlay-note">Default view remains vendor-neutral. Use these temporary overlays to demonstrate where internal and internal can support the reference architecture without changing the architecture itself.</div>
 <div class="narrative-block"><h3>What is depicted?</h3><p>This model defines a <strong>target-state reference architecture</strong> for governing and securing enterprise AI agents as managed digital workers. It intentionally separates business governance, supply-chain provenance, machine-readable policy contracts, SDLC validation, runtime enforcement, human accountability, evidence, detection, resilience and assurance. The model is designed as a <strong>north-star architecture</strong>, not a claim that every control is mature or fully available today.</p><div class="principles"><div class="principle"><b>1. Govern before build</b>Agents require business purpose, owner, risk tier and approval before engineering begins.</div><div class="principle"><b>2. Prodspec is the contract</b>Every runtime control consumes the same machine-readable policy contract.</div><div class="principle"><b>3. Tool use is the action boundary</b>Agent risk materialises through tools, data access and external commitments.</div><div class="principle"><b>4. Reduce blast radius</b>Prompt injection and semantic attacks are reduced through layered controls, not declared solved.</div><div class="principle"><b>5. Evidence over assertion</b>Every capability must produce testable evidence and have a named owner.</div></div></div>
 <div class="reading-guide">
 <h3>How to read this architecture</h3>
@@ -553,7 +550,14 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <a class="nd-link" data-box="12" href="pages/box-12-prompt-use-case-lifecycle-management.html" title="Open detail page for Prompt &amp; Use-Case Lifecycle Management"><div class="nd neutral">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">CI/CD / GitOps</div></div><div class="nd-num">12</div></div>
 <div class="nd-title">Prompt &amp; Use-Case Lifecycle Management</div>
-<div class="ps-block"><div><strong>Function:</strong> Treats prompts, model configurations and agent logic as code with risk-tiered approval workflows.</div><div><strong class="prob">Problem:</strong> Untracked prompt changes and uncontrolled use cases can change production behaviour without governance.</div><div><strong class="sol">Control Pattern:</strong> Use version control, peer review, risk-tiered approvals and controlled promotion across environments.</div><div><strong class="evid">Evidence Hook:</strong> PRs; approvals; change history; release evidence.</div></div></div></a>
+<div class="ps-block"><div><strong>Function:</strong> Treats prompts, model configurations and agent logic as code with risk-tiered approval workflows.</div><div><strong class="prob">Problem:</strong> Untracked prompt changes and uncontrolled use cases can change production behaviour without governance.</div><div><strong class="sol">Control Pattern:</strong> Use version control, peer review, risk-tiered approvals and controlled promotion across environments.</div><div><strong class="evid">Evidence Hook:</strong> PRs; approvals; change history; release evidence.</div></div></div></a><a class="nd-link" data-box="13" href="pages/box-13-human-approval-delegated-authority.html" title="Open detail page for Human Approval Delegated Authority"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Authority Gate</div></div><div class="nd-num">13</div></div>
+<div class="nd-title">Human Approval Delegated Authority</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Delegated authority, human approval and dual-control thresholds for material actions.</div>
+<div><strong class="prob">Problem:</strong> Agents can exceed authority or obtain approvals from the wrong accountable party.</div>
+<div><strong class="evid">Evidence Hook:</strong> Delegated authority register; approval workflow logs; override records.</div>
+</div></div></a>
 <a class="nd-link" data-box="14" href="pages/box-14-comprehensive-testing-regime.html" title="Open detail page for Comprehensive Testing Regime"><div class="nd zone-runtime">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">AI SecOps</div></div><div class="nd-num">14</div></div>
 <div class="nd-title">Comprehensive Testing Regime</div>
@@ -561,7 +565,21 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <a class="nd-link" data-box="15" href="pages/box-15-shadow-validation-environment.html" title="Open detail page for Shadow Validation Environment"><div class="nd zone-gateway">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Shadow / AIOps</div></div><div class="nd-num">15</div></div>
 <div class="nd-title">Shadow Validation Environment</div>
-<div class="ps-block"><div><strong>Function:</strong> Validates agent behaviour using synthetic, masked, replayed or explicitly approved read-only production data with no state-changing execution.</div><div><strong class="prob">Problem:</strong> Agents may behave differently with real enterprise messiness, but live-data shadowing can create privacy risk.</div><div><strong class="sol">Control Pattern:</strong> Use controlled shadow evaluation, simulated tools and monitored read-only access for approved scenarios.</div><div><strong class="evid">Evidence Hook:</strong> Shadow run reports; dataset approval; no-write evidence; behaviour deltas.</div></div></div></a>
+<div class="ps-block"><div><strong>Function:</strong> Validates agent behaviour using synthetic, masked, replayed or explicitly approved read-only production data with no state-changing execution.</div><div><strong class="prob">Problem:</strong> Agents may behave differently with real enterprise messiness, but live-data shadowing can create privacy risk.</div><div><strong class="sol">Control Pattern:</strong> Use controlled shadow evaluation, simulated tools and monitored read-only access for approved scenarios.</div><div><strong class="evid">Evidence Hook:</strong> Shadow run reports; dataset approval; no-write evidence; behaviour deltas.</div></div></div></a><a class="nd-link" data-box="16" href="pages/box-16-policy-as-code-governance.html" title="Open detail page for Policy As Code Governance"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Policy-as-Code</div></div><div class="nd-num">16</div></div>
+<div class="nd-title">Policy As Code Governance</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Machine-enforceable policy compilation, validation, promotion and runtime enforcement.</div>
+<div><strong class="prob">Problem:</strong> Policy intent can diverge from runtime enforcement.</div>
+<div><strong class="evid">Evidence Hook:</strong> Policy repository; validation results; runtime enforcement telemetry.</div>
+</div></div></a><a class="nd-link" data-box="17" href="pages/box-17-exception-management-waiver-governance.html" title="Open detail page for Exception Management Waiver Governance"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Exception Mgmt</div></div><div class="nd-num">17</div></div>
+<div class="nd-title">Exception Management Waiver Governance</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Time-bound exception, waiver and compensating-control governance.</div>
+<div><strong class="prob">Problem:</strong> Temporary exceptions can become permanent unreviewed exposure.</div>
+<div><strong class="evid">Evidence Hook:</strong> Exception register; risk acceptance approvals; expiry and review records.</div>
+</div></div></a>
 <a class="nd-link" data-box="18" href="pages/box-18-production-readiness-release-gate.html" title="Open detail page for Production Readiness &amp; Release Gate"><div class="nd zone-detect">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Release Control</div></div><div class="nd-num">18</div></div>
 <div class="nd-title">Production Readiness &amp; Release Gate</div>
@@ -679,16 +697,36 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <p>Determines how the organisation responds when AI activity exceeds approved thresholds or enters uncertain territory.</p>
 </div>
 <div class="why"><b>Outcome</b><span>Provides consistent risk-based responses: contain hard breaches, evaluate ambiguity, and escalate high-impact actions.</span></div>
-
 <div class="row">
 <a class="nd-link" data-box="34" href="pages/box-34-terminate-contain-compensate-hard.html" title="Open detail page for Terminate, Contain &amp; Compensate - Hard"><div class="nd matrix">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Infrastructure Enforcer</div></div><div class="nd-num">34</div></div>
 <div class="nd-title">Terminate, Contain &amp; Compensate - Hard</div>
-<div class="ps-block"><div><strong>Function:</strong> Revokes tokens, terminates processes, quarantines state and rolls back only where technically reversible.</div><div><strong class="prob">Problem:</strong> Some violations need immediate containment, but not all actions can be rolled back.</div><div><strong class="sol">Control Pattern:</strong> Use terminate, revoke, isolate, compensate or rollback based on action reversibility and dependency map.</div><div><strong class="evid">Evidence Hook:</strong> Containment logs; revocation records; rollback/compensation evidence.</div></div></div></a>
+<div class="ps-block"><div><strong>Function:</strong> Revokes tokens, terminates processes, quarantines state and rolls back only where technically reversible.</div><div><strong class="prob">Problem:</strong> Some violations need immediate containment, but not all actions can be rolled back.</div><div><strong class="sol">Control Pattern:</strong> Use terminate, revoke, isolate, compensate or rollback based on action reversibility and dependency map.</div><div><strong class="evid">Evidence Hook:</strong> Containment logs; revocation records; rollback/compensation evidence.</div></div></div></a><a class="nd-link" data-box="35" href="pages/box-35-autonomous-risk-scoring.html" title="Open detail page for Autonomous Risk Scoring Gold-Standard Capability Governance Pack"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Risk Scoring</div></div><div class="nd-num">35</div></div>
+<div class="nd-title">Autonomous Risk Scoring Gold-Standard Capability Governance Pack</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Autonomous risk scoring of agent actions, commitments and escalation thresholds.</div>
+<div><strong class="prob">Problem:</strong> Agent action risk is not consistently quantified before routing.</div>
+<div><strong class="evid">Evidence Hook:</strong> Risk scores; threshold decisions; scoring model outputs.</div>
+</div></div></a><a class="nd-link" data-box="36" href="pages/box-36-evaluate-tune-compensate-soft.html" title="Open detail page for Evaluate, Tune &amp; Compensate"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Soft Deviation</div></div><div class="nd-num">36</div></div>
+<div class="nd-title">Evaluate, Tune &amp; Compensate</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Evaluate, tune and compensate soft deviations without unnecessary hard termination.</div>
+<div><strong class="prob">Problem:</strong> Soft failures can be over- or under-corrected without structured response.</div>
+<div><strong class="evid">Evidence Hook:</strong> Evaluation results; tuning actions; compensation records.</div>
+</div></div></a>
 <a class="nd-link" data-box="37" href="pages/box-37-yield-evaluate-soft.html" title="Open detail page for Yield &amp; Evaluate - Soft"><div class="nd matrix">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Logic Governor</div></div><div class="nd-num">37</div></div>
 <div class="nd-title">Yield &amp; Evaluate - Soft</div>
-<div class="ps-block"><div><strong>Function:</strong> Routes ambiguous semantic deviations to deterministic policy checks and evaluator review without automatically changing policy boundaries.</div><div><strong class="prob">Problem:</strong> Soft drift creates false positives if hard-blocked but risk if blindly allowed.</div><div><strong class="sol">Control Pattern:</strong> Allow or deny the specific action; policy boundary changes require approved policy update and redeployment.</div><div><strong class="evid">Evidence Hook:</strong> Evaluator record; policy decision; exception workflow; drift trend.</div></div></div></a>
+<div class="ps-block"><div><strong>Function:</strong> Routes ambiguous semantic deviations to deterministic policy checks and evaluator review without automatically changing policy boundaries.</div><div><strong class="prob">Problem:</strong> Soft drift creates false positives if hard-blocked but risk if blindly allowed.</div><div><strong class="sol">Control Pattern:</strong> Allow or deny the specific action; policy boundary changes require approved policy update and redeployment.</div><div><strong class="evid">Evidence Hook:</strong> Evaluator record; policy decision; exception workflow; drift trend.</div></div></div></a><a class="nd-link" data-box="38" href="pages/box-38-continuous-assurance.html" title="Open detail page for Continuous Assurance Gold-Standard Capability Governance Pack"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Assurance</div></div><div class="nd-num">38</div></div>
+<div class="nd-title">Continuous Assurance Gold-Standard Capability Governance Pack</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Continuous assurance of control effectiveness, evidence freshness and residual risk.</div>
+<div><strong class="prob">Problem:</strong> Controls degrade after release without ongoing validation.</div>
+<div><strong class="evid">Evidence Hook:</strong> Assurance results; control tests; evidence freshness metrics.</div>
+</div></div></a>
 <a class="nd-link" data-box="39" href="pages/box-39-pause-escalate-high-impact.html" title="Open detail page for Pause &amp; Escalate - High Impact"><div class="nd matrix">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Intent Validator</div></div><div class="nd-num">39</div></div>
 <div class="nd-title">Pause &amp; Escalate - High Impact</div>
@@ -708,7 +746,14 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <a class="nd-link" data-box="40" href="pages/box-40-human-accountability-dual-control.html" title="Open detail page for Human Accountability &amp; Dual Control"><div class="nd merged">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">HITL / IAM</div></div><div class="nd-num">40</div></div>
 <div class="nd-title">Human Accountability &amp; Dual Control</div>
-<div class="ps-block"><div><strong>Function:</strong> Verifies authorised accountable humans or dual-control approvers for high-risk action classes.</div><div><strong class="prob">Problem:</strong> Too many approvals cause rubber-stamping; too few leave accountability gaps.</div><div><strong class="sol">Control Pattern:</strong> Use risk-tiered approval routing, separation of duties, reason capture and approval expiry.</div><div><strong class="evid">Evidence Hook:</strong> Approver identity; reason code; SoD check; approval expiry.</div></div></div></a>
+<div class="ps-block"><div><strong>Function:</strong> Verifies authorised accountable humans or dual-control approvers for high-risk action classes.</div><div><strong class="prob">Problem:</strong> Too many approvals cause rubber-stamping; too few leave accountability gaps.</div><div><strong class="sol">Control Pattern:</strong> Use risk-tiered approval routing, separation of duties, reason capture and approval expiry.</div><div><strong class="evid">Evidence Hook:</strong> Approver identity; reason code; SoD check; approval expiry.</div></div></div></a><a class="nd-link" data-box="41" href="pages/box-41-policy-constitutional-evaluation.html" title="Open detail page for Policy &amp; Constitutional Evaluation Gold-Standard Capability Governance Pack"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Policy Eval</div></div><div class="nd-num">41</div></div>
+<div class="nd-title">Policy &amp; Constitutional Evaluation Gold-Standard Capability Governance Pack</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Policy and constitutional evaluation of agent reasoning, output and actions.</div>
+<div><strong class="prob">Problem:</strong> Agent output can satisfy syntax while violating policy intent.</div>
+<div><strong class="evid">Evidence Hook:</strong> Policy evaluation records; evaluator traces; violation reports.</div>
+</div></div></a>
 <a class="nd-link" data-box="42" href="pages/box-42-policy-engine-evaluator-hub.html" title="Open detail page for Policy Engine &amp; Evaluator Hub"><div class="nd merged">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Policy / Eval</div></div><div class="nd-num">42</div></div>
 <div class="nd-title">Policy Engine &amp; Evaluator Hub</div>
@@ -716,7 +761,14 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <a class="nd-link" data-box="43" href="pages/box-43-decision-lineage-evidence-schema.html" title="Open detail page for Decision Lineage &amp; Evidence Schema"><div class="nd zone-identity">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Audit Ledger</div></div><div class="nd-num">43</div></div>
 <div class="nd-title">Decision Lineage &amp; Evidence Schema</div>
-<div class="ps-block"><div><strong>Function:</strong> Creates signed evidence linking intent, Prodspec, prompt/model versions, retrieved context, policy decisions, tools, approvals, output and execution payload.</div><div><strong class="prob">Problem:</strong> Auditability is not the same as proving internal model reasoning.</div><div><strong class="sol">Control Pattern:</strong> Record evidence chain and explainability artefacts without claiming full proof of causal reasoning.</div><div><strong class="evid">Evidence Hook:</strong> Evidence record; signatures; model/prompt versions; retrieval references.</div></div></div></a>
+<div class="ps-block"><div><strong>Function:</strong> Creates signed evidence linking intent, Prodspec, prompt/model versions, retrieved context, policy decisions, tools, approvals, output and execution payload.</div><div><strong class="prob">Problem:</strong> Auditability is not the same as proving internal model reasoning.</div><div><strong class="sol">Control Pattern:</strong> Record evidence chain and explainability artefacts without claiming full proof of causal reasoning.</div><div><strong class="evid">Evidence Hook:</strong> Evidence record; signatures; model/prompt versions; retrieval references.</div></div></div></a><a class="nd-link" data-box="44" href="pages/box-44-explainability-challenge-appeal.html" title="Open detail page for Explainability, Challenge &amp; Appeal"><div class="nd zone-exec">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Explainability</div></div><div class="nd-num">44</div></div>
+<div class="nd-title">Explainability, Challenge &amp; Appeal</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Explainability, challenge and appeal rights for material agent decisions.</div>
+<div><strong class="prob">Problem:</strong> Customers and reviewers cannot understand or challenge decisions.</div>
+<div><strong class="evid">Evidence Hook:</strong> Explanation records; challenge logs; appeal outcomes.</div>
+</div></div></a>
 <a class="nd-link" data-box="45" href="pages/box-45-human-override-appeal-exception-management.html" title="Open detail page for Human Override, Appeal &amp; Exception Management"><div class="nd zone-exec">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Appeal / Exceptions</div></div><div class="nd-num">45</div></div>
 <div class="nd-title">Human Override, Appeal &amp; Exception Management</div>
@@ -744,7 +796,14 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <a class="nd-link" data-box="48" href="pages/box-48-bias-drift-control-effectiveness-monitoring.html" title="Open detail page for Bias, Drift &amp; Control Effectiveness Monitoring"><div class="nd zone-runtime">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">AI GRC Monitor</div></div><div class="nd-num">48</div></div>
 <div class="nd-title">Bias, Drift &amp; Control Effectiveness Monitoring</div>
-<div class="ps-block"><div><strong>Function:</strong> Monitors systemic bias, model drift, performance degradation and control effectiveness against defined thresholds.</div><div><strong class="prob">Problem:</strong> Agents can degrade or create unfair outcomes over time even if individual actions seem acceptable.</div><div><strong class="sol">Control Pattern:</strong> Use continuous evaluation, sample review, fairness metrics, drift tests and control test evidence.</div><div><strong class="evid">Evidence Hook:</strong> Drift reports; fairness metrics; sample reviews; control test results.</div></div></div></a>
+<div class="ps-block"><div><strong>Function:</strong> Monitors systemic bias, model drift, performance degradation and control effectiveness against defined thresholds.</div><div><strong class="prob">Problem:</strong> Agents can degrade or create unfair outcomes over time even if individual actions seem acceptable.</div><div><strong class="sol">Control Pattern:</strong> Use continuous evaluation, sample review, fairness metrics, drift tests and control test evidence.</div><div><strong class="evid">Evidence Hook:</strong> Drift reports; fairness metrics; sample reviews; control test results.</div></div></div></a><a class="nd-link" data-box="49" href="pages/box-49-agent-resilience-recovery-continuity.html" title="Open detail page for Agent Resilience, Recovery &amp; Continuity"><div class="nd zone-detect">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Resilience</div></div><div class="nd-num">49</div></div>
+<div class="nd-title">Agent Resilience, Recovery &amp; Continuity</div>
+<div class="ps-block">
+<div><strong>Function:</strong> Agent resilience, recovery and continuity for material workflows.</div>
+<div><strong class="prob">Problem:</strong> Agent failure can interrupt business services without controlled recovery.</div>
+<div><strong class="evid">Evidence Hook:</strong> Continuity plans; recovery tests; failover records.</div>
+</div></div></a>
 <a class="nd-link" data-box="50" href="pages/box-50-resilience-dependency-fallback-management.html" title="Open detail page for Resilience Dependency &amp; Fallback Management"><div class="nd zone-detect">
 <div class="badge-row"><div class="badge-left"><div class="badge prod">Resilience Map</div></div><div class="nd-num">50</div></div>
 <div class="nd-title">Resilience Dependency &amp; Fallback Management</div>
@@ -784,10 +843,10 @@ body.overlay-products body.overlay-products .nd-link[data-coverage="none"]
 <h3>Reference Model Development Backlog</h3>
 <p>This backlog records the next major expansion items for turning the architecture diagram into a full security, risk, control and assurance reference model. It is intentionally separate from the architecture itself so that the model remains stable while the supporting libraries mature.</p>
 <div class="backlog-grid">
-<div class="backlog-card"><span class="prio p1">P1</span><h4>Capability page standardisation</h4><ul><li>Apply the detailed capability-page format to all 42 boxes.</li><li>Remove Layer -4 Capability Pages navigation link from the top navigation.</li><li>Individualise purpose, placement, risks, controls and examples.</li></ul></div>
+<div class="backlog-card"><span class="prio p1">P1</span><h4>Capability page standardisation</h4><ul><li>Apply the detailed capability-page format to all 51 boxes.</li><li>Remove Layer -4 Capability Pages navigation link from the top navigation.</li><li>Individualise purpose, placement, risks, controls and examples.</li></ul></div>
 <div class="backlog-card"><span class="prio p1">P1</span><h4>Central libraries</h4><ul><li>Create linked repositories for risks, controls, metrics and evidence.</li><li>Reference each item from capability pages rather than duplicating content.</li></ul></div>
 <div class="backlog-card"><span class="prio p2">P2</span><h4>Service-domain navigation</h4><ul><li>Group capabilities into stable architecture service domains.</li><li>Support executive, security, risk and engineering navigation paths.</li></ul></div>
 </div>
 </div>
-<div class="footer">Generated as a modified v17 HTML reference model. The model deliberately avoids absolute claims such as “fully prevents prompt injection” or “proves model reasoning”; it uses enforceable control, evidence and risk-reduction language suitable for further architecture expansion.</div>
+<div class="footer">Generated as a v18 reconciled architecture reference model. The model deliberately avoids absolute claims such as “fully prevents prompt injection” or “proves model reasoning”; it uses enforceable control, evidence and risk-reduction language suitable for further architecture expansion.</div>
 </body></html>

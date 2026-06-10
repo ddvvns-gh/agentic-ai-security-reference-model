@@ -1,15 +1,17 @@
 # CHANGELOG.md
 
-## Architecture_Numbering_Reconciliation_v4_Restore_Architecture_HTML
+## Architecture_Integrity_Recovery_v1
 
 Status:
 Ready for deployment
 
 Reason:
-v3 fixed numbering but replaced architecture.html with a simplified canonical inventory page.
+Review identified internal inconsistencies: index vs architecture box count, mismatched layer taxonomy, stale v17 wording, vendor overlay leakage and public/working-view messaging conflict.
 
 Changes:
-- Restored original rich architecture.html content.
-- Reapplied canonical filename links.
-- Updated visible card numbers and data-box attributes.
-- Preserved original architecture design and explanatory structure.
+- Preserved rich architecture.html and added missing canonical boxes.
+- Aligned architecture.html with 51-box canonical inventory.
+- Aligned index.html layer taxonomy with architecture.html.
+- Removed/neutralised stale v17 and vendor-overlay language from public-facing architecture context.
+- Marked theindex.html as internal working view.
+- Updated project control files and added integrity audit report.
