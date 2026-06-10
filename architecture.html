@@ -1,247 +1,793 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet"/>
-<meta name="author" content="Enterprise Agentic AI Security Reference Model"/>
-<meta name="classification" content="Internal Architecture Reference"/>
-<meta name="rating" content="General"/>
-<meta name="referrer" content="no-referrer"/>
+<meta content="noindex, nofollow, noarchive, nosnippet" name="robots"/>
+<meta content="Enterprise Agentic AI Security Reference Model" name="author"/>
+<meta content="Internal Architecture Reference" name="classification"/>
+<meta content="General" name="rating"/>
+<meta content="no-referrer" name="referrer"/>
 <title>Agentic AI Security &amp; Governance Reference Architecture</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-:root{--bg:#05070a;--surface:#0a0e14;--surface2:#10161f;--border:#1a2332;--border-hi:#253445;--zone-exec:#fbbf24;--zone-gateway:#00c8d4;--zone-runtime:#fa6e1e;--zone-identity:#a78bfa;--zone-detect:#3dd68c;--zone-data:#38bdf8;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;--green:#3dd68c;--red:#f43f5e}
-*{box-sizing:border-box;margin:0;padding:0} body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:32px 28px 60px;min-width:1180px} a{color:var(--zone-gateway);text-decoration:none} a:hover{color:var(--zone-exec)}
-.hdr{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:18px}.hdr-title{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.22}.hdr-title span{font-weight:400;color:var(--text2)}.hdr-sub{margin-top:8px;font-size:11px;color:var(--zone-exec);font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
-.navbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.navbar a{color:var(--text);border:1px solid var(--border-hi);background:var(--surface2);padding:7px 10px;border-radius:4px;font-size:11px}.navbar a:hover{border-color:rgba(251,191,36,.45);color:var(--zone-exec)}
-.hero{background:radial-gradient(circle at top left, rgba(251,191,36,.16), transparent 30%),linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));border:1px solid rgba(251,191,36,.45);border-radius:10px;padding:20px 22px;margin-bottom:18px;box-shadow:0 10px 32px rgba(0,0,0,.32)}.hero p{color:var(--text2);line-height:1.62;font-size:13px}
-.sec{display:flex;align-items:center;gap:10px;margin:28px 0 12px}.sec-line{flex:1;height:1px;background:var(--border)}.sec-label{font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text2);text-transform:uppercase;white-space:nowrap}
-.layer{background:var(--surface);border:1px solid var(--border-hi);border-radius:10px;padding:14px 16px;margin-bottom:16px}
-.layer h2{font-size:16px;margin-bottom:12px;color:var(--text)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.card{display:block;background:rgba(255,255,255,.025);border:1px solid var(--border-hi);border-radius:8px;padding:12px 13px;min-height:92px;color:var(--text2)}
-.card:hover{border-color:rgba(251,191,36,.45);background:rgba(251,191,36,.06)}
-.num{font-family:'DM Mono';font-size:12px;font-weight:800;color:var(--zone-exec);margin-bottom:6px}.title{font-size:14px;color:var(--text);font-weight:700;line-height:1.35}.meta{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.35}
-.audit{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.audit div{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:12px;color:var(--text2)}.audit strong{display:block;color:var(--text);font-size:18px}
-.footer{color:var(--text3);font-size:11px;border-top:1px solid var(--border);margin-top:26px;padding-top:18px}
-@media print{body{min-width:0;padding:18px}.navbar{display:none}.grid{grid-template-columns:1fr}.audit{grid-template-columns:1fr}}
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg:#05070a; --surface:#0a0e14; --surface2:#10161f; --border:#1a2332; --border-hi:#253445;
+  --zone-exec:#fbbf24; --zone-exec-dim:rgba(251,191,36,.10); --zone-exec-border:rgba(251,191,36,.45);
+  --zone-gateway:#00c8d4; --zone-gateway-dim:rgba(0,200,212,.10); --zone-gateway-border:rgba(0,200,212,.45);
+  --zone-runtime:#fa6e1e; --zone-runtime-dim:rgba(250,110,30,.10); --zone-runtime-border:rgba(250,110,30,.45);
+  --zone-identity:#a78bfa; --zone-identity-dim:rgba(167,139,250,.10); --zone-identity-border:rgba(167,139,250,.45);
+  --zone-detect:#3dd68c; --zone-detect-dim:rgba(61,214,140,.10); --zone-detect-border:rgba(61,214,140,.45);
+  --zone-data:#38bdf8; --zone-data-dim:rgba(56,189,248,.08); --zone-data-border:rgba(56,189,248,.45);
+  --matrix:#f43f5e; --matrix-dim:rgba(244,63,94,.10); --matrix-border:rgba(244,63,94,.45);
+  --text:#e2e8f0; --text2:#94a3b8; --text3:#64748b; --green:#3dd68c; --amber:#f5c842; --red:#f43f5e;
+  font-size:13px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:32px 28px 60px;min-width:1500px}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:20px}
+.hdr-title{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.hdr-title span{font-weight:400;color:var(--text2)}
+.hdr-sub{margin-top:7px;font-size:11px;color:var(--zone-exec);font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.version{font-family:'DM Mono';font-size:10px;color:var(--text3);text-align:right;line-height:1.5}
+.narrative-block{background:var(--surface2);border:1px solid var(--border-hi);border-radius:8px;padding:16px 20px;margin-bottom:22px;color:var(--text2);line-height:1.6;font-size:12px}
+.narrative-block h3{color:var(--text);margin-bottom:8px;font-size:15px}
+.narrative-block strong{color:var(--text)}
+.principles{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+.principle{border:1px solid var(--border);background:rgba(255,255,255,.025);border-radius:6px;padding:10px}
+.principle b{display:block;color:var(--text);font-size:11px;margin-bottom:4px}
+.sec{display:flex;align-items:center;gap:10px;margin:24px 0 12px}
+.sec-line{flex:1;height:1px;background:var(--border)}
+.sec-label{font-family:'DM Mono';font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--text2);text-transform:uppercase;white-space:nowrap}
+.row{display:flex;gap:12px;margin-bottom:8px;align-items:stretch}
+.nd{border:1px solid;border-radius:5px;padding:13px 14px;display:flex;flex-direction:column;gap:8px;position:relative;flex:1;background:var(--surface);min-width:0}
+.nd.zone-exec{border-color:var(--zone-exec-border);background:var(--zone-exec-dim)} .nd.zone-gateway{border-color:var(--zone-gateway-border);background:var(--zone-gateway-dim)}
+.nd.zone-runtime{border-color:var(--zone-runtime-border);background:var(--zone-runtime-dim)} .nd.zone-identity{border-color:var(--zone-identity-border);background:var(--zone-identity-dim)}
+.nd.zone-detect{border-color:var(--zone-detect-border);background:var(--zone-detect-dim)} .nd.zone-data{border-color:var(--zone-data-border);background:var(--zone-data-dim)}
+.nd.merged{border-color:#60a5fa;background:rgba(96,165,250,.05)} .nd.matrix{border-color:var(--matrix-border);background:var(--matrix-dim)} .nd.neutral{border-color:var(--border-hi)}
+.badge-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px;gap:8px}
+.badge-left{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-family:'DM Mono';font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;display:inline-block}
+.prod{background:rgba(148,163,184,.12);color:var(--text2);border:1px solid rgba(148,163,184,.20)}
+.mat{border:1px solid} .mat.Existing{background:rgba(61,214,140,.14);color:var(--green);border-color:rgba(61,214,140,.35)} .mat.Maturing{background:rgba(245,200,66,.14);color:var(--amber);border-color:rgba(245,200,66,.35)} .mat.Gap{background:rgba(244,63,94,.14);color:var(--red);border-color:rgba(244,63,94,.35)} .mat.Emerging{background:rgba(96,165,250,.14);color:#60a5fa;border-color:rgba(96,165,250,.35)} .mat.Limited{background:rgba(250,110,30,.14);color:var(--zone-runtime);border-color:rgba(250,110,30,.35)}
+.nd-num{font-family:'DM Mono';font-size:11px;font-weight:700;color:var(--text);border:1px solid var(--border-hi);border-radius:3px;padding:2px 6px;background:var(--surface2);white-space:nowrap}
+.nd-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.25}
+.ps-block{font-size:11px;line-height:1.45;color:var(--text2);background:rgba(0,0,0,.20);padding:10px;border-radius:5px;border-left:2px solid var(--border-hi);display:flex;flex-direction:column;gap:7px;flex-grow:1}
+.ps-block strong{color:var(--text)} .prob{color:#f87171} .sol{color:#60a5fa} .evid{color:#c4b5fd}
+.flow{display:flex;align-items:center;justify-content:center;height:20px;color:var(--text3);font-family:'DM Mono';font-size:10px;gap:8px;margin:6px 0}
+.flow-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border-hi),transparent)}
+.table-container{margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}
+th{background:var(--surface2);color:var(--text);font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:12px 14px;border-bottom:1px solid var(--border)}
+td{padding:11px 14px;border-bottom:1px solid var(--border-hi);vertical-align:top;line-height:1.45} tr:last-child td{border-bottom:none}
+td:nth-child(1){color:var(--text);font-weight:700} .coverage{font-weight:700;color:var(--zone-exec)}
+.footer{margin-top:24px;color:var(--text3);font-size:11px;line-height:1.5}
+@media print{body{min-width:0;padding:18px} .row{page-break-inside:avoid} .nd{break-inside:avoid}}
+
+
+/* Reference model navigation additions */
+.nd-link { text-decoration:none; color:inherit; display:flex; flex:1; }
+.nd-link .nd { height:100%; width:100%; }
+.nd-link:focus .nd { outline:2px solid var(--zone-exec); outline-offset:2px; }
+.navbar { display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 18px; }
+.navbar a { color:var(--text); text-decoration:none; border:1px solid var(--border-hi); background:var(--surface2); padding:7px 10px; border-radius:4px; font-size:11px; }
+.navbar a:hover { border-color:var(--zone-exec-border); color:var(--zone-exec); }
+.detail-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin:12px 0 24px; }
+.detail-card { background:var(--surface); border:1px solid var(--border-hi); border-radius:6px; padding:14px 16px; color:var(--text2); line-height:1.55; }
+.detail-card h3 { color:var(--text); font-size:14px; margin-bottom:8px; }
+.detail-card h4 { color:var(--text); font-size:12px; margin:10px 0 6px; }
+.detail-card ul { margin-left:18px; display:flex; flex-direction:column; gap:5px; }
+.detail-card table { width:100%; border-collapse: collapse; margin-top:8px; }
+.detail-card th, .detail-card td { border-bottom:1px solid var(--border); padding:8px; text-align:left; vertical-align:top; }
+.detail-card th { color:var(--text); background:var(--surface2); font-family:'DM Mono', monospace; font-size:10px; text-transform:uppercase; }
+.meta-line { color:var(--text2); font-family:'DM Mono', monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; margin-top:6px; }
+.callout { border-left:3px solid var(--zone-exec); background:rgba(251,191,36,.08); padding:12px 14px; border-radius:4px; margin:12px 0; color:var(--text); }
+.footer-nav { display:flex; justify-content:space-between; gap:12px; margin-top:24px; padding-top:18px; border-top:1px solid var(--border); }
+.footer-nav a { color:var(--zone-gateway); text-decoration:none; }
+@media print { body { min-width:0; } .navbar,.footer-nav { display:none; } .detail-grid { grid-template-columns:1fr; } }
+
+/* Optional Palo Alto / Idira overlay controls */
+
+.overlay-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:10px}
+.overlay-title{font-family:'DM Mono';font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--zone-exec);font-weight:700}.overlay-note{font-size:11px;color:var(--text2);line-height:1.4}.overlay-btn:hover,
+.overlay-on .dot-none{background:#64748b}.dot-idira{background:#a78bfa}
+.vendor-chip{display:inline-block;margin:3px 4px 0 0;border:1px solid rgba(148,163,184,.25);background:rgba(148,163,184,.09);color:var(--text);border-radius:999px;padding:3px 6px;font-family:'DM Mono';font-size:9px}.coverage-chip{display:inline-block;border-radius:4px;padding:3px 6px;font-family:'DM Mono';font-size:9px;font-weight:800;text-transform:uppercase;margin-bottom:5px}.cov-direct{background:rgba(61,214,140,.16);color:#3dd68c;border:1px solid rgba(61,214,140,.4)}.cov-partial{background:rgba(245,200,66,.16);color:#f5c842;border:1px solid rgba(245,200,66,.4)}.cov-adjacent{background:rgba(96,165,250,.16);color:#60a5fa;border:1px solid rgba(96,165,250,.4)}.cov-none{background:rgba(100,116,139,.16);color:#94a3b8;border:1px solid rgba(100,116,139,.4)}.idira-chip{background:rgba(167,139,250,.16);color:#c4b5fd;border-color:rgba(167,139,250,.45)}.spine-chip{background:rgba(244,63,94,.16);color:#fb7185;border-color:rgba(244,63,94,.45)}
+body.overlay-on .nd-link body.overlay-coverage .nd-link[data-coverage="direct"] .nd{box-shadow:0 0 0 2px rgba(61,214,140,.65),0 0 18px rgba(61,214,140,.16)}body.overlay-coverage .nd-link[data-coverage="partial"] .nd{box-shadow:0 0 0 2px rgba(245,200,66,.65),0 0 18px rgba(245,200,66,.13)}body.overlay-coverage .nd-link[data-coverage="adjacent"] .nd{box-shadow:0 0 0 2px rgba(96,165,250,.65),0 0 18px rgba(96,165,250,.14)}body.overlay-coverage .nd-link[data-coverage="none"] .nd{opacity:.72;filter:saturate(.65)}
+body.overlay-identity .nd-link .nd{opacity:.45;filter:saturate(.6)}body.overlay-identity .nd-link[data-identity="true"] .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(167,139,250,.75),0 0 22px rgba(167,139,250,.22)}body.overlay-spine .nd-link .nd{opacity:.38;filter:saturate(.55)}body.overlay-spine .nd-link[data-spine]:not([data-spine=""]) .nd{opacity:1;filter:none;box-shadow:0 0 0 2px rgba(244,63,94,.75),0 0 22px rgba(244,63,94,.22)}
+body.overlay-products body.overlay-products .nd-link[data-coverage="none"] 
+@media print{ body.overlay-on  .nd{box-shadow:none!important;opacity:1!important;filter:none!important}}
+
+/* Human-friendly layer explanation panels */
+.reading-guide {
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(251,191,36,.16), transparent 28%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid var(--zone-exec-border);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 26px;
+  box-shadow: 0 10px 32px rgba(0,0,0,.30);
+}
+.reading-guide:before {
+  content: "START HERE";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--bg);
+  background: var(--zone-exec);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.reading-guide h3 {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.reading-guide p {
+  color: var(--text2);
+  line-height: 1.6;
+  margin: 5px 0;
+}
+.reading-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+.reading-step {
+  border: 1px solid var(--border-hi);
+  background: rgba(255,255,255,.025);
+  border-radius: 8px;
+  padding: 12px;
+}
+.reading-step b {
+  display: block;
+  color: var(--text);
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+.reading-step span {
+  color: var(--text2);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.layer-desc {
+  display: grid;
+  grid-template-columns: 54px 1fr 300px;
+  gap: 14px;
+  align-items: stretch;
+  background:
+    linear-gradient(135deg, rgba(16,22,31,.90), rgba(10,14,20,.92));
+  border: 1px solid var(--border-hi);
+  border-radius: 9px;
+  padding: 13px 15px;
+  margin: -4px 0 14px;
+  color: var(--text2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+.layer-desc .layer-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--bg);
+  background: var(--zone-exec);
+  box-shadow: 0 0 22px rgba(251,191,36,.20);
+}
+.layer-desc h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+.layer-desc p {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+.layer-desc .why {
+  border-left: 2px solid var(--border-hi);
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.layer-desc .why b {
+  color: var(--text);
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 5px;
+}
+.layer-desc .why span {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text2);
+}
+.layer-desc.exec { border-color: var(--zone-exec-border); }
+.layer-desc.exec .layer-icon { background: var(--zone-exec); }
+.layer-desc.data { border-color: var(--zone-data-border); }
+.layer-desc.data .layer-icon { background: var(--zone-data); }
+.layer-desc.runtime { border-color: var(--zone-runtime-border); }
+.layer-desc.runtime .layer-icon { background: var(--zone-runtime); }
+.layer-desc.identity { border-color: var(--zone-identity-border); }
+.layer-desc.identity .layer-icon { background: var(--zone-identity); }
+.layer-desc.detect { border-color: var(--zone-detect-border); }
+.layer-desc.detect .layer-icon { background: var(--zone-detect); }
+.layer-desc.matrix-desc { border-color: var(--matrix-border); }
+.layer-desc.matrix-desc .layer-icon { background: var(--matrix); color: white; }
+.layer-desc.gateway { border-color: var(--zone-gateway-border); }
+.layer-desc.gateway .layer-icon { background: var(--zone-gateway); }
+@media print {
+  .reading-flow { grid-template-columns: 1fr; }
+  .layer-desc { grid-template-columns: 1fr; }
+}
+
+
+/* Backlog cards */
+.backlog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.backlog-card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:14px 16px;color:var(--text2);line-height:1.5}
+.backlog-card h4{color:var(--text);font-size:13px;margin-bottom:7px}
+.backlog-card .prio{display:inline-block;font-family:'DM Mono';font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:4px;margin-bottom:8px}
+.backlog-card .p1{background:rgba(244,63,94,.14);color:#fb7185;border:1px solid rgba(244,63,94,.4)}
+.backlog-card .p2{background:rgba(245,200,66,.14);color:#f5c842;border:1px solid rgba(245,200,66,.4)}
+.backlog-card .p3{background:rgba(96,165,250,.14);color:#60a5fa;border:1px solid rgba(96,165,250,.4)}
+.backlog-card ul{margin-left:17px;display:flex;flex-direction:column;gap:5px;font-size:11px}
+@media print{.backlog-grid{grid-template-columns:1fr}}
+
+
+/* Decision Routing Gateway - visually distinct from architecture layers */
+.routing-gateway {
+  position: relative;
+  margin: 20px auto 22px;
+  max-width: 980px;
+  border: 1px solid rgba(244,63,94,.48);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at top left, rgba(244,63,94,.18), transparent 26%),
+    linear-gradient(135deg, rgba(22,12,20,.96), rgba(10,14,20,.96));
+  box-shadow: 0 12px 36px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.04);
+  padding: 16px 18px;
+}
+.routing-gateway:before {
+  content: "CONTROL JUNCTION — NOT A LAYER";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: white;
+  background: var(--matrix);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+.routing-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.routing-sub {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.routing-paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+.routing-path {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035);
+  border-radius: 8px;
+  padding: 11px 12px;
+}
+.routing-path b {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+.routing-path span {
+  color: var(--text2);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.routing-path.hard { border-color: rgba(244,63,94,.40); }
+.routing-path.soft { border-color: rgba(245,200,66,.36); }
+.routing-path.high { border-color: rgba(96,165,250,.36); }
+.matrix-note {
+  margin-top: 10px;
+  color: var(--text3);
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  text-align: center;
+}
+
+
+/* Externalized deterministic enforcement clarification */
+.security-stance {
+  background:
+    radial-gradient(circle at top left, rgba(244,63,94,.18), transparent 28%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid rgba(244,63,94,.46);
+  border-radius: 10px;
+  padding: 17px 20px;
+  margin: 20px 0 24px;
+}
+.security-stance h3 {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+.security-stance p {
+  color: var(--text2);
+  line-height: 1.58;
+  margin: 6px 0;
+}
+.stance-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 9px;
+  margin-top: 13px;
+}
+.stance-card {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  padding: 11px 12px;
+}
+.stance-card b {
+  display: block;
+  color: var(--text);
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+.stance-card span {
+  color: var(--text2);
+  font-size: 10.5px;
+  line-height: 1.42;
+}
+@media print { .stance-grid { grid-template-columns: 1fr; } }
+
+
+/* v18 Trust Chain & Provenance Hardening */
+.v18-trust-chain {
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,.16), transparent 30%),
+    linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));
+  border: 1px solid rgba(56,189,248,.42);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 20px 0 24px;
+  box-shadow: 0 10px 32px rgba(0,0,0,.28);
+}
+.v18-trust-chain h3 { color: var(--text); font-size: 16px; margin-bottom: 8px; }
+.v18-trust-chain p { color: var(--text2); line-height: 1.58; margin: 6px 0; }
+.v18-chain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 13px; }
+.v18-chain-card {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 8px;
+  padding: 12px;
+}
+.v18-chain-card b {
+  display: block;
+  color: var(--text);
+  font-size: 11px;
+  margin-bottom: 5px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.v18-chain-card span { color: var(--text2); font-size: 10.5px; line-height: 1.42; }
+.v18-hardening {
+  background: rgba(56,189,248,.06);
+  border: 1px solid rgba(56,189,248,.28);
+  border-radius: 9px;
+  padding: 14px 16px;
+  color: var(--text2);
+  line-height: 1.56;
+  margin: 12px 0 18px;
+}
+.v18-hardening h3 { color: var(--text); font-size: 14px; margin-bottom: 8px; }
+.v18-hardening ul { margin-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.v18-pill {
+  display:inline-block;
+  border:1px solid rgba(56,189,248,.36);
+  background:rgba(56,189,248,.10);
+  color:#bae6fd;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:10px;
+  margin:3px 4px 3px 0;
+  font-family:'DM Mono', monospace;
+}
+@media print { .v18-chain-grid { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
-<div class="hdr"><div><div class="hdr-title">Agentic AI Security &amp; Governance Reference Architecture<br/><span>Canonical box map</span></div><div class="hdr-sub">Architecture Numbering Reconciliation v3 · One Box = One Capability = One URL</div></div></div>
-<div class="navbar"><a href="index.html">← Executive entry</a><a href="theindex.html">Working view</a><a href="current_state.md">Current state</a><a href="reconciliation/canonical_box_inventory.md">Canonical inventory</a></div>
-<div class="hero"><p>This architecture map has been regenerated from the canonical reconciled inventory. It restores sequential numbering and removes stale visual box references after the insertion of new capabilities. The current Gold Standard reference is <strong>Box 33 — Output Commitment Control</strong>.</p></div>
-<div class="audit">
-<div><strong>51</strong> canonical boxes</div>
-<div><strong>0</strong> duplicate box numbers</div>
-<div><strong>0</strong> missing box numbers</div>
-<div><strong>AR-001</strong> one box / one capability</div>
+<div class="hdr"><div><div class="hdr-title">Enterprise Agentic AI Security &amp; Governance Reference Architecture v18<br/><span>Target-State Industry North Star · Boardroom to Runtime</span></div><div class="hdr-sub">Vendor-neutral capability map · Ready for detailed control expansion</div></div></div><div class="navbar">
+<a href="index.html">Home</a>
+<a href="architecture.html">Architecture</a>
+<a href="risks/">Risks</a>
+<a href="controls/">Controls</a>
+<a href="metrics/">Metrics</a>
+<a href="evidence/">Evidence</a>
 </div>
-<div class="layer"><h2>Layer -4 · AI Workforce Governance</h2><div class="grid"><a class="card" data-box="01" href="pages/box-01-workforce-lifecycle-portfolio-hub.html">
-<div class="num">Box 01</div>
-<div class="title">Workforce Lifecycle &amp; Portfolio Hub</div>
-<div class="meta">box-01-workforce-lifecycle-portfolio-hub.html</div>
-</a><a class="card" data-box="02" href="pages/box-02-economics-continuous-performance.html">
-<div class="num">Box 02</div>
-<div class="title">Economics &amp; Continuous Performance</div>
-<div class="meta">box-02-economics-continuous-performance.html</div>
-</a><a class="card" data-box="03" href="pages/box-03-executive-grc-attestation-plane.html">
-<div class="num">Box 03</div>
-<div class="title">Executive GRC &amp; Attestation Plane</div>
-<div class="meta">box-03-executive-grc-attestation-plane.html</div>
-</a></div></div><div class="layer"><h2>Layer -3 · AI Supply Chain &amp; Provenance</h2><div class="grid"><a class="card" data-box="04" href="pages/box-04-model-dataset-tool-registries.html">
-<div class="num">Box 04</div>
-<div class="title">AI Provenance &amp; Supply Chain Assurance</div>
-<div class="meta">box-04-model-dataset-tool-registries.html</div>
-</a><a class="card" data-box="05" href="pages/box-05-artefact-signing-dependency-control.html">
-<div class="num">Box 05</div>
-<div class="title">Artefact Signing &amp; Dependency Control</div>
-<div class="meta">box-05-artefact-signing-dependency-control.html</div>
-</a><a class="card" data-box="06" href="pages/box-06-legal-ip-third-party-risk.html">
-<div class="num">Box 06</div>
-<div class="title">Legal, IP &amp; Third-Party Risk</div>
-<div class="meta">box-06-legal-ip-third-party-risk.html</div>
-</a><a class="card" data-box="07" href="pages/box-07-unified-bom-vulnerability-monitoring.html">
-<div class="num">Box 07</div>
-<div class="title">Unified BOM Vulnerability Monitoring</div>
-<div class="meta">box-07-unified-bom-vulnerability-monitoring.html</div>
-</a></div></div><div class="layer"><h2>Layer -2 · Prodspec Control Contract</h2><div class="grid"><a class="card" data-box="08" href="pages/box-08-agentic-prodspec-control-contract.html">
-<div class="num">Box 08</div>
-<div class="title">Agentic Prodspec Control Contract</div>
-<div class="meta">box-08-agentic-prodspec-control-contract.html</div>
-</a><a class="card" data-box="09" href="pages/box-09-tool-invocation-policy-model.html">
-<div class="num">Box 09</div>
-<div class="title">Tool Invocation Policy Model</div>
-<div class="meta">box-09-tool-invocation-policy-model.html</div>
-</a><a class="card" data-box="10" href="pages/box-10-agent-to-agent-communication-governance.html">
-<div class="num">Box 10</div>
-<div class="title">Agent To Agent Communication Governance</div>
-<div class="meta">box-10-agent-to-agent-communication-governance.html</div>
-</a><a class="card" data-box="11" href="pages/box-11-data-residency-privacy-records-policy.html">
-<div class="num">Box 11</div>
-<div class="title">Data Residency Privacy Records Policy</div>
-<div class="meta">box-11-data-residency-privacy-records-policy.html</div>
-</a></div></div><div class="layer"><h2>Layer -1 · SDLC &amp; Pre-Deployment Validation</h2><div class="grid"><a class="card" data-box="12" href="pages/box-12-prompt-use-case-lifecycle-management.html">
-<div class="num">Box 12</div>
-<div class="title">Prompt &amp; Use-Case Lifecycle Management</div>
-<div class="meta">box-12-prompt-use-case-lifecycle-management.html</div>
-</a><a class="card" data-box="13" href="pages/box-13-human-approval-delegated-authority.html">
-<div class="num">Box 13</div>
-<div class="title">Human Approval Delegated Authority</div>
-<div class="meta">box-13-human-approval-delegated-authority.html</div>
-</a><a class="card" data-box="14" href="pages/box-14-comprehensive-testing-regime.html">
-<div class="num">Box 14</div>
-<div class="title">Comprehensive Testing Regime</div>
-<div class="meta">box-14-comprehensive-testing-regime.html</div>
-</a><a class="card" data-box="15" href="pages/box-15-shadow-validation-environment.html">
-<div class="num">Box 15</div>
-<div class="title">Shadow Validation Environment</div>
-<div class="meta">box-15-shadow-validation-environment.html</div>
-</a><a class="card" data-box="16" href="pages/box-16-policy-as-code-governance.html">
-<div class="num">Box 16</div>
-<div class="title">Policy As Code Governance</div>
-<div class="meta">box-16-policy-as-code-governance.html</div>
-</a><a class="card" data-box="17" href="pages/box-17-exception-management-waiver-governance.html">
-<div class="num">Box 17</div>
-<div class="title">Exception Management Waiver Governance</div>
-<div class="meta">box-17-exception-management-waiver-governance.html</div>
-</a><a class="card" data-box="18" href="pages/box-18-production-readiness-release-gate.html">
-<div class="num">Box 18</div>
-<div class="title">Production Readiness &amp; Release Gate</div>
-<div class="meta">box-18-production-readiness-release-gate.html</div>
-</a></div></div><div class="layer"><h2>Layer 0 · Enterprise AI Consumers &amp; Agent Attack Surface</h2><div class="grid"><a class="card" data-box="19" href="pages/box-19-workforce-managed-devices.html">
-<div class="num">Box 19</div>
-<div class="title">Workforce - Managed Devices</div>
-<div class="meta">box-19-workforce-managed-devices.html</div>
-</a><a class="card" data-box="20" href="pages/box-20-workforce-byod-contractor.html">
-<div class="num">Box 20</div>
-<div class="title">Workforce - BYOD / Contractor</div>
-<div class="meta">box-20-workforce-byod-contractor.html</div>
-</a><a class="card" data-box="21" href="pages/box-21-sanctioned-ai-agents.html">
-<div class="num">Box 21</div>
-<div class="title">Sanctioned AI Agents</div>
-<div class="meta">box-21-sanctioned-ai-agents.html</div>
-</a><a class="card" data-box="22" href="pages/box-22-ephemeral-child-agents.html">
-<div class="num">Box 22</div>
-<div class="title">Ephemeral Child Agents</div>
-<div class="meta">box-22-ephemeral-child-agents.html</div>
-</a><a class="card" data-box="23" href="pages/box-23-external-partner-agents.html">
-<div class="num">Box 23</div>
-<div class="title">External / Partner Agents</div>
-<div class="meta">box-23-external-partner-agents.html</div>
-</a></div></div><div class="layer"><h2>Layer 1 · Declarative Execution Baseline</h2><div class="grid"><a class="card" data-box="24" href="pages/box-24-managed-endpoint-enforcement.html">
-<div class="num">Box 24</div>
-<div class="title">Managed Endpoint Enforcement</div>
-<div class="meta">box-24-managed-endpoint-enforcement.html</div>
-</a><a class="card" data-box="25" href="pages/box-25-ephemeral-secrets-workload-lineage.html">
-<div class="num">Box 25</div>
-<div class="title">Ephemeral Secrets &amp; Workload Lineage</div>
-<div class="meta">box-25-ephemeral-secrets-workload-lineage.html</div>
-</a><a class="card" data-box="26" href="pages/box-26-compute-admission-runtime-integrity.html">
-<div class="num">Box 26</div>
-<div class="title">Compute Admission &amp; Runtime Integrity</div>
-<div class="meta">box-26-compute-admission-runtime-integrity.html</div>
-</a><a class="card" data-box="27" href="pages/box-27-ephemeral-sandboxing-for-dynamic-execution.html">
-<div class="num">Box 27</div>
-<div class="title">Ephemeral Sandboxing for Dynamic Execution</div>
-<div class="meta">box-27-ephemeral-sandboxing-for-dynamic-execution.html</div>
-</a></div></div><div class="layer"><h2>Layer 2 · Runtime / Decision Governance</h2><div class="grid"><a class="card" data-box="28" href="pages/box-28-prompt-output-inspection.html">
-<div class="num">Box 28</div>
-<div class="title">Prompt &amp; Output Inspection</div>
-<div class="meta">box-28-prompt-output-inspection.html</div>
-</a><a class="card" data-box="29" href="pages/box-29-data-boundary-rag-governance.html">
-<div class="num">Box 29</div>
-<div class="title">Data Boundary &amp; RAG Governance</div>
-<div class="meta">box-29-data-boundary-rag-governance.html</div>
-</a><a class="card" data-box="30" href="pages/box-30-third-party-saas-ai-governance.html">
-<div class="num">Box 30</div>
-<div class="title">Third-Party SaaS AI Governance</div>
-<div class="meta">box-30-third-party-saas-ai-governance.html</div>
-</a><a class="card" data-box="31" href="pages/box-31-finops-runtime-cost-controls.html">
-<div class="num">Box 31</div>
-<div class="title">FinOps &amp; Runtime Cost Controls</div>
-<div class="meta">box-31-finops-runtime-cost-controls.html</div>
-</a><a class="card" data-box="32" href="pages/box-32-agent-memory-governance.html">
-<div class="num">Box 32</div>
-<div class="title">Agent Memory Governance Gold-Standard Capability Governance Pack</div>
-<div class="meta">box-32-agent-memory-governance.html</div>
-</a><a class="card" data-box="33" href="pages/box-33-output-commitment-control.html">
-<div class="num">Box 33</div>
-<div class="title">Output Commitment Control Gold-Standard Capability Governance Pack</div>
-<div class="meta">box-33-output-commitment-control.html</div>
-</a><a class="card" data-box="34" href="pages/box-34-terminate-contain-compensate-hard.html">
-<div class="num">Box 34</div>
-<div class="title">Terminate, Contain &amp; Compensate Gold-Standard Capability Governance Pack</div>
-<div class="meta">box-34-terminate-contain-compensate-hard.html</div>
-</a><a class="card" data-box="35" href="pages/box-35-autonomous-risk-scoring.html">
-<div class="num">Box 35</div>
-<div class="title">Autonomous Risk Scoring Gold-Standard Capability Governance Pack</div>
-<div class="meta">box-35-autonomous-risk-scoring.html</div>
-</a><a class="card" data-box="36" href="pages/box-36-evaluate-tune-compensate-soft.html">
-<div class="num">Box 36</div>
-<div class="title">Evaluate, Tune &amp; Compensate</div>
-<div class="meta">box-36-evaluate-tune-compensate-soft.html</div>
-</a><a class="card" data-box="37" href="pages/box-37-yield-evaluate-soft.html">
-<div class="num">Box 37</div>
-<div class="title">Yield &amp; Evaluate - Soft Threshold Routing Matrix: Deterministic, Probabilistic &amp; High-Impact Response</div>
-<div class="meta">box-37-yield-evaluate-soft.html</div>
-</a><a class="card" data-box="38" href="pages/box-38-continuous-assurance.html">
-<div class="num">Box 38</div>
-<div class="title">Continuous Assurance Gold-Standard Capability Governance Pack</div>
-<div class="meta">box-38-continuous-assurance.html</div>
-</a><a class="card" data-box="39" href="pages/box-39-pause-escalate-high-impact.html">
-<div class="num">Box 39</div>
-<div class="title">Pause &amp; Escalate</div>
-<div class="meta">box-39-pause-escalate-high-impact.html</div>
-</a><a class="card" data-box="40" href="pages/box-40-human-accountability-dual-control.html">
-<div class="num">Box 40</div>
-<div class="title">Human Accountability &amp; Escalation Gold-Standard Capability Governance Pack</div>
-<div class="meta">box-40-human-accountability-dual-control.html</div>
-</a><a class="card" data-box="41" href="pages/box-41-policy-constitutional-evaluation.html">
-<div class="num">Box 41</div>
-<div class="title">Policy &amp; Constitutional Evaluation Gold-Standard Capability Governance Pack</div>
-<div class="meta">box-41-policy-constitutional-evaluation.html</div>
-</a><a class="card" data-box="42" href="pages/box-42-policy-engine-evaluator-hub.html">
-<div class="num">Box 42</div>
-<div class="title">Policy Engine &amp; Evaluator Hub Layer 3: Cognitive Governance, Human Accountability &amp; Evidence</div>
-<div class="meta">box-42-policy-engine-evaluator-hub.html</div>
-</a></div></div><div class="layer"><h2>Layer 3 · Cognitive Governance &amp; Evidence</h2><div class="grid"><a class="card" data-box="43" href="pages/box-43-decision-lineage-evidence-schema.html">
-<div class="num">Box 43</div>
-<div class="title">Decision Lineage &amp; Evidence Schema</div>
-<div class="meta">box-43-decision-lineage-evidence-schema.html</div>
-</a><a class="card" data-box="44" href="pages/box-44-explainability-challenge-appeal.html">
-<div class="num">Box 44</div>
-<div class="title">Explainability, Challenge &amp; Appeal</div>
-<div class="meta">box-44-explainability-challenge-appeal.html</div>
-</a><a class="card" data-box="45" href="pages/box-45-human-override-appeal-exception-management.html">
-<div class="num">Box 45</div>
-<div class="title">Human Override, Appeal &amp; Exception Management Layer 3: Cognitive Governance, Human Accountability &amp; Evidence</div>
-<div class="meta">box-45-human-override-appeal-exception-management.html</div>
-</a></div></div><div class="layer"><h2>Layer 4 · Observability, Assurance &amp; Resilience</h2><div class="grid"><a class="card" data-box="46" href="pages/box-46-structured-agentic-telemetry-collection.html">
-<div class="num">Box 46</div>
-<div class="title">Structured Agentic Telemetry Collection</div>
-<div class="meta">box-46-structured-agentic-telemetry-collection.html</div>
-</a><a class="card" data-box="47" href="pages/box-47-correlated-ai-threat-detection-ir.html">
-<div class="num">Box 47</div>
-<div class="title">Correlated AI Threat Detection &amp; Incident Response</div>
-<div class="meta">box-47-correlated-ai-threat-detection-ir.html</div>
-</a><a class="card" data-box="48" href="pages/box-48-bias-drift-control-effectiveness-monitoring.html">
-<div class="num">Box 48</div>
-<div class="title">Bias, Drift &amp; Control Effectiveness Monitoring</div>
-<div class="meta">box-48-bias-drift-control-effectiveness-monitoring.html</div>
-</a><a class="card" data-box="49" href="pages/box-49-agent-resilience-recovery-continuity.html">
-<div class="num">Box 49</div>
-<div class="title">Agent Resilience, Recovery &amp; Continuity</div>
-<div class="meta">box-49-agent-resilience-recovery-continuity.html</div>
-</a><a class="card" data-box="50" href="pages/box-50-resilience-dependency-fallback-management.html">
-<div class="num">Box 50</div>
-<div class="title">Resilience Dependency &amp; Fallback Management Layer 4: Observability, Incident Response, Assurance &amp; Resilience</div>
-<div class="meta">box-50-resilience-dependency-fallback-management.html</div>
-</a><a class="card" data-box="51" href="pages/box-51-assurance-audit-reference-model-expansion-backlog.html">
-<div class="num">Box 51</div>
-<div class="title">Assurance, Audit &amp; Reference Model Expansion Backlog</div>
-<div class="meta">box-51-assurance-audit-reference-model-expansion-backlog.html</div>
-</a></div></div>
-<div class="footer">Generated by Architecture_Numbering_Reconciliation_v3_Architecture_Fix. Verify after deployment that architecture.html, page links, and canonical inventory agree.</div>
+<div class="overlay-note">Default view remains vendor-neutral. Use these temporary overlays to demonstrate where Palo Alto and Idira can support the reference architecture without changing the architecture itself.</div>
+
+
+
+<div class="narrative-block"><h3>What is depicted?</h3><p>This model defines a <strong>target-state reference architecture</strong> for governing and securing enterprise AI agents as managed digital workers. It intentionally separates business governance, supply-chain provenance, machine-readable policy contracts, SDLC validation, runtime enforcement, human accountability, evidence, detection, resilience and assurance. The model is designed as a <strong>north-star architecture</strong>, not a claim that every control is mature or fully available today.</p><div class="principles"><div class="principle"><b>1. Govern before build</b>Agents require business purpose, owner, risk tier and approval before engineering begins.</div><div class="principle"><b>2. Prodspec is the contract</b>Every runtime control consumes the same machine-readable policy contract.</div><div class="principle"><b>3. Tool use is the action boundary</b>Agent risk materialises through tools, data access and external commitments.</div><div class="principle"><b>4. Reduce blast radius</b>Prompt injection and semantic attacks are reduced through layered controls, not declared solved.</div><div class="principle"><b>5. Evidence over assertion</b>Every capability must produce testable evidence and have a named owner.</div></div></div>
+<div class="reading-guide">
+<h3>How to read this architecture</h3>
+<p>This model is organised from top to bottom. It starts with business accountability and trust, then moves into engineering, runtime enforcement, decision governance, monitoring and resilience.</p>
+<div class="reading-flow">
+<div class="reading-step"><b>1 · Govern</b><span>The upper layers define ownership, approval, risk appetite, trusted components and the policy contract.</span></div>
+<div class="reading-step"><b>2 · Enforce</b><span>The middle layers translate policy into controls over identity, data, tools, SaaS, memory, cost and execution.</span></div>
+<div class="reading-step"><b>3 · Assure</b><span>The lower layers generate evidence, detect threats, support incident response and continuously test control effectiveness.</span></div>
+</div>
+<p><strong>Policies flow downward.</strong> Telemetry, evidence and assurance flow upward. Together these layers create a <strong>secure, governed, observable and accountable operating model for enterprise-scale AI agents.</strong></p>
+</div>
+<div class="security-stance">
+<h3>Security stance: agents reason, external controls enforce</h3>
+<p>This reference model explicitly treats LLMs and agents as probabilistic reasoning engines, not deterministic security boundaries. Prompt instructions, self-reflection and evaluator models may assist with classification, scoring and review, but security-critical enforcement must occur outside the agentic reasoning loop.</p>
+<div class="stance-grid">
+<div class="stance-card"><b>1 · LLMs are not security boundaries</b><span>Safety prompts and model self-policing are advisory, not enforceable controls.</span></div>
+<div class="stance-card"><b>2 · External deterministic control plane</b><span>Inputs, tool calls, outputs and commitments are mediated by gateways, policy engines and sandboxes.</span></div>
+<div class="stance-card"><b>3 · Agentic Identity Mesh</b><span>Agents use short-lived, task-scoped, cryptographically bound identities rather than inherited broad user privilege.</span></div>
+<div class="stance-card"><b>4 · Dual-engine validation</b><span>High-consequence ingress and egress are independently checked by policy-as-code and constrained evaluators.</span></div>
+<div class="stance-card"><b>5 · Intent provenance</b><span>Decision lineage captures the why behind tool use, not only static execution logs.</span></div>
+</div>
+</div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -4: AI Workforce Governance (Business Control Plane)</div><div class="sec-line"></div></div>
+<div class="layer-desc exec">
+<div class="layer-icon">L-4</div>
+<div>
+<h3>AI Workforce Governance</h3>
+<p>Defines who owns AI agents, why they exist, how they create value and who is accountable for their decisions and risks.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Creates a controlled portfolio of AI workers aligned to business objectives, risk appetite and regulatory obligations.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="1" href="pages/box-01-workforce-lifecycle-portfolio-hub.html" title="Open detail page for Workforce Lifecycle &amp; Portfolio Hub"><div class="nd zone-exec">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Workforce Hub</div></div><div class="nd-num">1</div></div>
+<div class="nd-title">Workforce Lifecycle &amp; Portfolio Hub</div>
+<div class="ps-block"><div><strong>Function:</strong> Central system of record for agent lifecycle, ownership, business justification and portfolio rationalisation.</div><div><strong class="prob">Problem:</strong> Shadow AI sprawl, duplicate agents and unclear ownership.</div><div><strong class="sol">Control Pattern:</strong> Register every agent with accountable owners, lifecycle state, business purpose, reuse status and retirement criteria.</div><div><strong class="evid">Evidence Hook:</strong> Agent register; owner attestations; lifecycle status; portfolio reports.</div></div></div></a>
+<a class="nd-link" data-box="2" href="pages/box-02-economics-continuous-performance.html" title="Open detail page for Economics &amp; Continuous Performance"><div class="nd zone-exec">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">AI Economics</div></div><div class="nd-num">2</div></div>
+<div class="nd-title">Economics &amp; Continuous Performance</div>
+<div class="ps-block"><div><strong>Function:</strong> Measures agent cost, value, quality and productivity over time.</div><div><strong class="prob">Problem:</strong> Agents can consume large budgets without delivering measurable business utility.</div><div><strong class="sol">Control Pattern:</strong> Track cost per outcome, utilisation, quality scores, resolution rates and re-certification triggers.</div><div><strong class="evid">Evidence Hook:</strong> FinOps metrics; KPI scorecards; value assessments; retirement recommendations.</div></div></div></a>
+<a class="nd-link" data-box="3" href="pages/box-03-executive-grc-attestation-plane.html" title="Open detail page for Executive GRC &amp; Attestation Plane"><div class="nd zone-exec">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Executive GRC</div></div><div class="nd-num">3</div></div>
+<div class="nd-title">Executive GRC &amp; Attestation Plane</div>
+<div class="ps-block"><div><strong>Function:</strong> Provides executive and Board-reportable oversight for AI risk, compliance, exceptions and material posture.</div><div><strong class="prob">Problem:</strong> AI risk decisions can be disconnected from enterprise risk appetite and regulatory accountability.</div><div><strong class="sol">Control Pattern:</strong> Use risk-tiered approvals, exception expiry, risk acceptance and regulatory control mapping.</div><div><strong class="evid">Evidence Hook:</strong> Risk attestations; exception register; control coverage; committee reporting.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -3: AI Supply Chain &amp; Provenance (Foundation of Trust)</div><div class="sec-line"></div></div>
+<div class="layer-desc data">
+<div class="layer-icon">L-3</div>
+<div>
+<h3>AI Supply Chain &amp; Provenance</h3>
+<p>Establishes trust in models, datasets, prompts, tools and third-party components before they are used.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Ensures every AI component has known provenance, ownership, approval status and supply-chain visibility.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="4" href="pages/box-04-model-dataset-tool-registries.html" title="Open detail page for AI Provenance &amp; Supply Chain Assurance"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Provenance Gov.</div></div><div class="nd-num">4</div></div>
+<div class="nd-title">AI Provenance &amp; Supply Chain Assurance</div>
+<div class="ps-block"><div><strong>Function:</strong> Provenance, approval, dependency and cryptographic trust assurance for models, datasets, prompts, agents, tools, MCP servers, memory stores, evaluators, SaaS AI and AI-generated artefacts.</div><div><strong class="prob">Problem:</strong> Untrusted models, datasets or tools can introduce vulnerabilities before engineering starts.</div><div><strong class="sol">Control Pattern:</strong> Restrict builds to approved registries with provenance, licence, classification, consent and trust metadata.</div><div><strong class="evid">Evidence Hook:</strong> Registry approvals; provenance records; source trust scores; licence records.</div></div></div></a>
+<a class="nd-link" data-box="5" href="pages/box-05-artefact-signing-dependency-control.html" title="Open detail page for Artefact Signing &amp; Dependency Control"><div class="nd zone-identity">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Artefact Auth</div></div><div class="nd-num">5</div></div>
+<div class="nd-title">Artefact Signing &amp; Dependency Control</div>
+<div class="ps-block"><div><strong>Function:</strong> Signs and verifies model artefacts, containers, prompts, embeddings, packages and deployment manifests.</div><div><strong class="prob">Problem:</strong> Tampered artefacts or compromised packages can undermine every downstream control.</div><div><strong class="sol">Control Pattern:</strong> Use signed artefacts, SBOM, dependency pinning, package allowlists and build provenance.</div><div><strong class="evid">Evidence Hook:</strong> Signed manifests; SBOMs; dependency scans; build attestations.</div></div></div></a>
+<a class="nd-link" data-box="6" href="pages/box-06-legal-ip-third-party-risk.html" title="Open detail page for Legal, IP &amp; Third-Party Risk"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Legal &amp; TPRM</div></div><div class="nd-num">6</div></div>
+<div class="nd-title">Legal, IP &amp; Third-Party Risk</div>
+<div class="ps-block"><div><strong>Function:</strong> Assesses provider terms, SaaS LLM hosting, training-data restrictions, IP rights, open-source licences and data-use limits.</div><div><strong class="prob">Problem:</strong> Third-party AI use can breach privacy, IP, sovereignty or contractual obligations.</div><div><strong class="sol">Control Pattern:</strong> Perform TPRM, legal review, data-use review and approved-provider onboarding before adoption.</div><div><strong class="evid">Evidence Hook:</strong> Contract clauses; DPIA/PIA records; licence review; provider risk assessment.</div></div></div></a>
+<a class="nd-link" data-box="7" href="pages/box-07-unified-bom-vulnerability-monitoring.html" title="Open detail page for Unified BOM &amp; Vulnerability Monitoring"><div class="nd zone-detect">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">AI-SPM / Vuln Mgmt</div></div><div class="nd-num">7</div></div>
+<div class="nd-title">Unified BOM &amp; Vulnerability Monitoring</div>
+<div class="ps-block"><div><strong>Function:</strong> Integrates SBOM, AI-BOM and ML-BOM to support vulnerability, model advisory and dependency-change monitoring.</div><div><strong class="prob">Problem:</strong> A fragmented inventory prevents rapid response to compromised models, packages or tools.</div><div><strong class="sol">Control Pattern:</strong> Maintain a unified BOM and trigger revalidation when any model, dataset, prompt, tool or dependency changes.</div><div><strong class="evid">Evidence Hook:</strong> Unified BOM; vulnerability alerts; revalidation tickets; model advisory records.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -2: Prodspec Control Contract (Machine-Readable Policy Anchor)</div><div class="sec-line"></div></div>
+<div class="layer-desc identity">
+<div class="layer-icon">L-2</div>
+<div>
+<h3>Prodspec Control Contract</h3>
+<p>Creates a machine-readable contract defining how an AI agent may behave, what it can access and what it can do.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Turns governance intent into enforceable policy that runtime controls can consume automatically.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="8" href="pages/box-08-agentic-prodspec-control-contract.html" title="Open detail page for Agentic Prodspec Control Contract"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">AI-SPM / Policy</div></div><div class="nd-num">8</div></div>
+<div class="nd-title">Agentic Prodspec Control Contract</div>
+<div class="ps-block"><div><strong>Function:</strong> Machine-readable contract binding agent identity, owner, purpose, risk tier, models, prompts, data, tools, memory, approvals, costs and fail-safe rules.</div><div><strong class="prob">Problem:</strong> A diagram or inventory does not enforce behaviour unless translated into machine-readable policy.</div><div><strong class="sol">Control Pattern:</strong> Make the Prodspec the single control contract consumed by CI/CD, gateways, identity, policy engines, observability and evidence stores.</div><div><strong class="evid">Evidence Hook:</strong> Prodspec schema; policy mappings; approved versions; enforcement logs.</div></div></div></a>
+<a class="nd-link" data-box="9" href="pages/box-09-tool-invocation-policy-model.html" title="Open detail page for Tool Invocation Policy Model"><div class="nd zone-runtime">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Tool Registry</div></div><div class="nd-num">9</div></div>
+<div class="nd-title">Tool Invocation Policy Model</div>
+<div class="ps-block"><div><strong>Function:</strong> Defines allowed tools, actions, parameters, destinations, transaction classes, output commitment levels and approval triggers.</div><div><strong class="prob">Problem:</strong> Tool use is the true action boundary for agents, but it is often governed too coarsely.</div><div><strong class="sol">Control Pattern:</strong> Apply action-level authorization, schema validation, parameter constraints, egress checks and dual-control for high-impact tools.</div><div><strong class="evid">Evidence Hook:</strong> Tool registry; policy decisions; blocked calls; approval records.</div></div></div></a>
+<a class="nd-link" data-box="10" href="pages/box-10-agent-to-agent-communication-governance.html" title="Open detail page for Agent-to-Agent Communication Governance"><div class="nd zone-identity">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">A2A Trust</div></div><div class="nd-num">10</div></div>
+<div class="nd-title">Agent-to-Agent Communication Governance</div>
+<div class="ps-block"><div><strong>Function:</strong> Controls peer-agent and parent-child communication, message provenance, delegation, trust boundaries and protocol security.</div><div><strong class="prob">Problem:</strong> Multi-agent systems can transfer poisoned context, spoof authority or cascade failures.</div><div><strong class="sol">Control Pattern:</strong> Use authenticated messages, signed context, scoped delegation, message provenance and isolation between trust domains.</div><div><strong class="evid">Evidence Hook:</strong> Message provenance; mTLS/token records; delegation chain; blocked peer calls.</div></div></div></a>
+<a class="nd-link" data-box="11" href="pages/box-11-data-residency-privacy-records-policy.html" title="Open detail page for Data Residency, Privacy &amp; Records Policy"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Privacy / Records</div></div><div class="nd-num">11</div></div>
+<div class="nd-title">Data Residency, Privacy &amp; Records Policy</div>
+<div class="ps-block"><div><strong>Function:</strong> Defines privacy impact, retention, jurisdiction, customer-data handling, telemetry capture and records obligations.</div><div><strong class="prob">Problem:</strong> Memory, prompts, logs and evidence records can create privacy and records-retention exposure.</div><div><strong class="sol">Control Pattern:</strong> Bind data residency, retention, minimisation, deletion and audit retention requirements to the Prodspec.</div><div><strong class="evid">Evidence Hook:</strong> PIA/DPIA; records schedule; retention logs; deletion evidence.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer -1: SDLC &amp; Pre-Deployment Validation</div><div class="sec-line"></div></div>
+<div class="layer-desc runtime">
+<div class="layer-icon">L-1</div>
+<div>
+<h3>SDLC &amp; Pre-Deployment Validation</h3>
+<p>Validates AI systems before production through testing, assurance and approval controls.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Ensures only tested, approved and evidenced AI systems reach production.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="12" href="pages/box-12-prompt-use-case-lifecycle-management.html" title="Open detail page for Prompt &amp; Use-Case Lifecycle Management"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">CI/CD / GitOps</div></div><div class="nd-num">12</div></div>
+<div class="nd-title">Prompt &amp; Use-Case Lifecycle Management</div>
+<div class="ps-block"><div><strong>Function:</strong> Treats prompts, model configurations and agent logic as code with risk-tiered approval workflows.</div><div><strong class="prob">Problem:</strong> Untracked prompt changes and uncontrolled use cases can change production behaviour without governance.</div><div><strong class="sol">Control Pattern:</strong> Use version control, peer review, risk-tiered approvals and controlled promotion across environments.</div><div><strong class="evid">Evidence Hook:</strong> PRs; approvals; change history; release evidence.</div></div></div></a>
+<a class="nd-link" data-box="14" href="pages/box-14-comprehensive-testing-regime.html" title="Open detail page for Comprehensive Testing Regime"><div class="nd zone-runtime">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">AI SecOps</div></div><div class="nd-num">14</div></div>
+<div class="nd-title">Comprehensive Testing Regime</div>
+<div class="ps-block"><div><strong>Function:</strong> Runs red teaming, regression, jailbreak, data leakage, bias, tool misuse and resilience tests.</div><div><strong class="prob">Problem:</strong> Latent model, prompt and tool flaws may not appear until production usage.</div><div><strong class="sol">Control Pattern:</strong> Require signed evidence of test execution, results, exceptions and risk acceptance before promotion.</div><div><strong class="evid">Evidence Hook:</strong> Test reports; exception records; signed evidence; regression baseline.</div></div></div></a>
+<a class="nd-link" data-box="15" href="pages/box-15-shadow-validation-environment.html" title="Open detail page for Shadow Validation Environment"><div class="nd zone-gateway">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Shadow / AIOps</div></div><div class="nd-num">15</div></div>
+<div class="nd-title">Shadow Validation Environment</div>
+<div class="ps-block"><div><strong>Function:</strong> Validates agent behaviour using synthetic, masked, replayed or explicitly approved read-only production data with no state-changing execution.</div><div><strong class="prob">Problem:</strong> Agents may behave differently with real enterprise messiness, but live-data shadowing can create privacy risk.</div><div><strong class="sol">Control Pattern:</strong> Use controlled shadow evaluation, simulated tools and monitored read-only access for approved scenarios.</div><div><strong class="evid">Evidence Hook:</strong> Shadow run reports; dataset approval; no-write evidence; behaviour deltas.</div></div></div></a>
+<a class="nd-link" data-box="18" href="pages/box-18-production-readiness-release-gate.html" title="Open detail page for Production Readiness &amp; Release Gate"><div class="nd zone-detect">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Release Control</div></div><div class="nd-num">18</div></div>
+<div class="nd-title">Production Readiness &amp; Release Gate</div>
+<div class="ps-block"><div><strong>Function:</strong> Confirms all required supply-chain, testing, Prodspec, ownership, risk and evidence gates are satisfied before deployment.</div><div><strong class="prob">Problem:</strong> A model can pass tests while still missing ownership, risk acceptance or control integration.</div><div><strong class="sol">Control Pattern:</strong> Use a release gate that blocks deployment unless all mandatory controls and approvals are present.</div><div><strong class="evid">Evidence Hook:</strong> Release checklist; automated gate logs; risk acceptance; deployment manifest.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 0: Enterprise AI Consumers &amp; Agent Attack Surface</div><div class="sec-line"></div></div>
+<div class="layer-desc gateway">
+<div class="layer-icon">L0</div>
+<div>
+<h3>Enterprise AI Consumers &amp; Attack Surface</h3>
+<p>Represents the people, devices, agents and external parties interacting with AI capabilities.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Makes every interaction point visible, classified and governed.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="19" href="pages/box-19-workforce-managed-devices.html" title="Open detail page for Workforce - Managed Devices"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Managed</div></div><div class="nd-num">19</div></div>
+<div class="nd-title">Workforce - Managed Devices</div>
+<div class="ps-block"><div><strong>Function:</strong> Corporate-managed endpoints with enterprise controls for local execution, browser isolation and data-loss prevention.</div><div><strong class="prob">Problem:</strong> Local tools, browsers and copied data can bypass cloud AI controls.</div><div><strong class="sol">Control Pattern:</strong> Enforce EPM, enterprise browser policy, DLP and local execution controls.</div><div><strong class="evid">Evidence Hook:</strong> Endpoint policy logs; browser controls; blocked executions.</div></div></div></a>
+<a class="nd-link" data-box="20" href="pages/box-20-workforce-byod-contractor.html" title="Open detail page for Workforce - BYOD / Contractor"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Unmanaged</div></div><div class="nd-num">20</div></div>
+<div class="nd-title">Workforce - BYOD / Contractor</div>
+<div class="ps-block"><div><strong>Function:</strong> Personal or contractor devices accessing enterprise AI or SaaS services without full local control.</div><div><strong class="prob">Problem:</strong> Unmanaged devices bypass endpoint agents and increase data leakage risk.</div><div><strong class="sol">Control Pattern:</strong> Use conditional access, ZTNA, browser isolation, data restrictions and session controls.</div><div><strong class="evid">Evidence Hook:</strong> Conditional access logs; session policy; denied access records.</div></div></div></a>
+<a class="nd-link" data-box="21" href="pages/box-21-sanctioned-ai-agents.html" title="Open detail page for Sanctioned AI Agents"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Declared Agent</div></div><div class="nd-num">21</div></div>
+<div class="nd-title">Sanctioned AI Agents</div>
+<div class="ps-block"><div><strong>Function:</strong> Officially deployed and centrally governed autonomous workflows integrated via approved pipelines.</div><div><strong class="prob">Problem:</strong> Approved agents can still be hijacked by prompt injection, tool misuse or compromised context.</div><div><strong class="sol">Control Pattern:</strong> Bind agents to Prodspec, identity, data, tool, runtime and observability controls.</div><div><strong class="evid">Evidence Hook:</strong> Agent identity; Prodspec binding; tool logs; policy decisions.</div></div></div></a>
+<a class="nd-link" data-box="22" href="pages/box-22-ephemeral-child-agents.html" title="Open detail page for Ephemeral Child Agents"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Dynamic Agent</div></div><div class="nd-num">22</div></div>
+<div class="nd-title">Ephemeral Child Agents</div>
+<div class="ps-block"><div><strong>Function:</strong> Temporary sub-agents spawned for parallel or delegated tasks.</div><div><strong class="prob">Problem:</strong> Child agents can multiply attack surface and escape static inventories.</div><div><strong class="sol">Control Pattern:</strong> Require parent-scoped delegation, short-lived credentials, lineage, registration and automatic expiry.</div><div><strong class="evid">Evidence Hook:</strong> Delegation records; child token expiry; lineage graph; spawn approvals.</div></div></div></a>
+<a class="nd-link" data-box="23" href="pages/box-23-external-partner-agents.html" title="Open detail page for External / Partner Agents"><div class="nd neutral">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Federated Agent</div></div><div class="nd-num">23</div></div>
+<div class="nd-title">External / Partner Agents</div>
+<div class="ps-block"><div><strong>Function:</strong> Third-party or partner-controlled agents interacting with enterprise APIs, data or workflows.</div><div><strong class="prob">Problem:</strong> External agents introduce foreign trust, policy and accountability domains.</div><div><strong class="sol">Control Pattern:</strong> Use federation controls, contractual requirements, API scopes, provenance, rate limits and evidence-sharing boundaries.</div><div><strong class="evid">Evidence Hook:</strong> Partner risk record; API policy logs; federation identity; contract controls.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 1: Declarative Execution Baseline</div><div class="sec-line"></div></div>
+<div class="layer-desc identity">
+<div class="layer-icon">L1</div>
+<div>
+<h3>Declarative Execution Baseline</h3>
+<p>Provides the trusted technical foundation including identity, secrets, workload controls and runtime integrity.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Ensures AI agents operate in trusted and continuously verified execution environments.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="24" href="pages/box-24-managed-endpoint-enforcement.html" title="Open detail page for Managed Endpoint Enforcement"><div class="nd merged">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">EPM &amp; Browser</div></div><div class="nd-num">24</div></div>
+<div class="nd-title">Managed Endpoint Enforcement</div>
+<div class="ps-block"><div><strong>Function:</strong> Controls local AI interactions, browser sessions, clipboard/download behaviour and unauthorized process execution.</div><div><strong class="prob">Problem:</strong> Network controls cannot see every local action or generated-code execution.</div><div><strong class="sol">Control Pattern:</strong> Use EPM, enterprise browser, DLP and local allowlisting to reduce endpoint blast radius.</div><div><strong class="evid">Evidence Hook:</strong> Endpoint logs; DLP events; browser policy evidence.</div></div></div></a>
+<a class="nd-link" data-box="25" href="pages/box-25-ephemeral-secrets-workload-lineage.html" title="Open detail page for Ephemeral Secrets &amp; Workload Lineage"><div class="nd zone-identity">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Identity Auth</div></div><div class="nd-num">25</div></div>
+<div class="nd-title">Ephemeral Secrets &amp; Workload Lineage</div>
+<div class="ps-block"><div><strong>Function:</strong> Replaces static credentials with short-lived, policy-derived, least-privilege credentials that cannot exceed approved scope.</div><div><strong class="prob">Problem:</strong> Static API keys and embedded secrets enable lateral movement and privilege abuse.</div><div><strong class="sol">Control Pattern:</strong> Use workload identity, token binding, JIT credentials, delegation limits and revocation.</div><div><strong class="evid">Evidence Hook:</strong> Token issuance; revocation logs; identity graph; secret scan results.</div></div></div></a>
+<a class="nd-link" data-box="26" href="pages/box-26-compute-admission-runtime-integrity.html" title="Open detail page for Compute Admission &amp; Runtime Integrity"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">CWP / Admission</div></div><div class="nd-num">26</div></div>
+<div class="nd-title">Compute Admission &amp; Runtime Integrity</div>
+<div class="ps-block"><div><strong>Function:</strong> Combines signed artefact verification, admission control, runtime policy and workload telemetry.</div><div><strong class="prob">Problem:</strong> Rogue code can execute outside the approved baseline.</div><div><strong class="sol">Control Pattern:</strong> Block unsigned or unapproved artefacts and detect runtime drift through policy-enforced admission and runtime monitoring.</div><div><strong class="evid">Evidence Hook:</strong> Admission logs; signature checks; runtime alerts; image provenance.</div></div></div></a>
+<a class="nd-link" data-box="27" href="pages/box-27-ephemeral-sandboxing-for-dynamic-execution.html" title="Open detail page for Ephemeral Sandboxing for Dynamic Execution"><div class="nd zone-detect">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Secure Sandbox</div></div><div class="nd-num">27</div></div>
+<div class="nd-title">Ephemeral Sandboxing for Dynamic Execution</div>
+<div class="ps-block"><div><strong>Function:</strong> Provides isolated execution for approved dynamic scripts, code generation, data transformation and modelling tasks.</div><div><strong class="prob">Problem:</strong> Agents may require dynamic execution, but unrestricted host access is unsafe.</div><div><strong class="sol">Control Pattern:</strong> Route dynamic execution into isolated sandboxes with resource, network, filesystem and lifetime limits.</div><div><strong class="evid">Evidence Hook:</strong> Sandbox logs; execution policy; network egress records; expiry evidence.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 2: Runtime, Data, Tool, SaaS, Memory &amp; Cost Enforcement</div><div class="sec-line"></div></div>
+<div class="layer-desc data">
+<div class="layer-icon">L2</div>
+<div>
+<h3>Runtime, Data, Tool, SaaS, Memory &amp; Cost Enforcement</h3>
+<p>Controls what AI agents can do while operating, including data access, tools, SaaS features, memory and cost.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Keeps agents within defined security, privacy, operational and economic boundaries.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="28" href="pages/box-28-prompt-output-inspection.html" title="Open detail page for Prompt &amp; Output Inspection"><div class="nd zone-runtime">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">AI Firewall</div></div><div class="nd-num">28</div></div>
+<div class="nd-title">Prompt &amp; Output Inspection</div>
+<div class="ps-block"><div><strong>Function:</strong> Inspects prompts and outputs to reduce unsafe content, injection exposure, malicious code, policy violations and data leakage.</div><div><strong class="prob">Problem:</strong> Prompt injection and unsafe output cannot be fully prevented by a single semantic firewall.</div><div><strong class="sol">Control Pattern:</strong> Use inspection as one layer alongside least privilege, tool controls, provenance, DLP, HITL and blast-radius limits.</div><div><strong class="evid">Evidence Hook:</strong> Inspection logs; false-positive metrics; blocked outputs; bypass analysis.</div></div></div></a>
+<a class="nd-link" data-box="29" href="pages/box-29-data-boundary-rag-governance.html" title="Open detail page for Data Boundary &amp; RAG Governance"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">DSPM / DLP / RAG</div></div><div class="nd-num">29</div></div>
+<div class="nd-title">Data Boundary &amp; RAG Governance</div>
+<div class="ps-block"><div><strong>Function:</strong> Enforces data classification, ingestion provenance, retrieval authorization, vector-store controls, egress checks and deletion requirements.</div><div><strong class="prob">Problem:</strong> Agents can retrieve, infer, persist or export sensitive data beyond intended boundaries.</div><div><strong class="sol">Control Pattern:</strong> Apply data policy at ingestion, retrieval, memory write, tool use and egress points.</div><div><strong class="evid">Evidence Hook:</strong> Classification tags; retrieval decisions; DLP logs; vector-store lineage.</div></div></div></a>
+<a class="nd-link" data-box="30" href="pages/box-30-third-party-saas-ai-governance.html" title="Open detail page for Third-Party SaaS AI Governance"><div class="nd zone-data">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">SSPM / SaaS AI</div></div><div class="nd-num">30</div></div>
+<div class="nd-title">Third-Party SaaS AI Governance</div>
+<div class="ps-block"><div><strong>Function:</strong> Manages native SaaS copilots, tenant settings, opt-out controls, data boundary settings, logging and conditional access.</div><div><strong class="prob">Problem:</strong> SaaS AI features can expose data through opaque platform behaviour or weak tenant controls.</div><div><strong class="sol">Control Pattern:</strong> Continuously assess and enforce SaaS AI configurations, logging, data-use restrictions and access policy.</div><div><strong class="evid">Evidence Hook:</strong> SSPM findings; SaaS audit logs; settings evidence; exception records.</div></div></div></a>
+<a class="nd-link" data-box="31" href="pages/box-31-finops-runtime-cost-controls.html" title="Open detail page for FinOps &amp; Runtime Cost Controls"><div class="nd zone-gateway">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Gateway FinOps</div></div><div class="nd-num">31</div></div>
+<div class="nd-title">FinOps &amp; Runtime Cost Controls</div>
+<div class="ps-block"><div><strong>Function:</strong> Applies token, API, model, workflow and lineage-level budgets, quotas and rate limits.</div><div><strong class="prob">Problem:</strong> Runaway agents can create economic denial of service and uncontrolled cloud consumption.</div><div><strong class="sol">Control Pattern:</strong> Enforce budgets, loop limits, retry caps and anomaly alerts; terminate or throttle where thresholds are exceeded.</div><div><strong class="evid">Evidence Hook:</strong> Cost dashboards; quota events; throttling logs; anomaly alerts.</div></div></div></a>
+<a class="nd-link" data-box="32" href="pages/box-32-agent-memory-governance.html" title="Open detail page for Agent Memory Governance"><div class="nd zone-gateway">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Memory Gate</div></div><div class="nd-num">32</div></div>
+<div class="nd-title">Agent Memory Governance</div>
+<div class="ps-block"><div><strong>Function:</strong> Controls persistent and session memory reads/writes, retention, provenance, poisoning risk, deletion and re-scoring.</div><div><strong class="prob">Problem:</strong> Long-lived memory can retain sensitive data or accumulate poisoned instructions.</div><div><strong class="sol">Control Pattern:</strong> Classify memory entries, restrict writes, expire stale data, quarantine risky context and support deletion obligations.</div><div><strong class="evid">Evidence Hook:</strong> Memory ledger; write decisions; expiry logs; quarantine events.</div></div></div></a>
+<a class="nd-link" data-box="33" href="pages/box-33-output-commitment-control.html" title="Open detail page for Output Commitment Control"><div class="nd zone-runtime">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Commitment Gate</div></div><div class="nd-num">33</div></div>
+<div class="nd-title">Output Commitment Control</div>
+<div class="ps-block"><div><strong>Function:</strong> Distinguishes draft, recommendation, notification, API call, transaction, customer decision and irreversible external commitment.</div><div><strong class="prob">Problem:</strong> The same model output can be harmless as a draft but high-risk if automatically executed.</div><div><strong class="sol">Control Pattern:</strong> Apply commitment-level policy, HITL triggers, dual control and transaction signing before external or irreversible action.</div><div><strong class="evid">Evidence Hook:</strong> Commitment records; approval logs; signed transactions; blocked actions.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="routing-gateway">
+<div class="routing-title">Decision Routing Gateway: Hard Breach · Soft Deviation · High-Impact Escalation</div>
+<div class="routing-sub">This gateway is not a separate architecture layer. It is a runtime decision junction that routes agent behaviour when policy is breached, confidence is uncertain, or business impact is material.</div>
+<div class="routing-paths">
+<div class="routing-path hard"><b>Hard breach</b><span>Deterministic rule violation. Terminate, contain, revoke or compensate immediately.</span></div>
+<div class="routing-path soft"><b>Soft deviation</b><span>Probabilistic uncertainty or behavioural drift. Evaluate, tune, re-score or route to review.</span></div>
+<div class="routing-path high"><b>High-impact action</b><span>Material business consequence. Pause, escalate, require human accountability or dual control.</span></div>
+</div>
+<div class="matrix-note">Runtime events flow into this gateway from Layer 2 and are routed toward Layer 3 accountability and Layer 4 response.</div>
+</div>
+<div>
+<h3>Threshold Routing Matrix</h3>
+<p>Determines how the organisation responds when AI activity exceeds approved thresholds or enters uncertain territory.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Provides consistent risk-based responses: contain hard breaches, evaluate ambiguity, and escalate high-impact actions.</span></div>
+
+<div class="row">
+<a class="nd-link" data-box="34" href="pages/box-34-terminate-contain-compensate-hard.html" title="Open detail page for Terminate, Contain &amp; Compensate - Hard"><div class="nd matrix">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Infrastructure Enforcer</div></div><div class="nd-num">34</div></div>
+<div class="nd-title">Terminate, Contain &amp; Compensate - Hard</div>
+<div class="ps-block"><div><strong>Function:</strong> Revokes tokens, terminates processes, quarantines state and rolls back only where technically reversible.</div><div><strong class="prob">Problem:</strong> Some violations need immediate containment, but not all actions can be rolled back.</div><div><strong class="sol">Control Pattern:</strong> Use terminate, revoke, isolate, compensate or rollback based on action reversibility and dependency map.</div><div><strong class="evid">Evidence Hook:</strong> Containment logs; revocation records; rollback/compensation evidence.</div></div></div></a>
+<a class="nd-link" data-box="37" href="pages/box-37-yield-evaluate-soft.html" title="Open detail page for Yield &amp; Evaluate - Soft"><div class="nd matrix">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Logic Governor</div></div><div class="nd-num">37</div></div>
+<div class="nd-title">Yield &amp; Evaluate - Soft</div>
+<div class="ps-block"><div><strong>Function:</strong> Routes ambiguous semantic deviations to deterministic policy checks and evaluator review without automatically changing policy boundaries.</div><div><strong class="prob">Problem:</strong> Soft drift creates false positives if hard-blocked but risk if blindly allowed.</div><div><strong class="sol">Control Pattern:</strong> Allow or deny the specific action; policy boundary changes require approved policy update and redeployment.</div><div><strong class="evid">Evidence Hook:</strong> Evaluator record; policy decision; exception workflow; drift trend.</div></div></div></a>
+<a class="nd-link" data-box="39" href="pages/box-39-pause-escalate-high-impact.html" title="Open detail page for Pause &amp; Escalate - High Impact"><div class="nd matrix">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Intent Validator</div></div><div class="nd-num">39</div></div>
+<div class="nd-title">Pause &amp; Escalate - High Impact</div>
+<div class="ps-block"><div><strong>Function:</strong> Freezes high-impact or irreversible actions until authorized approvers complete required review.</div><div><strong class="prob">Problem:</strong> Irreversible or regulated actions require accountability before execution.</div><div><strong class="sol">Control Pattern:</strong> Trigger HITL, dual control, data owner approval, change approval or risk acceptance based on action class.</div><div><strong class="evid">Evidence Hook:</strong> Approval evidence; paused action record; escalation trail.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 3: Cognitive Governance, Human Accountability &amp; Evidence</div><div class="sec-line"></div></div>
+<div class="layer-desc exec">
+<div class="layer-icon">L3</div>
+<div>
+<h3>Cognitive Governance, Human Accountability &amp; Evidence</h3>
+<p>Provides human oversight, policy evaluation, decision accountability and evidence generation.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Ensures significant AI decisions can be traced, reviewed, challenged and defended.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="40" href="pages/box-40-human-accountability-dual-control.html" title="Open detail page for Human Accountability &amp; Dual Control"><div class="nd merged">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">HITL / IAM</div></div><div class="nd-num">40</div></div>
+<div class="nd-title">Human Accountability &amp; Dual Control</div>
+<div class="ps-block"><div><strong>Function:</strong> Verifies authorised accountable humans or dual-control approvers for high-risk action classes.</div><div><strong class="prob">Problem:</strong> Too many approvals cause rubber-stamping; too few leave accountability gaps.</div><div><strong class="sol">Control Pattern:</strong> Use risk-tiered approval routing, separation of duties, reason capture and approval expiry.</div><div><strong class="evid">Evidence Hook:</strong> Approver identity; reason code; SoD check; approval expiry.</div></div></div></a>
+<a class="nd-link" data-box="42" href="pages/box-42-policy-engine-evaluator-hub.html" title="Open detail page for Policy Engine &amp; Evaluator Hub"><div class="nd merged">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Policy / Eval</div></div><div class="nd-num">42</div></div>
+<div class="nd-title">Policy Engine &amp; Evaluator Hub</div>
+<div class="ps-block"><div><strong>Function:</strong> Runs deterministic policy-as-code first, then evaluator models for contextual assessment where appropriate.</div><div><strong class="prob">Problem:</strong> LLM-only governance is non-deterministic; rule-only governance misses nuance.</div><div><strong class="sol">Control Pattern:</strong> Use deterministic enforcement for hard rules and evaluator assistance for recommendations or ambiguity.</div><div><strong class="evid">Evidence Hook:</strong> OPA/Rego decisions; evaluator results; calibration data; overrides.</div></div></div></a>
+<a class="nd-link" data-box="43" href="pages/box-43-decision-lineage-evidence-schema.html" title="Open detail page for Decision Lineage &amp; Evidence Schema"><div class="nd zone-identity">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Audit Ledger</div></div><div class="nd-num">43</div></div>
+<div class="nd-title">Decision Lineage &amp; Evidence Schema</div>
+<div class="ps-block"><div><strong>Function:</strong> Creates signed evidence linking intent, Prodspec, prompt/model versions, retrieved context, policy decisions, tools, approvals, output and execution payload.</div><div><strong class="prob">Problem:</strong> Auditability is not the same as proving internal model reasoning.</div><div><strong class="sol">Control Pattern:</strong> Record evidence chain and explainability artefacts without claiming full proof of causal reasoning.</div><div><strong class="evid">Evidence Hook:</strong> Evidence record; signatures; model/prompt versions; retrieval references.</div></div></div></a>
+<a class="nd-link" data-box="45" href="pages/box-45-human-override-appeal-exception-management.html" title="Open detail page for Human Override, Appeal &amp; Exception Management"><div class="nd zone-exec">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Appeal / Exceptions</div></div><div class="nd-num">45</div></div>
+<div class="nd-title">Human Override, Appeal &amp; Exception Management</div>
+<div class="ps-block"><div><strong>Function:</strong> Supports customer-impacting decision appeal, human override, temporary exceptions, compensating controls and expiry.</div><div><strong class="prob">Problem:</strong> Regulated decisions need recourse, and exceptions can become permanent if unmanaged.</div><div><strong class="sol">Control Pattern:</strong> Require override authority, exception expiry, compensating controls, impact review and audit evidence.</div><div><strong class="evid">Evidence Hook:</strong> Appeal records; exception register; expiry logs; compensating controls.</div></div></div></a>
+</div>
+<div class="flow"><div class="flow-line"></div>↓ Policy, evidence and control context flow downward; telemetry and assurance flow upward ↓<div class="flow-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Layer 4: Observability, Incident Response, Assurance &amp; Resilience</div><div class="sec-line"></div></div>
+<div class="layer-desc detect">
+<div class="layer-icon">L4</div>
+<div>
+<h3>Observability, Incident Response, Assurance &amp; Resilience</h3>
+<p>Monitors AI behaviour, detects threats, manages incidents and validates control effectiveness over time.</p>
+</div>
+<div class="why"><b>Outcome</b><span>Creates continuous visibility, rapid response and long-term operational resilience.</span></div>
+</div>
+<div class="row">
+<a class="nd-link" data-box="46" href="pages/box-46-structured-agentic-telemetry-collection.html" title="Open detail page for Structured Agentic Telemetry Collection"><div class="nd zone-gateway">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">LLM Observability</div></div><div class="nd-num">46</div></div>
+<div class="nd-title">Structured Agentic Telemetry Collection</div>
+<div class="ps-block"><div><strong>Function:</strong> Captures prompts, context references, tool calls, memory writes, policy decisions, token usage, approvals, errors and security summaries.</div><div><strong class="prob">Problem:</strong> Traditional logs do not capture agent behaviour, but storing chain-of-thought can be unsafe and unreliable.</div><div><strong class="sol">Control Pattern:</strong> Capture structured telemetry and summaries rather than relying on true internal reasoning traces.</div><div><strong class="evid">Evidence Hook:</strong> Telemetry schema; trace IDs; log retention; privacy controls.</div></div></div></a>
+<a class="nd-link" data-box="47" href="pages/box-47-correlated-ai-threat-detection-ir.html" title="Open detail page for Correlated AI Threat Detection &amp; IR"><div class="nd zone-detect">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">XDR / SIEM / SOAR</div></div><div class="nd-num">47</div></div>
+<div class="nd-title">Correlated AI Threat Detection &amp; IR</div>
+<div class="ps-block"><div><strong>Function:</strong> Correlates agent telemetry with endpoint, identity, network, data and application logs, then triggers AI-specific incident playbooks.</div><div><strong class="prob">Problem:</strong> Prompt injection, rogue agents and data leakage require coordinated containment and forensics.</div><div><strong class="sol">Control Pattern:</strong> Build playbooks for rogue agent, prompt injection, memory poisoning, data leakage, cost runaway and supply-chain compromise.</div><div><strong class="evid">Evidence Hook:</strong> SIEM alerts; SOAR playbooks; incident records; forensic snapshots.</div></div></div></a>
+<a class="nd-link" data-box="48" href="pages/box-48-bias-drift-control-effectiveness-monitoring.html" title="Open detail page for Bias, Drift &amp; Control Effectiveness Monitoring"><div class="nd zone-runtime">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">AI GRC Monitor</div></div><div class="nd-num">48</div></div>
+<div class="nd-title">Bias, Drift &amp; Control Effectiveness Monitoring</div>
+<div class="ps-block"><div><strong>Function:</strong> Monitors systemic bias, model drift, performance degradation and control effectiveness against defined thresholds.</div><div><strong class="prob">Problem:</strong> Agents can degrade or create unfair outcomes over time even if individual actions seem acceptable.</div><div><strong class="sol">Control Pattern:</strong> Use continuous evaluation, sample review, fairness metrics, drift tests and control test evidence.</div><div><strong class="evid">Evidence Hook:</strong> Drift reports; fairness metrics; sample reviews; control test results.</div></div></div></a>
+<a class="nd-link" data-box="50" href="pages/box-50-resilience-dependency-fallback-management.html" title="Open detail page for Resilience Dependency &amp; Fallback Management"><div class="nd zone-detect">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Resilience Map</div></div><div class="nd-num">50</div></div>
+<div class="nd-title">Resilience Dependency &amp; Fallback Management</div>
+<div class="ps-block"><div><strong>Function:</strong> Defines fail-open, fail-closed, degrade, queue, manual takeover and approved model/provider fallback behaviour.</div><div><strong class="prob">Problem:</strong> Failure of gateway, policy engine, model provider, DLP or observability can create outages or unsafe bypasses.</div><div><strong class="sol">Control Pattern:</strong> Bind fallback posture to risk tier and action class, and test resilience scenarios regularly.</div><div><strong class="evid">Evidence Hook:</strong> Dependency map; fail-state tests; fallback logs; recovery evidence.</div></div></div></a>
+<a class="nd-link" data-box="51" href="pages/box-51-assurance-audit-reference-model-expansion-backlog.html" title="Open detail page for Assurance, Audit &amp; Reference Model Expansion Backlog"><div class="nd zone-exec">
+<div class="badge-row"><div class="badge-left"><div class="badge prod">Assurance Hub</div></div><div class="nd-num">51</div></div>
+<div class="nd-title">Assurance, Audit &amp; Reference Model Expansion Backlog</div>
+<div class="ps-block"><div><strong>Function:</strong> Maintains control owners, test methods, evidence requirements, maturity status and detailed expansion templates for every architecture box.</div><div><strong class="prob">Problem:</strong> The model cannot become real unless each box is owned, testable, measurable and enforceable.</div><div><strong class="sol">Control Pattern:</strong> Create a control catalogue with owner, objective, enforcement point, test method, evidence, maturity target and implementation patterns.</div><div><strong class="evid">Evidence Hook:</strong> Control catalogue; RACI; test plan; maturity roadmap; implementation backlog.</div></div></div></a>
+</div>
+<div class="narrative-block" style="margin-top:24px"><h3>How this becomes a real reference model</h3><p>The next expansion should create a detailed page for each numbered capability with: control objective, risk addressed, owner/RACI, enforcement point, Prodspec fields consumed, data inputs, outputs/evidence, maturity target, implementation patterns, failure modes, test method, residual risk and regulatory mapping. The <strong>Assurance Hub [42]</strong> is the backlog owner for that expansion.</p></div>
+<div class="table-container"><table><thead><tr><th>Threat / scenario</th><th>Control coverage</th><th>Primary architecture controls</th><th>Important caveat</th></tr></thead><tbody>
+<tr><td>Indirect prompt injection / RAG poisoning</td><td><span class="coverage">Partially mitigated</span></td><td>Data Boundary &amp; RAG [26], Prompt Inspection [25], Memory Governance [29], Tool Policy [09]</td><td>Cannot be fully eliminated; reduce impact through provenance, least privilege, tool isolation and egress controls.</td></tr>
+<tr><td>Confused deputy / delegated authority abuse</td><td><span class="coverage">Strong layered coverage</span></td><td>Tool Policy [09], Identity [22], Policy Hub [35], HITL [34]</td><td>Requires action-level authorization and data owner/business approval for high-impact actions.</td></tr>
+<tr><td>Economic denial of service</td><td><span class="coverage">Strong coverage</span></td><td>FinOps [28], Hard Response [31], Telemetry [38]</td><td>Needs budgets by lineage, loops, model/provider, API and business owner.</td></tr>
+<tr><td>Rogue child agents / shadow spawning</td><td><span class="coverage">Strong target-state coverage</span></td><td>Prodspec [08], A2A Governance [10], Identity [22], Admission [23]</td><td>Maturity depends on agent framework integration and workload identity adoption.</td></tr>
+<tr><td>Multi-turn jailbreak / semantic drift</td><td><span class="coverage">Partial coverage</span></td><td>Prompt Inspection [25], Evaluator Hub [35], Telemetry [38], Threat Detection [39]</td><td>Detection is probabilistic; reduce blast radius rather than claim complete prevention.</td></tr>
+<tr><td>Training data extraction / data leakage</td><td><span class="coverage">Partial coverage</span></td><td>Data Boundary [26], Output Inspection [25], Evidence [36]</td><td>Controls enterprise exposure; cannot fully control what a third-party foundation model has already learned.</td></tr>
+<tr><td>Compliance black box</td><td><span class="coverage">Improves auditability</span></td><td>Decision Lineage [36], GRC [03], Evidence [42]</td><td>Evidence chain supports audit, but does not prove true internal reasoning.</td></tr>
+<tr><td>Malicious code generation</td><td><span class="coverage">Risk reduction</span></td><td>Endpoint [21], Sandbox [24], Output Commitment [30]</td><td>Generated code must be treated as untrusted until reviewed, scanned or sandboxed.</td></tr>
+<tr><td>Identity spoofing / token theft</td><td><span class="coverage">Strong if implemented</span></td><td>Identity [22], A2A [10], Admission [23], Telemetry [38]</td><td>Requires token binding, mTLS/workload identity, short TTL and revocation.</td></tr>
+<tr><td>Supply-chain compromise</td><td><span class="coverage">Strong target-state coverage</span></td><td>Registries [04], Signing [05], TPRM [06], BOM [07]</td><td>Continuous monitoring and revalidation are required after dependency/model changes.</td></tr>
+<tr><td>Memory poisoning</td><td><span class="coverage">Partial / emerging</span></td><td>Memory Governance [29], Data Boundary [26], Detection [39]</td><td>Requires provenance, expiry, quarantine and review; reliable semantic detection is still emerging.</td></tr>
+<tr><td>Control-plane outage</td><td><span class="coverage">Strong target-state coverage</span></td><td>Resilience [41], Prodspec [08], Assurance [42]</td><td>Fail state must be risk-tiered; high-risk actions should fail closed or queue.</td></tr>
+</tbody></table></div>
+<div class="table-container"><table><thead><tr><th>Detailed expansion template</th><th>Fields to complete for every box</th></tr></thead><tbody>
+<tr><td>Control objective</td><td>What risk outcome this capability must prevent, detect, correct or evidence.</td></tr>
+<tr><td>Control owner / RACI</td><td>Business owner, product owner, technology owner, security owner, risk owner, data owner and operator.</td></tr>
+<tr><td>Prodspec dependency</td><td>Which Prodspec fields drive the control decision.</td></tr>
+<tr><td>Enforcement point</td><td>Where the control operates: CI/CD, registry, gateway, identity provider, runtime, data platform, SaaS, SIEM, GRC.</td></tr>
+<tr><td>Inputs and outputs</td><td>Telemetry, policy, identity, data classification, tool request, approval, evidence record.</td></tr>
+<tr><td>Test method</td><td>How effectiveness is proven: unit test, red team, control test, chaos test, tabletop, audit sample, synthetic transaction.</td></tr>
+<tr><td>Failure mode</td><td>Fail-open, fail-closed, degrade, queue, manual takeover, rollback or compensation.</td></tr>
+<tr><td>Residual risk</td><td>What remains imperfect and who accepts it.</td></tr>
+<tr><td>Regulatory mapping</td><td>APRA CPS 230/234/220, Privacy Act, CDR, SOCI, EU AI Act, NIST AI RMF, ISO 42001 or internal policy.</td></tr>
+</tbody></table></div>
+<div class="narrative-block" style="margin-top:24px">
+<h3>Reference Model Development Backlog</h3>
+<p>This backlog records the next major expansion items for turning the architecture diagram into a full security, risk, control and assurance reference model. It is intentionally separate from the architecture itself so that the model remains stable while the supporting libraries mature.</p>
+<div class="backlog-grid">
+<div class="backlog-card"><span class="prio p1">P1</span><h4>Capability page standardisation</h4><ul><li>Apply the detailed capability-page format to all 42 boxes.</li><li>Remove Layer -4 Capability Pages navigation link from the top navigation.</li><li>Individualise purpose, placement, risks, controls and examples.</li></ul></div>
+<div class="backlog-card"><span class="prio p1">P1</span><h4>Central libraries</h4><ul><li>Create linked repositories for risks, controls, metrics and evidence.</li><li>Reference each item from capability pages rather than duplicating content.</li></ul></div>
+<div class="backlog-card"><span class="prio p2">P2</span><h4>Service-domain navigation</h4><ul><li>Group capabilities into stable architecture service domains.</li><li>Support executive, security, risk and engineering navigation paths.</li></ul></div>
+</div>
+</div>
+<div class="footer">Generated as a modified v17 HTML reference model. The model deliberately avoids absolute claims such as “fully prevents prompt injection” or “proves model reasoning”; it uses enforceable control, evidence and risk-reduction language suitable for further architecture expansion.</div>
 </body></html>

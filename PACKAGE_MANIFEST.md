@@ -1,15 +1,14 @@
 # PACKAGE_MANIFEST.md
 
 ## Package
-Architecture_Numbering_Reconciliation_v3_Architecture_Fix
+Architecture_Numbering_Reconciliation_v4_Restore_Architecture_HTML
 
 ## Package Type
-Site integrity fix
+Site integrity repair
 
 ## Modified Files
 - architecture.html
-- index.html
-- architecture_live_audit.md
+- architecture_html_restore_audit.md
 - current_state.md
 - backlog.md
 - CHANGELOG.md
@@ -18,11 +17,8 @@ Site integrity fix
 ## Pages Modified
 None under /pages.
 
-## Navigation Changes
-architecture.html regenerated as canonical architecture map.
-
 ## Box Numbering Changes
-None. Uses the v2 canonical numbering.
+None. Uses canonical numbering from reconciliation v2.
 
 ## Rollback
-Restore files from Architecture_Numbering_Reconciliation_v2 or revert deployment commit.
+Restore architecture.html from the previous deployment or revert this package.

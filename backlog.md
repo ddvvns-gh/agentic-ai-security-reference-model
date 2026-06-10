@@ -1,19 +1,14 @@
 # backlog.md
 
-## Completed
-- Architecture Numbering Reconciliation v2 deployed.
-- Live site defect detected: architecture.html stale after renumbering.
-- Architecture map fix generated.
-
 ## In Progress
-- Deploy and verify Architecture_Numbering_Reconciliation_v3_Architecture_Fix.
+- Deploy and verify Architecture_Numbering_Reconciliation_v4_Restore_Architecture_HTML
 
 ## Next
-- Verify architecture.html shows 51 sequential boxes.
-- Verify canonical inventory matches architecture.html.
-- Resume L3/L2 consolidated review using reconciled numbering.
+- Verify architecture.html rich content is restored.
+- Verify visible numbering and links align with canonical inventory.
+- Resume L3/L2 consolidated review.
 
 ## Future
-- L1 Full Depth Upgrade.
-- Runtime Full Depth Upgrade.
-- Central traceability matrix.
+- L1 Full Depth Upgrade
+- Runtime Full Depth Upgrade
+- Traceability Matrix

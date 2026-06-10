@@ -1,15 +1,15 @@
 # CHANGELOG.md
 
-## Architecture_Numbering_Reconciliation_v3_Architecture_Fix
+## Architecture_Numbering_Reconciliation_v4_Restore_Architecture_HTML
 
 Status:
 Ready for deployment
 
 Reason:
-architecture.html was not fully updated by the numbering reconciliation. The map retained stale visible numbers and did not expose the full canonical 51-box inventory.
+v3 fixed numbering but replaced architecture.html with a simplified canonical inventory page.
 
 Changes:
-- Regenerated architecture.html from canonical page inventory.
-- Added live audit file.
-- Updated current_state.md, backlog.md, CHANGELOG.md and PACKAGE_MANIFEST.md.
-- Added an index.html pointer to the canonical architecture map.
+- Restored original rich architecture.html content.
+- Reapplied canonical filename links.
+- Updated visible card numbers and data-box attributes.
+- Preserved original architecture design and explanatory structure.

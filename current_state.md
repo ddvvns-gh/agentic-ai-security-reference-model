@@ -1,30 +1,19 @@
 # current_state.md
 
-## Current Accepted Version
-v18
-
 ## Current Package
-Architecture_Numbering_Reconciliation_v3_Architecture_Fix
+Architecture_Numbering_Reconciliation_v4_Restore_Architecture_HTML
 
 ## Purpose
-Fix site-level architecture map after numbering reconciliation.
+Repair architecture.html after v3 simplified the page and removed the rich architecture model content.
 
-## Completed in This Package
-- Audited live site issue reported against architecture.html.
-- Regenerated architecture.html from canonical 51-box inventory.
-- Ensured architecture.html visible box numbers, links and data-box values align.
-- Added architecture_live_audit.md.
-- Preserved existing page files and canonical numbering.
-- Updated index.html with a pointer to the canonical architecture map.
+## Completed
+- Restored rich architecture.html from latest site baseline.
+- Applied canonical numbering links from reconciliation v2.
+- Updated data-box attributes and visible card numbers based on linked canonical files.
+- Preserved original architecture visual layout and explanatory content.
 
 ## Gold Standard Reference
 Box 33 — Output Commitment Control
 
-## Site Integrity Rule
-AR-001: One Box Number = One Capability = One URL = One Canonical Page.
-
 ## Current Status
 Ready for deployment and visual verification.
-
-## Next Backlog Item
-After deployment, verify architecture.html and continue L3/L2 consolidated review using reconciled numbering.
