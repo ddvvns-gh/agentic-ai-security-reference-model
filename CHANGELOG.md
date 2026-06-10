@@ -1,17 +1,12 @@
 # CHANGELOG.md
 
-## Architecture_Integrity_Recovery_v1
+## Architecture_Integrity_Recovery_v2
 
 Status:
 Ready for deployment
 
-Reason:
-Review identified internal inconsistencies: index vs architecture box count, mismatched layer taxonomy, stale v17 wording, vendor overlay leakage and public/working-view messaging conflict.
-
 Changes:
-- Preserved rich architecture.html and added missing canonical boxes.
-- Aligned architecture.html with 51-box canonical inventory.
-- Aligned index.html layer taxonomy with architecture.html.
-- Removed/neutralised stale v17 and vendor-overlay language from public-facing architecture context.
-- Marked theindex.html as internal working view.
-- Updated project control files and added integrity audit report.
+- Fixed stale index.html layer taxonomy and public working-view messaging.
+- Removed remaining vendor-overlay wording from public architecture.html.
+- Cleaned stale v17, 42-box and Box 30-style prose references.
+- Preserved architecture.html rich layout and /pages content.
