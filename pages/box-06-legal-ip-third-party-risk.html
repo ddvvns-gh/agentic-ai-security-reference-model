@@ -39,13 +39,25 @@ table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}th{b
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk and third-party/service management relevance.</li><li>APRA CPS 234: information security capability and control assurance.</li><li>Privacy Act / OAIC APPs: privacy, data use and evidence obligations where personal information is involved.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Govern, Map, Measure and Manage functions.</li><li>ISO/IEC 42001: AI management system controls.</li><li>OWASP LLM / Agentic AI risks where applicable.</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every external AI dependency is legally, commercially and operationally understood before enterprise use.</p></div>
 
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Governance alignment</div><div class="sec-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment</div><div class="sec-line"></div></div>
+<div class="hero"><p><strong>Full-depth update:</strong> Legal, intellectual property and third-party AI risk is now integrated into supply-chain certification rather than treated as a procurement-only concern.</p></div>
 <div class="grid-2">
-<div class="card"><h3>Risk catalogue</h3><ul><li>Governance failure</li><li>Control bypass</li><li>Evidence deficiency</li><li>Assurance breakdown</li></ul></div>
-<div class="card"><h3>Control effectiveness</h3><ul><li>Coverage metrics</li><li>Quality metrics</li><li>Evidence completeness</li><li>Exception management</li></ul></div>
+<div class="card"><h3>Control objective</h3><p>Ensure external AI services, models, data sources, code assets and tool providers are legally approved, contractually governed and risk-assessed before use in material AI workflows.</p></div>
+<div class="card"><h3>Control statement</h3><p>AI systems must not consume third-party models, datasets, code, prompts, APIs or tool services unless their licensing, IP, privacy, contractual, operational and concentration risks have been assessed and approved.</p></div>
 </div>
-<div class="hero"><p>Traceability follows the Box 30 model: Risk → Threshold → Control → Metric → Evidence.</p></div>
+<div class="grid-2">
+<div class="card"><h3>Risk catalogue</h3><ul><li><strong>R-TPR-001:</strong> Unlicensed or restricted third-party content used by AI system.</li><li><strong>R-TPR-002:</strong> Contract terms incompatible with regulated data or operational requirements.</li><li><strong>R-TPR-003:</strong> Third-party model/provider changes behaviour without notice.</li><li><strong>R-TPR-004:</strong> Supplier dependency creates concentration or exit risk.</li></ul></div>
+<div class="card"><h3>Threat events</h3><ul><li>Agent uses third-party API that is not approved for sensitive data.</li><li>Open-source model license conflicts with commercial deployment.</li><li>Provider changes model terms or output policy affecting customer workflow.</li><li>Third-party outage affects material AI service.</li></ul></div>
+</div>
+<div class="grid-2">
+<div class="card"><h3>Preventive controls</h3><ul><li>Third-party AI register.</li><li>Legal/IP review before production use.</li><li>Data-use and residency approval gates.</li><li>Supplier contingency and exit assessment.</li></ul></div>
+<div class="card"><h3>Detective / corrective controls</h3><ul><li>Terms-of-service and model-policy change monitoring.</li><li>Provider dependency reviews.</li><li>Contract breach escalation.</li><li>Emergency migration or containment plan.</li></ul></div>
+</div>
+<div class="grid-2">
+<div class="card"><h3>Metrics</h3><ul><li>Approved third-party AI dependency coverage = 100%.</li><li>Unapproved third-party AI usage = 0.</li><li>Legal review completion = 100% for material dependencies.</li><li>Supplier exit plan coverage ≥ 95% for critical dependencies.</li></ul></div>
+<div class="card"><h3>Evidence</h3><ul><li>Third-party AI register.</li><li>Legal/IP assessment.</li><li>Supplier risk assessment.</li><li>Contract and data-use approval records.</li></ul></div>
+</div>
+<div class="hero"><h3>Traceability</h3><p><strong>Risk:</strong> unapproved third-party model use → <strong>Threshold:</strong> material or regulated workflow → <strong>Control:</strong> legal/IP and supplier approval gate → <strong>Metric:</strong> approved dependency coverage → <strong>Evidence:</strong> third-party AI register and legal assessment.</p></div>
 
 <div class="footer-nav"><a href="../pages/box-05-artefact-signing-dependency-control.html">← Previous capability</a><a href="../index.html">Back to architecture</a><a href="../pages/box-07-unified-bom-vulnerability-monitoring.html">Next capability →</a></div>
-
 </body></html>

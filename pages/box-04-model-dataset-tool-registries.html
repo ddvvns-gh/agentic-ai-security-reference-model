@@ -125,13 +125,25 @@ table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}th{b
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk and third-party/service management relevance.</li><li>APRA CPS 234: information security capability and control assurance.</li><li>Privacy Act / OAIC APPs: privacy, data use and evidence obligations where personal information is involved.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Govern, Map, Measure and Manage functions.</li><li>ISO/IEC 42001: AI management system controls.</li><li>OWASP LLM / Agentic AI risks where applicable.</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every AI artefact — whether human-created or AI-generated — is provenance-tracked, approval-chained, dependency-mapped, cryptographically attested where required, and continuously revalidated before it can influence enterprise agents.</p></div>
 
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Governance alignment</div><div class="sec-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment</div><div class="sec-line"></div></div>
+<div class="hero"><p><strong>Full-depth update:</strong> Model, dataset and tool registries are elevated from static catalogues to authoritative provenance and certification systems. Registration must include lineage, ownership, versioning, trust status and materiality classification.</p></div>
 <div class="grid-2">
-<div class="card"><h3>Risk catalogue</h3><ul><li>Governance failure</li><li>Control bypass</li><li>Evidence deficiency</li><li>Assurance breakdown</li></ul></div>
-<div class="card"><h3>Control effectiveness</h3><ul><li>Coverage metrics</li><li>Quality metrics</li><li>Evidence completeness</li><li>Exception management</li></ul></div>
+<div class="card"><h3>Control objective</h3><p>Ensure every model, dataset and tool used by agentic AI systems is registered, classified, owned, versioned and linked to evidence before it can be used in material workflows.</p></div>
+<div class="card"><h3>Control statement</h3><p>AI systems must only use approved models, datasets and tools from authoritative registries. Registry entries must support provenance, trust classification, dependency mapping, lifecycle state and evidence of approval.</p></div>
 </div>
-<div class="hero"><p>Traceability follows the Box 30 model: Risk → Threshold → Control → Metric → Evidence.</p></div>
+<div class="grid-2">
+<div class="card"><h3>Risk catalogue</h3><ul><li><strong>R-SCP-001:</strong> Unregistered model, dataset or tool used in production.</li><li><strong>R-SCP-002:</strong> Unknown provenance or ownership.</li><li><strong>R-SCP-003:</strong> Stale or uncertified artifact used by agent.</li><li><strong>R-SCP-004:</strong> Registry drift between declared and actual runtime dependencies.</li></ul></div>
+<div class="card"><h3>Threat events</h3><ul><li>Agent invokes a tool that is not present in the approved tool registry.</li><li>Model version changes without corresponding approval or evidence update.</li><li>Dataset lineage is incomplete for a regulated workflow.</li><li>Runtime dependency differs from registered bill of materials.</li></ul></div>
+</div>
+<div class="grid-2">
+<div class="card"><h3>Preventive controls</h3><ul><li>Mandatory model, dataset and tool registration.</li><li>Lifecycle state gating for production use.</li><li>Registry-to-runtime allow-list enforcement.</li><li>Owner and approval linkage before activation.</li></ul></div>
+<div class="card"><h3>Detective / corrective controls</h3><ul><li>Registry/runtime reconciliation.</li><li>Unregistered artifact detection.</li><li>Suspension of uncertified dependencies.</li><li>Retrospective registration and risk acceptance workflow.</li></ul></div>
+</div>
+<div class="grid-2">
+<div class="card"><h3>Metrics</h3><ul><li>Registered artifact coverage = 100% for material systems.</li><li>Runtime-to-registry reconciliation accuracy ≥ 99%.</li><li>Unowned registry entries = 0.</li><li>Uncertified production artifacts = 0.</li></ul></div>
+<div class="card"><h3>Evidence</h3><ul><li>Model registry records.</li><li>Dataset lineage records.</li><li>Tool registry and approval records.</li><li>Runtime dependency reconciliation reports.</li></ul></div>
+</div>
+<div class="hero"><h3>Traceability</h3><p><strong>Risk:</strong> Unregistered artifact use → <strong>Threshold:</strong> material workflow dependency → <strong>Control:</strong> registry-to-runtime allow-list enforcement → <strong>Metric:</strong> registered artifact coverage → <strong>Evidence:</strong> registry and reconciliation record.</p></div>
 
 <div class="footer-nav"><a href="../pages/box-03-executive-grc-attestation-plane.html">← Previous capability</a><a href="../index.html">Back to architecture</a><a href="../pages/box-05-artefact-signing-dependency-control.html">Next capability →</a></div>
-
 </body></html>

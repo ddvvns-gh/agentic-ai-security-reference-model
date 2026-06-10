@@ -1,17 +1,18 @@
 # CHANGELOG.md
 
-## L4 Review Comments HTML Update v2
+## L3/L2 Full Depth Box 30 Upgrade
 
 Status:
 Ready for deployment
 
 Scope:
-Boxes 01-03
+- Boxes 04-07: L-3 Supply Chain & Provenance
+- Boxes 08-15: L-2 Prodspec Control Contract
 
 Changes:
-- Box 01: Added separation between structural mutations and semantic mutations; introduced Semantic Drift Assertion Pipeline and Re-certification Materiality Gate.
-- Box 02: Added Transaction Idempotency, Rollback Handlers, Deterministic Compensation Workflow and Partial Commitment Isolation to prevent grey failures after circuit breaker activation.
-- Box 03: Added Asymmetric Dual-Prompt Architecture for closed-box reasoning models and enterprise-verifiable plan blocks for cryptographic lineage.
+- Added control objectives, control statements, risk catalogues, threat events, preventive/detective/corrective controls, metrics, evidence and traceability sections.
+- L-3 pages receive supply-chain specific treatment for registries, artifact signing, legal/IP/third-party risk and AIBOM vulnerability monitoring.
+- L-2 pages receive prodspec contract governance treatment.
 
 No navigation changes.
 No layer changes.

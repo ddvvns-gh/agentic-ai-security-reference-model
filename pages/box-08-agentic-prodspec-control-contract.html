@@ -40,22 +40,24 @@ table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}th{b
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk, resilience and accountability.</li><li>APRA CPS 234: information security capability and control assurance.</li><li>Privacy Act / OAIC APPs: privacy and evidence obligations where personal information is involved.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Govern, Map, Measure and Manage functions.</li><li>ISO/IEC 42001: AI management system controls.</li><li>OWASP LLM / Agentic AI risks where applicable.</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every agent operates under a versioned control contract enforced by external systems, not by model self-policing.</p></div>
 
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Gold Standard Governance</div><div class="sec-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment</div><div class="sec-line"></div></div>
+<div class="hero"><p><strong>Full-depth update:</strong> This Prodspec Control Contract capability is upgraded to define enforceable control obligations, measurable evidence and runtime traceability before agentic execution.</p></div>
 <div class="grid-2">
-<div class="card">
-<h3>Control Objective</h3>
-<p>Establish measurable governance outcomes aligned to the Box 30 model.</p>
-<h3>Risk Catalogue</h3>
-<ul><li>Control failure</li><li>Policy bypass</li><li>Evidence deficiency</li><li>Operational drift</li></ul>
+<div class="card"><h3>Control objective</h3><p>Ensure the capability defines clear policy intent, technical control requirements, evidence obligations and threshold behaviour for all material AI systems that depend on this contract.</p></div>
+<div class="card"><h3>Control statement</h3><p>Agentic AI systems must not rely on this capability unless the prodspec contract is versioned, approved, testable, monitored and linked to runtime evidence.</p></div>
 </div>
-<div class="card">
-<h3>Metrics & Evidence</h3>
-<ul><li>Coverage</li><li>Control effectiveness</li><li>Evidence completeness</li><li>Exception closure</li></ul>
+<div class="grid-2">
+<div class="card"><h3>Risk catalogue</h3><ul><li><strong>R-PSC-001:</strong> Prodspec contract is ambiguous or unenforceable.</li><li><strong>R-PSC-002:</strong> Runtime behaviour deviates from declared contract.</li><li><strong>R-PSC-003:</strong> Contract changes are not versioned, approved or tested.</li><li><strong>R-PSC-004:</strong> Evidence required by contract is not produced or retained.</li></ul></div>
+<div class="card"><h3>Threat events</h3><ul><li>Agent executes an action not covered by approved control contract.</li><li>Contract update changes permissible behaviour without revalidation.</li><li>Evidence collection fails during material decision or tool invocation.</li><li>Threshold escalation is bypassed because contract logic is incomplete.</li></ul></div>
 </div>
+<div class="grid-2">
+<div class="card"><h3>Preventive controls</h3><ul><li>Contract versioning and approval.</li><li>Policy-as-code validation.</li><li>Threshold and evidence requirement declaration.</li><li>Runtime gating on contract validity.</li></ul></div>
+<div class="card"><h3>Detective / corrective controls</h3><ul><li>Contract conformance monitoring.</li><li>Runtime drift detection.</li><li>Exception and waiver workflow.</li><li>Rollback to last approved contract version.</li></ul></div>
 </div>
-<div class="hero">
-<p><strong>Traceability:</strong> Risk → Threshold → Control → Metric → Evidence</p>
-<p><strong>Assurance:</strong> Preventive, Detective and Corrective controls validated through audit procedures and maturity assessments.</p>
+<div class="grid-2">
+<div class="card"><h3>Metrics</h3><ul><li>Approved contract coverage = 100% for material systems.</li><li>Contract conformance rate ≥ 99%.</li><li>Unapproved contract changes = 0.</li><li>Evidence completeness = 100% for T3–T5 workflows.</li></ul></div>
+<div class="card"><h3>Evidence</h3><ul><li>Approved prodspec contract.</li><li>Version history and approval record.</li><li>Policy-as-code test results.</li><li>Runtime conformance and evidence logs.</li></ul></div>
 </div>
+<div class="hero"><h3>Traceability</h3><p><strong>Risk:</strong> runtime behaviour deviates from contract → <strong>Threshold:</strong> material AI workflow → <strong>Control:</strong> contract validity and conformance gate → <strong>Metric:</strong> conformance rate → <strong>Evidence:</strong> approved contract and runtime conformance logs.</p></div>
 
 <div class="footer-nav"><a href="../pages/box-07-unified-bom-vulnerability-monitoring.html">← Previous capability</a><a href="../index.html">Back to architecture</a><a href="../pages/box-09-tool-invocation-policy-model.html">Next capability →</a></div></body></html>

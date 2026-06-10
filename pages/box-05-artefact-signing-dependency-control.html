@@ -39,13 +39,25 @@ table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2)}th{b
 <div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory and framework alignment</div><div class="sec-line"></div></div><div class="grid-2"><div class="card"><h3>Regulatory relevance</h3><ul><li>APRA CPS 230: operational risk and third-party/service management relevance.</li><li>APRA CPS 234: information security capability and control assurance.</li><li>Privacy Act / OAIC APPs: privacy, data use and evidence obligations where personal information is involved.</li></ul></div><div class="card"><h3>Reference frameworks</h3><ul><li>NIST AI RMF: Govern, Map, Measure and Manage functions.</li><li>ISO/IEC 42001: AI management system controls.</li><li>OWASP LLM / Agentic AI risks where applicable.</li></ul></div></div>
 <div class="sec"><div class="sec-line"></div><div class="sec-label">North-star vision</div><div class="sec-line"></div></div><div class="hero"><p>Every deployed AI artefact is signed, verified and traceable to an approved build and dependency baseline.</p></div>
 
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Governance alignment</div><div class="sec-line"></div></div>
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Box 30 full-depth alignment</div><div class="sec-line"></div></div>
+<div class="hero"><p><strong>Full-depth update:</strong> Artifact signing and dependency control now extends to model weights, prompts, tool manifests, policy files, container images, orchestration code and generated agent packages.</p></div>
 <div class="grid-2">
-<div class="card"><h3>Risk catalogue</h3><ul><li>Governance failure</li><li>Control bypass</li><li>Evidence deficiency</li><li>Assurance breakdown</li></ul></div>
-<div class="card"><h3>Control effectiveness</h3><ul><li>Coverage metrics</li><li>Quality metrics</li><li>Evidence completeness</li><li>Exception management</li></ul></div>
+<div class="card"><h3>Control objective</h3><p>Ensure AI artifacts and dependencies are tamper-evident, approved and traceable from source through deployment and runtime execution.</p></div>
+<div class="card"><h3>Control statement</h3><p>Material AI artifacts must be signed, verified and bound to a dependency manifest before execution. Unsigned, tampered or unapproved artifacts must be blocked from production use.</p></div>
 </div>
-<div class="hero"><p>Traceability follows the Box 30 model: Risk → Threshold → Control → Metric → Evidence.</p></div>
+<div class="grid-2">
+<div class="card"><h3>Risk catalogue</h3><ul><li><strong>R-SCP-005:</strong> Tampered artifact enters production.</li><li><strong>R-SCP-006:</strong> Dependency substitution or version confusion.</li><li><strong>R-SCP-007:</strong> Prompt or policy asset altered outside approval path.</li><li><strong>R-SCP-008:</strong> Runtime executes artifact that does not match approved manifest.</li></ul></div>
+<div class="card"><h3>Threat events</h3><ul><li>Prompt template modified in repository without approval.</li><li>Model artifact hash differs from registered version.</li><li>Tool manifest changed after certification.</li><li>Dependency package replaced by malicious or vulnerable version.</li></ul></div>
+</div>
+<div class="grid-2">
+<div class="card"><h3>Preventive controls</h3><ul><li>Artifact signing and hash verification.</li><li>Dependency lock files and signed manifests.</li><li>Policy-as-code approval gates.</li><li>Deployment block on signature mismatch.</li></ul></div>
+<div class="card"><h3>Detective / corrective controls</h3><ul><li>Signature verification monitoring.</li><li>Manifest drift detection.</li><li>Artifact quarantine.</li><li>Rollback to last approved signed version.</li></ul></div>
+</div>
+<div class="grid-2">
+<div class="card"><h3>Metrics</h3><ul><li>Signed artifact coverage = 100% for production AI artifacts.</li><li>Manifest verification success ≥ 99%.</li><li>Unauthorized artifact execution = 0.</li><li>Mean time to quarantine tampered artifact within SLA.</li></ul></div>
+<div class="card"><h3>Evidence</h3><ul><li>Signed artifact manifest.</li><li>Hash verification logs.</li><li>Deployment approval record.</li><li>Quarantine and rollback records.</li></ul></div>
+</div>
+<div class="hero"><h3>Traceability</h3><p><strong>Risk:</strong> Tampered artifact execution → <strong>Threshold:</strong> production artifact → <strong>Control:</strong> signature and manifest verification → <strong>Metric:</strong> verification success rate → <strong>Evidence:</strong> signed manifest and verification log.</p></div>
 
 <div class="footer-nav"><a href="../pages/box-04-model-dataset-tool-registries.html">← Previous capability</a><a href="../index.html">Back to architecture</a><a href="../pages/box-06-legal-ip-third-party-risk.html">Next capability →</a></div>
-
 </body></html>
