@@ -1,7 +1,7 @@
 # PACKAGE_MANIFEST.md
 
 ## Package
-L4_Review_Comments_HTML_Update
+L4_Review_Comments_HTML_Update_v2
 
 ## Package Type
 Deployable HTML update
