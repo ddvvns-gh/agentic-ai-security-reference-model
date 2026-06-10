@@ -1,16 +1,28 @@
 # PACKAGE_MANIFEST.md
 
 ## Package
-Architecture_Numbering_Reconciliation_v2
+Architecture_Numbering_Reconciliation_v3_Architecture_Fix
 
-## Type
-Whole-site structural integrity update.
+## Package Type
+Site integrity fix
 
-## Pages
-51 canonical replacement pages included under `/pages`.
+## Modified Files
+- architecture.html
+- index.html
+- architecture_live_audit.md
+- current_state.md
+- backlog.md
+- CHANGELOG.md
+- PACKAGE_MANIFEST.md
 
-## Required Post-Deploy Deletions
-See `DELETE_FILES_FOR_RENUMBERING.txt`.
+## Pages Modified
+None under /pages.
 
-## Safety Note
-Do not delete obsolete files until replacement files from this package are committed.
+## Navigation Changes
+architecture.html regenerated as canonical architecture map.
+
+## Box Numbering Changes
+None. Uses the v2 canonical numbering.
+
+## Rollback
+Restore files from Architecture_Numbering_Reconciliation_v2 or revert deployment commit.

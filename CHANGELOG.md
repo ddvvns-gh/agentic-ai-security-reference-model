@@ -1,8 +1,15 @@
 # CHANGELOG.md
 
-## Architecture_Numbering_Reconciliation_v2
+## Architecture_Numbering_Reconciliation_v3_Architecture_Fix
 
-- Corrects v1 packaging concern by ensuring replacement box pages exist as complete HTML pages.
-- Preserves all valid capabilities.
-- Renumbers site sequentially from Box 01 to Box 51.
-- Adds deployment checklist and delete list.
+Status:
+Ready for deployment
+
+Reason:
+architecture.html was not fully updated by the numbering reconciliation. The map retained stale visible numbers and did not expose the full canonical 51-box inventory.
+
+Changes:
+- Regenerated architecture.html from canonical page inventory.
+- Added live audit file.
+- Updated current_state.md, backlog.md, CHANGELOG.md and PACKAGE_MANIFEST.md.
+- Added an index.html pointer to the canonical architecture map.
