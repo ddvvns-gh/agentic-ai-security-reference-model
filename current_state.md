@@ -49,12 +49,12 @@ Last updated: 2026-06-24.
 ## Content phase — in progress
 - **Authoring order: L2 (Model Layer, boxes 28–39) first**, then spine-first (C1→C2→C3) per the delivery sequence in `backlog.md`. (Authoring order ≠ delivery order — deliberate.)
 - Detail-tier pages are authored to audit-grade depth (control objective/statement/design/I-O/test/failure/regulatory; risk scenario/rating/controls/residual; metric definition/formula/target; evidence field-schema), fully cross-linked, with draft ATT&CK/ATLAS mapping on risk pages (backlog 10a preview).
-- **L2 capabilities fully authored: 33, 34, 39, 31 (4 / 12).** Remaining L2: 28, 29, 30, 32, 35 (Frontier-tier), 36, 38.
+- **L2 (Model Layer, boxes 28–39) detail tier COMPLETE — 12 / 12 capabilities authored (~198 detail pages).** Box 35 (Autonomous Risk Scoring) tagged Frontier/emerging throughout (backlog item 7).
 - 0 broken links maintained throughout.
 
 ## Next (content phase)
-- Continue L2: boxes 28, 29, 30, 32, 35, 36, 38.
-- Then spine-first across C1 → C2 → C3, then remaining layers.
+- Begin the spine per the delivery sequence: C1 (Identity & Execution — boxes 22, 24, 25, 26, 27) → C2 (Policy Contract — 08, 09, 16, 41, 42) → C3 (Telemetry/Evidence/SecOps — 43, 46, 47, 48).
+- Then remaining layers (L-4, L-3, L-2, L-1, L0, L1, L3, L4) capability by capability.
 - Fill the ~23 governance placeholder pages.
 
 ## Provenance
