@@ -46,9 +46,16 @@ Last updated: 2026-06-24.
 - In-repo `.zip` snapshots (`current_Archive.zip`, slides zip) and the mislabeled `slides/robots` archive removed.
 - ID convention standardised on `<type>-<domain>-<NNN>` (see above).
 
+## Content phase — in progress
+- **Authoring order: L2 (Model Layer, boxes 28–39) first**, then spine-first (C1→C2→C3) per the delivery sequence in `backlog.md`. (Authoring order ≠ delivery order — deliberate.)
+- Detail-tier pages are authored to audit-grade depth (control objective/statement/design/I-O/test/failure/regulatory; risk scenario/rating/controls/residual; metric definition/formula/target; evidence field-schema), fully cross-linked, with draft ATT&CK/ATLAS mapping on risk pages (backlog 10a preview).
+- **L2 capabilities fully authored: 33, 34, 39, 31 (4 / 12).** Remaining L2: 28, 29, 30, 32, 35 (Frontier-tier), 36, 38.
+- 0 broken links maintained throughout.
+
 ## Next (content phase)
-- Author real content into the highest-priority detail-tier placeholders, capability by capability.
-- Begin filling the ~23 governance placeholder pages.
+- Continue L2: boxes 28, 29, 30, 32, 35, 36, 38.
+- Then spine-first across C1 → C2 → C3, then remaining layers.
+- Fill the ~23 governance placeholder pages.
 
 ## Provenance
 See `SITE-INTEGRITY-AUDIT-AND-CLEANUP-PLAN.md` for the full audit that established this baseline.
