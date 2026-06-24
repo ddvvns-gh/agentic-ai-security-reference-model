@@ -19,8 +19,10 @@ Last updated: 2026-06-24.
 - Every box-referenced detail page exists. Pages authored to gold standard are full; the remainder are **honest placeholders** carrying real ID, name, description, type/consumer and a back-link to the parent box, with a "detail to be authored" scaffold.
 - **Live tier: 0 broken internal links** across all box pages, detail libraries, `index.html` and `architecture.html` (~862 pages).
 
-## ID conventions (open item for standardisation)
-- Two conventions coexist: older `c-<dom>-NNN` (most of the original 38 boxes) and `<dom>-cNN` (Box 33 gold reference and all boxes built/upgraded since). Standardisation is a pending direction decision; no functional impact.
+## ID convention — standardised
+- **Single scheme across all 785 detail pages: `<type>-<domain>-<NNN>`** (e.g. `c-occ-001`, `r-a2a-006`, `m-pac-003`, `e-bvm-002`); displayed codes `C-OCC-001` etc.
+- The newer `<dom>-cNN` scheme (Box 33 reference and 18 other boxes) was migrated to this convention; 359 files renamed, all references and displayed codes updated.
+- One collision resolved: Box 10's `a2a` risk/evidence items bumped to `r-a2a-006` / `e-a2a-004` to avoid clashing with Box 22's `r-a2a-005` / `e-a2a-003`. No duplicate codes remain.
 
 ## Governance artefacts
 - 26 shared governance artefact pages present under `governance/`.
@@ -39,15 +41,14 @@ Last updated: 2026-06-24.
 - Rebuilt `controls/index.html` and `risks/index.html` as consistent library indexes.
 - **No "Palo Alto" / "idira" vendor wording remains in the live tier.**
 
-## Open items (not integrity-blocking)
-- Remaining in-repo `.zip` snapshots and the `slides/robots` mislabeled archive (optional removal).
-- Public `index.html` exposes the working view (`theindex.html`) — open direction decision.
-- ID-convention standardisation (`c-<dom>-NNN` vs `<dom>-cNN`) — open direction decision.
+## Operational decisions — resolved
+- Working view (`theindex.html`) is **internal-only**: the public "Open Working View" link was removed from `index.html`. The file is retained but not linked publicly.
+- In-repo `.zip` snapshots (`current_Archive.zip`, slides zip) and the mislabeled `slides/robots` archive removed.
+- ID convention standardised on `<type>-<domain>-<NNN>` (see above).
 
-## Next
+## Next (content phase)
 - Author real content into the highest-priority detail-tier placeholders, capability by capability.
 - Begin filling the ~23 governance placeholder pages.
-- Resolve the ID-convention and working-view-exposure decisions.
 
 ## Provenance
 See `SITE-INTEGRITY-AUDIT-AND-CLEANUP-PLAN.md` for the full audit that established this baseline.
