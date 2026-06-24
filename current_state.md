@@ -52,8 +52,13 @@ Last updated: 2026-06-24.
 - **L2 (Model Layer, boxes 28–39) detail tier COMPLETE — 12 / 12 capabilities authored (~198 detail pages).** Box 35 (Autonomous Risk Scoring) tagged Frontier/emerging throughout (backlog item 7).
 - 0 broken links maintained throughout.
 
+## Spine (delivery sequence) — in progress
+- **C1 · Identity & Execution Trust COMPLETE** — boxes 22, 24, 25, 26, 27 authored (~65 pages). Identity standards (SPIFFE/SPIRE, OAuth 2.1 / RFC 8693, NIST NCCoE) cited in box 25 per backlog item 9.
+- Box 22's four shared `a2a-*` references belong to box 10 (C2) and remain stubs until then.
+
 ## Next (content phase)
-- Begin the spine per the delivery sequence: C1 (Identity & Execution — boxes 22, 24, 25, 26, 27) → C2 (Policy Contract — 08, 09, 16, 41, 42) → C3 (Telemetry/Evidence/SecOps — 43, 46, 47, 48).
+- C2 · Policy Contract & Enforcement — boxes 08, 09, 16, 41, 42 (authoring box 10's a2a-* shared pages alongside).
+- C3 · Telemetry, Evidence & SecOps — boxes 43, 46, 47, 48.
 - Then remaining layers (L-4, L-3, L-2, L-1, L0, L1, L3, L4) capability by capability.
 - Fill the ~23 governance placeholder pages.
 
