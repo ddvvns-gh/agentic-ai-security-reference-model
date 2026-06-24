@@ -1,23 +1,74 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="noindex, nofollow" name="robots"/><title>C-OCC-001 · Commitment Authority Validation</title><style>@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-:root{--bg:#05070a;--surface:#0a0e14;--surface2:#10161f;--border:#1a2332;--border-hi:#253445;--gold:#fbbf24;--cyan:#00c8d4;--text:#e2e8f0;--text2:#94a3b8}
-*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:32px 28px 60px;min-width:760px}a{color:var(--cyan);text-decoration:none}a:hover{color:var(--gold)}
+:root{--bg:#05070a;--surface:#0a0e14;--surface2:#10161f;--border:#1a2332;--border-hi:#253445;--gold:#fbbf24;--cyan:#00c8d4;--text:#e2e8f0;--text2:#94a3b8;--green:#3dd68c;--amber:#f5c842;--red:#f43f5e}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:32px 28px 60px;min-width:820px;max-width:1080px}a{color:var(--cyan);text-decoration:none}a:hover{color:var(--gold)}
 .hdr{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:16px}.hdr-title{font-size:22px;font-weight:700;line-height:1.25}.hdr-title span{font-weight:400;color:var(--text2)}.hdr-sub{margin-top:8px;font-size:11px;color:var(--gold);font-family:'DM Mono',monospace;letter-spacing:.06em}
 .navbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.navbar a{color:var(--text);border:1px solid var(--border-hi);background:var(--surface2);padding:7px 10px;border-radius:4px;font-size:11px}
-.badge{display:inline-block;font-family:'DM Mono';font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:4px;margin-bottom:14px}
+.badge{display:inline-block;font-family:'DM Mono';font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:4px;margin-bottom:14px;color:#93c5fd;background:rgba(96,165,250,.14);border:1px solid rgba(96,165,250,.38)}
 .hero{background:linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));border:1px solid var(--border-hi);border-radius:10px;padding:20px 22px;margin-bottom:16px}.hero h1{font-size:21px;margin-bottom:8px}.hero p{color:var(--text2);line-height:1.6;font-size:14px}
-.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.meta .cell{border:1px solid var(--border-hi);background:var(--surface);border-radius:8px;padding:12px 14px;font-size:12px}.meta b{font-family:'DM Mono';font-size:9px;text-transform:uppercase;color:var(--text2);display:block;margin-bottom:4px}
-.sec{display:flex;align-items:center;gap:10px;margin:22px 0 12px}.sec-line{flex:1;height:1px;background:var(--border)}.sec-label{font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text2);text-transform:uppercase}
-.card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:15px 16px;color:var(--text2);line-height:1.55;font-size:13px}.card ul{margin-left:18px;display:flex;flex-direction:column;gap:6px;margin-top:6px}
-.note{border-left:3px solid var(--gold);background:rgba(251,191,36,.08);padding:11px 14px;border-radius:5px;color:var(--text2);font-size:12px;margin-top:14px}
-.footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}
-.badge{color:#93c5fd;background:rgba(96,165,250,.14);border:1px solid rgba(96,165,250,.38)}</style></head><body>
-<div class="hdr"><div class="hdr-title">C-OCC-001 · Commitment Authority Validation<br/><span>Control Library — Reference Model</span></div><div class="hdr-sub">Placeholder · metadata captured, detail to be authored</div></div>
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px}.meta .cell{border:1px solid var(--border-hi);background:var(--surface);border-radius:8px;padding:12px 14px;font-size:12px}.meta b{font-family:'DM Mono';font-size:9px;text-transform:uppercase;color:var(--text2);display:block;margin-bottom:4px}
+.sec{display:flex;align-items:center;gap:10px;margin:24px 0 12px}.sec-line{flex:1;height:1px;background:var(--border)}.sec-label{font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text2);text-transform:uppercase}
+.card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:15px 16px;color:var(--text2);line-height:1.6;font-size:13px}.card+.card{margin-top:10px}.card h3{color:var(--text);font-size:13px;margin-bottom:7px}.card ul{margin-left:18px;display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.statement{border-left:3px solid var(--cyan);background:rgba(0,200,212,.07);padding:13px 15px;border-radius:5px;color:var(--text);font-size:13px;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:12px;color:var(--text2);background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;overflow:hidden}th{background:var(--surface2);color:var(--text);font-family:'DM Mono';font-size:9px;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}td{padding:10px 12px;border-bottom:1px solid var(--border-hi);vertical-align:top;line-height:1.45}tr:last-child td{border-bottom:none}
+.xr{display:inline-block;font-family:'DM Mono';font-size:9px;font-weight:800;letter-spacing:.04em;padding:3px 6px;border-radius:4px}.xr-r{color:#fda4af;background:rgba(244,63,94,.14);border:1px solid rgba(244,63,94,.34)}.xr-c{color:#93c5fd;background:rgba(96,165,250,.14);border:1px solid rgba(96,165,250,.34)}.xr-m{color:#f5c842;background:rgba(245,200,66,.14);border:1px solid rgba(245,200,66,.34)}.xr-e{color:#c4b5fd;background:rgba(167,139,250,.14);border:1px solid rgba(167,139,250,.34)}
+.footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}</style></head><body>
+<div class="hdr"><div class="hdr-title">C-OCC-001 · Commitment Authority Validation<br/><span>Control Library — Reference Model</span></div><div class="hdr-sub">Authored · Preventive · External control plane</div></div>
 <div class="navbar"><a href="../index.html">← Home</a><a href="../architecture.html">Architecture</a><a href="../controls/">Control library</a><a href="../pages/box-33-output-commitment-control.html">↑ Box 33 · Output Commitment Control</a></div>
 <span class="badge">C-OCC-001</span>
-<div class="hero"><h1>Commitment Authority Validation</h1><p>Verify delegated authority and purpose.</p></div>
-<div class="meta"><div class="cell"><b>Control ID</b>C-OCC-001</div><div class="cell"><b>Control type</b>Preventive</div><div class="cell"><b>Parent capability</b>Box 33 · Output Commitment Control</div><div class="cell"><b>Status</b>Placeholder — for expansion</div></div>
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Detail to be authored</div><div class="sec-line"></div></div>
-<div class="card">This control page is a structured placeholder. The summary above is authoritative; the full detail below is queued for build-out.<ul><li>Scope and applicability</li><li>Control objective, design and operation</li><li>Linked risks, metrics and evidence</li><li>Assurance and review approach</li></ul><div class="note">Generated as part of the detail-tier stub sweep. Honest placeholder — eliminates the broken link while real content is authored.</div></div>
+<div class="hero"><h1>Commitment Authority Validation</h1><p>Before any agent output becomes an enterprise commitment, positively verify the acting agent's delegated authority and the action's declared purpose against an authoritative source — in the control plane, not in the agent.</p></div>
+<div class="meta"><div class="cell"><b>Control ID</b>C-OCC-001</div><div class="cell"><b>Type</b>Preventive</div><div class="cell"><b>Trust domain</b>Decision · Identity</div><div class="cell"><b>Enforcement point</b>Commitment gateway (pre-execution)</div><div class="cell"><b>Failure posture</b>Fail-closed</div><div class="cell"><b>Parent capability</b>Box 33 · Output Commitment Control</div></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Control objective</div><div class="sec-line"></div></div>
+<div class="card">Ensure that no agent output is allowed to become an enterprise commitment unless the acting agent — and every principal in its delegation chain — holds current, sufficient delegated authority for that action type, value band and purpose. The objective is to make "who is allowed to commit the enterprise to what" a deterministic, externally enforced check rather than an implicit property of the model's behaviour.</div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Control statement</div><div class="sec-line"></div></div>
+<div class="statement">Every output classified as a commitment (per <a href="c-occ-002-commitment-classification.html">C-OCC-002</a>) <strong>must</strong> be validated against the acting agent's and any delegating principal's <em>current</em> delegated authority and declared purpose <em>before</em> execution. Validation <strong>must</strong> be performed by the external control plane, <strong>must</strong> fail closed on any missing authority, stale matrix or unresolved delegation lineage, and <strong>must</strong> emit an authority-validation record for every decision.</div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Design &amp; operation</div><div class="sec-line"></div></div>
+<div class="card"><ol style="margin-left:18px;display:flex;flex-direction:column;gap:7px">
+<li><strong>Trigger.</strong> An output is classified as commitment-bearing by C-OCC-002 (e.g. payment, contract, external representation, irreversible state change).</li>
+<li><strong>Resolve principal &amp; lineage.</strong> The gateway resolves the agent's cryptographic identity and full delegation chain from the identity/lineage controls (Box 25), including any human-on-behalf-of relationship.</li>
+<li><strong>Look up authority.</strong> The action type, counterparty class, value band and declared purpose are evaluated against the versioned <a href="../governance/delegated-authority-framework.html">Delegated Authority Framework</a> and <a href="../governance/enterprise-commitment-threshold-matrix.html">Commitment Threshold Matrix</a>.</li>
+<li><strong>Decide.</strong> If the action is wholly within authority → allow. If it exceeds authority or purpose → deny and route to human approval (<a href="c-occ-004-human-approval-control.html">C-OCC-004</a>) or escalation; threshold breaches invoke <a href="c-occ-008-threshold-evaluation-control.html">C-OCC-008</a>.</li>
+<li><strong>Record.</strong> The decision, inputs and matched authority are written as an Authority Validation Record (<a href="../evidence/e-occ-001-authority-validation-record.html">E-OCC-001</a>).</li>
+</ol>
+<div class="statement" style="margin-top:12px">This is a <strong>deterministic, external</strong> control: the agent cannot self-attest its own authority, and a non-response or error resolves to deny.</div></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Inputs / outputs</div><div class="sec-line"></div></div>
+<div class="grid-2"><div class="card"><h3>Inputs</h3><ul><li>Agent identity + delegation lineage (Box 25)</li><li>Commitment classification (C-OCC-002)</li><li>Action parameters: type, counterparty, value band</li><li>Declared purpose / Prodspec binding (Box 08)</li><li>Delegated-authority matrix + threshold matrix (versioned)</li></ul></div><div class="card"><h3>Outputs</h3><ul><li>Allow / deny decision (pre-execution)</li><li>Authority Validation Record (E-OCC-001)</li><li>On deny: approval trigger (C-OCC-004) / escalation</li><li>Decision feed to lineage (C-OCC-005) and monitoring (C-OCC-006)</li></ul></div></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Linked risks, metrics &amp; evidence</div><div class="sec-line"></div></div>
+<table><thead><tr><th>Relationship</th><th>ID</th><th>Item</th></tr></thead><tbody>
+<tr><td>Mitigates (primary)</td><td><a href="../risks/r-occ-001-unauthorized-commitment.html"><span class="xr xr-r">R-OCC-001</span></a></td><td>Unauthorized Commitment</td></tr>
+<tr><td>Mitigates</td><td><a href="../risks/r-occ-002-excessive-delegated-authority.html"><span class="xr xr-r">R-OCC-002</span></a></td><td>Excessive Delegated Authority</td></tr>
+<tr><td>Measured by</td><td><a href="../metrics/m-occ-001-unauthorized-commitment-attempts.html"><span class="xr xr-m">M-OCC-001</span></a></td><td>Unauthorized Commitment Attempts</td></tr>
+<tr><td>Measured by</td><td><a href="../metrics/m-occ-002-commitment-approval-rate.html"><span class="xr xr-m">M-OCC-002</span></a></td><td>Commitment Approval Rate</td></tr>
+<tr><td>Produces</td><td><a href="../evidence/e-occ-001-authority-validation-record.html"><span class="xr xr-e">E-OCC-001</span></a></td><td>Authority Validation Record</td></tr>
+</tbody></table>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Test method / assurance</div><div class="sec-line"></div></div>
+<div class="grid-2"><div class="card"><h3>Design effectiveness</h3><ul><li>Confirm the authority + threshold matrices are versioned, owned and cover all in-scope commitment types.</li><li>Confirm the gateway is the sole commitment path and is configured fail-closed.</li><li>Confirm delegation-lineage resolution is mandatory (no anonymous principals).</li></ul></div><div class="card"><h3>Operating effectiveness</h3><ul><li>Sample executed commitments; confirm each has a matching E-OCC-001 with authority that covers the action.</li><li>Inject an out-of-authority action in the shadow environment (Box 15); confirm deny + record + escalation.</li><li>Reconcile M-OCC-001 spikes to investigations.</li></ul></div></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Failure modes &amp; residual risk</div><div class="sec-line"></div></div>
+<div class="card"><ul>
+<li><strong>Classification miss.</strong> If C-OCC-002 fails to flag an output as a commitment, this control is never invoked — residual risk is inherited from classification coverage (M-OCC-006 registration coverage).</li>
+<li><strong>Stale authority data.</strong> An out-of-date matrix may permit a no-longer-valid action; mitigated by versioning + recertification of the Delegated Authority Framework.</li>
+<li><strong>Lineage gaps.</strong> Incomplete delegation lineage from Box 25 forces fail-closed (safe) but can create friction; tracked via M-OCC-004 lineage completeness.</li>
+<li><strong>Residual.</strong> With C-OCC-002 coverage high and Box 25 lineage complete, residual risk for R-OCC-001 is <em>Low</em>; degrades to <em>Medium</em> where classification or lineage coverage is partial.</li>
+</ul></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Regulatory mapping</div><div class="sec-line"></div></div>
+<div class="card"><ul>
+<li><strong>APRA CPS 230</strong> — accountability and operational-risk control over automated decisions that create obligations.</li>
+<li><strong>APRA CPS 234</strong> — design and operating-effectiveness evidence for an information-security control.</li>
+<li><strong>Corporations Act / ASIC conduct</strong> — authority to bind the entity in customer-affecting commitments.</li>
+<li><strong>NIST AI RMF (Manage) / ISO 42001</strong> — controlled, accountable operation of an AI system.</li>
+</ul></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Implementation notes (vendor-neutral)</div><div class="sec-line"></div></div>
+<div class="card">Implement as a policy-as-code rule in the commitment gateway, evaluating signed identity/lineage claims against the authority matrix held as versioned data. Integrate with enterprise IAM/entitlements for the human-on-behalf-of leg, and bind the agent's permitted commitment scope in its Prodspec (Box 08) so authority is declared at design time and enforced at runtime. Technology is illustrative; the control is defined by the objective, statement and evidence — not a product.</div>
+
 <div class="footer-nav"><a href="../pages/box-33-output-commitment-control.html">← Back to Box 33</a><a href="../controls/">Control library →</a></div>
 </body></html>

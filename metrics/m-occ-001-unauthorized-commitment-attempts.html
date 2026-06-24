@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="noindex, nofollow" name="robots"/><title>M-OCC-001 · Unauthorized Commitment Attempts</title><style>@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-:root{--bg:#05070a;--surface:#0a0e14;--surface2:#10161f;--border:#1a2332;--border-hi:#253445;--gold:#fbbf24;--cyan:#00c8d4;--text:#e2e8f0;--text2:#94a3b8}
-*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:32px 28px 60px;min-width:760px}a{color:var(--cyan);text-decoration:none}a:hover{color:var(--gold)}
+:root{--bg:#05070a;--surface:#0a0e14;--surface2:#10161f;--border:#1a2332;--border-hi:#253445;--gold:#fbbf24;--cyan:#00c8d4;--text:#e2e8f0;--text2:#94a3b8;--green:#3dd68c;--amber:#f5c842;--red:#f43f5e}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;padding:32px 28px 60px;min-width:820px;max-width:1080px}a{color:var(--cyan);text-decoration:none}a:hover{color:var(--gold)}
 .hdr{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:16px}.hdr-title{font-size:22px;font-weight:700;line-height:1.25}.hdr-title span{font-weight:400;color:var(--text2)}.hdr-sub{margin-top:8px;font-size:11px;color:var(--gold);font-family:'DM Mono',monospace;letter-spacing:.06em}
 .navbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.navbar a{color:var(--text);border:1px solid var(--border-hi);background:var(--surface2);padding:7px 10px;border-radius:4px;font-size:11px}
-.badge{display:inline-block;font-family:'DM Mono';font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:4px;margin-bottom:14px}
+.badge{display:inline-block;font-family:'DM Mono';font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:4px;margin-bottom:14px;color:#f5c842;background:rgba(245,200,66,.14);border:1px solid rgba(245,200,66,.38)}
 .hero{background:linear-gradient(135deg, rgba(16,22,31,.98), rgba(10,14,20,.98));border:1px solid var(--border-hi);border-radius:10px;padding:20px 22px;margin-bottom:16px}.hero h1{font-size:21px;margin-bottom:8px}.hero p{color:var(--text2);line-height:1.6;font-size:14px}
-.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.meta .cell{border:1px solid var(--border-hi);background:var(--surface);border-radius:8px;padding:12px 14px;font-size:12px}.meta b{font-family:'DM Mono';font-size:9px;text-transform:uppercase;color:var(--text2);display:block;margin-bottom:4px}
-.sec{display:flex;align-items:center;gap:10px;margin:22px 0 12px}.sec-line{flex:1;height:1px;background:var(--border)}.sec-label{font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text2);text-transform:uppercase}
-.card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:15px 16px;color:var(--text2);line-height:1.55;font-size:13px}.card ul{margin-left:18px;display:flex;flex-direction:column;gap:6px;margin-top:6px}
-.note{border-left:3px solid var(--gold);background:rgba(251,191,36,.08);padding:11px 14px;border-radius:5px;color:var(--text2);font-size:12px;margin-top:14px}
-.footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}
-.badge{color:#f5c842;background:rgba(245,200,66,.14);border:1px solid rgba(245,200,66,.38)}</style></head><body>
-<div class="hdr"><div class="hdr-title">M-OCC-001 · Unauthorized Commitment Attempts<br/><span>Metric Library — Reference Model</span></div><div class="hdr-sub">Placeholder · metadata captured, detail to be authored</div></div>
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px}.meta .cell{border:1px solid var(--border-hi);background:var(--surface);border-radius:8px;padding:12px 14px;font-size:12px}.meta b{font-family:'DM Mono';font-size:9px;text-transform:uppercase;color:var(--text2);display:block;margin-bottom:4px}
+.sec{display:flex;align-items:center;gap:10px;margin:24px 0 12px}.sec-line{flex:1;height:1px;background:var(--border)}.sec-label{font-family:'DM Mono';font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--text2);text-transform:uppercase}
+.card{background:var(--surface);border:1px solid var(--border-hi);border-radius:8px;padding:15px 16px;color:var(--text2);line-height:1.6;font-size:13px}.card+.card{margin-top:10px}.card h3{color:var(--text);font-size:13px;margin-bottom:7px}.card ul{margin-left:18px;display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.formula{font-family:'DM Mono';font-size:13px;color:var(--text);background:#05070a;border:1px solid var(--border);border-radius:8px;padding:14px 16px;line-height:1.7}
+.xr{display:inline-block;font-family:'DM Mono';font-size:9px;font-weight:800;letter-spacing:.04em;padding:3px 6px;border-radius:4px}.xr-r{color:#fda4af;background:rgba(244,63,94,.14);border:1px solid rgba(244,63,94,.34)}.xr-c{color:#93c5fd;background:rgba(96,165,250,.14);border:1px solid rgba(96,165,250,.34)}.xr-e{color:#c4b5fd;background:rgba(167,139,250,.14);border:1px solid rgba(167,139,250,.34)}
+.signal{border-left:3px solid var(--amber);background:rgba(245,200,66,.08);padding:13px 15px;border-radius:5px;color:var(--text);font-size:13px;line-height:1.6}
+.footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}</style></head><body>
+<div class="hdr"><div class="hdr-title">M-OCC-001 · Unauthorized Commitment Attempts<br/><span>Metric Library — Reference Model</span></div><div class="hdr-sub">Authored · Security · Leading indicator</div></div>
 <div class="navbar"><a href="../index.html">← Home</a><a href="../architecture.html">Architecture</a><a href="../metrics/">Metric library</a><a href="../pages/box-33-output-commitment-control.html">↑ Box 33 · Output Commitment Control</a></div>
 <span class="badge">M-OCC-001</span>
-<div class="hero"><h1>Unauthorized Commitment Attempts</h1><p>Blocked commitments without authority.</p></div>
-<div class="meta"><div class="cell"><b>Metric ID</b>M-OCC-001</div><div class="cell"><b>Target / signal</b>Investigate</div><div class="cell"><b>Parent capability</b>Box 33 · Output Commitment Control</div><div class="cell"><b>Status</b>Placeholder — for expansion</div></div>
-<div class="sec"><div class="sec-line"></div><div class="sec-label">Detail to be authored</div><div class="sec-line"></div></div>
-<div class="card">This metric page is a structured placeholder. The summary above is authoritative; the full detail below is queued for build-out.<ul><li>Scope and applicability</li><li>Definition, formula, target and data source</li><li>Linked controls and evidence</li><li>Assurance and review approach</li></ul><div class="note">Generated as part of the detail-tier stub sweep. Honest placeholder — eliminates the broken link while real content is authored.</div></div>
+<div class="hero"><h1>Unauthorized Commitment Attempts</h1><p>The volume of commitment attempts blocked because the acting agent lacked sufficient delegated authority — a leading indicator of attack pressure, reasoning error or authority misconfiguration.</p></div>
+<div class="meta"><div class="cell"><b>Metric ID</b>M-OCC-001</div><div class="cell"><b>Type</b>Security · leading</div><div class="cell"><b>Signal</b>Investigate on spike</div><div class="cell"><b>Cadence</b>Continuous; reviewed monthly</div><div class="cell"><b>Owner</b>Security / Risk</div><div class="cell"><b>Parent capability</b>Box 33 · Output Commitment Control</div></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Definition</div><div class="sec-line"></div></div>
+<div class="card">The count of commitment attempts denied by Commitment Authority Validation (<a href="../controls/c-occ-001-commitment-authority-validation.html"><span class="xr xr-c">C-OCC-001</span></a>) because the acting agent — or a principal in its delegation chain — did not hold sufficient authority for the action type, value band or purpose. Each event represents a commitment the control successfully prevented; the metric measures the <em>pressure</em> on the boundary, not control failure.</div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Calculation</div><div class="sec-line"></div></div>
+<div class="formula">M-OCC-001(period) = COUNT( authority-validation decisions WHERE outcome = DENY(insufficient_authority) )<br/><br/>Normalised rate = ( denied_for_authority / total_commitment_attempts ) × 1,000</div>
+<div class="card" style="margin-top:10px">Report both the absolute count (operational) and the normalised rate per 1,000 commitments (trendable across changing volumes). Segment by agent, declared purpose, counterparty class and value band to localise spikes.</div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Target / signal</div><div class="sec-line"></div></div>
+<div class="signal">No fixed target — this is a <strong>monitor-and-investigate</strong> signal, not a pass/fail threshold. Establish a rolling baseline; a sustained rise or a sharp spike is the trigger. A non-zero floor is expected and healthy (the control is doing its job). <strong>Zero over a long window is itself suspect</strong> — it usually means the control is not actually in the commitment path, not that no attempts occur.</div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Data source &amp; collection</div><div class="sec-line"></div></div>
+<div class="grid-2"><div class="card"><h3>Source</h3><ul><li>Authority Validation Records (<a href="../evidence/e-occ-001-authority-validation-record.html"><span class="xr xr-e">E-OCC-001</span></a>) with outcome = deny(authority)</li><li>Commitment gateway decision logs</li></ul></div><div class="card"><h3>Collection point</h3><ul><li>Control-plane / commitment-gateway telemetry</li><li>Aggregated via structured agentic telemetry (Box 46)</li><li>Correlation key: agent ID + commitment ID</li></ul></div></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Interpretation &amp; response</div><div class="sec-line"></div></div>
+<div class="card"><ul>
+<li><strong>Spike on one agent/purpose</strong> → likely prompt-injection campaign or a broken upstream prompting out-of-authority actions; investigate the agent and recent changes.</li>
+<li><strong>Broad rise across agents</strong> → often an authority-matrix change (over-tightening) or a mis-scoped Prodspec; reconcile with the Delegated Authority Framework version history.</li>
+<li><strong>Drop to zero</strong> → verify C-OCC-001 is still in the commitment path and classification (C-OCC-002) is still flagging commitments.</li>
+</ul></div>
+
+<div class="sec"><div class="sec-line"></div><div class="sec-label">Linked control &amp; risk</div><div class="sec-line"></div></div>
+<div class="card"><a href="../controls/c-occ-001-commitment-authority-validation.html"><span class="xr xr-c">C-OCC-001</span></a> Commitment Authority Validation &nbsp;·&nbsp; <a href="../risks/r-occ-001-unauthorized-commitment.html"><span class="xr xr-r">R-OCC-001</span></a> Unauthorized Commitment</div>
+
 <div class="footer-nav"><a href="../pages/box-33-output-commitment-control.html">← Back to Box 33</a><a href="../metrics/">Metric library →</a></div>
 </body></html>
