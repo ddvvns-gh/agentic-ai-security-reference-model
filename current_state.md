@@ -26,9 +26,23 @@ Last updated: 2026-06-24.
 - 26 shared governance artefact pages present under `governance/`.
 - Substantive: Enterprise Commitment Threshold Matrix, Risk Scoring Policy (Threshold Matrix partial). The remaining ~23 are placeholder stubs awaiting authoring.
 
-## Known cleanup backlog (not yet done)
-- Phase 0 housekeeping: `.gitignore` + remove `.DS_Store`, delete obsolete `DELETE_FILES_FOR_RENUMBERING.txt`, archive `index_old.html` and the stale `pages/agentic_update_externalized_controls_identity_mesh/` orphan (its 46 broken links are the only ones left in the repo), move process notes to `docs/`.
-- Public `index.html` exposes the working view (`theindex.html`) and is the one decision still open from the audit.
+## Housekeeping — done
+- Added `.gitignore`; removed all `.DS_Store`; deleted obsolete `DELETE_FILES_FOR_RENUMBERING.txt`.
+- Deleted obsolete `index_old.html` (v17) and the stale `pages/agentic_update_externalized_controls_identity_mesh/` orphan (held the last 46 broken links).
+- Moved process/audit notes to `docs/process/`.
+- Fixed stale "42 boxes" → "51 boxes" in `theindex.html`.
+- **Result: 0 broken internal links across the entire repository.**
+
+## Vendor / legacy-duplicate cleanup — done
+- Deleted 10 orphaned legacy control pages (`C-A2A-007` … `C-RT-001`) carrying "Palo Alto" vendor wording, and the 10 matching orphaned legacy risk pages (`R-*`).
+- Deleted the orphaned `pages/AI_Reference_Model_Control_Risk_Libraries_v1/` snapshot folder and its `.zip`.
+- Rebuilt `controls/index.html` and `risks/index.html` as consistent library indexes.
+- **No "Palo Alto" / "idira" vendor wording remains in the live tier.**
+
+## Open items (not integrity-blocking)
+- Remaining in-repo `.zip` snapshots and the `slides/robots` mislabeled archive (optional removal).
+- Public `index.html` exposes the working view (`theindex.html`) — open direction decision.
+- ID-convention standardisation (`c-<dom>-NNN` vs `<dom>-cNN`) — open direction decision.
 
 ## Next
 - Author real content into the highest-priority detail-tier placeholders, capability by capability.
