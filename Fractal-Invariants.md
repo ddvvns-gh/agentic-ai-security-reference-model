@@ -16,7 +16,7 @@ Rules of use:
 
 ## The invariants
 
-**I1 — Entity is the primitive.** Every actor *and* every resource is an entity with its own tree (four node-types — Entity → Persona → Identity → Account). There is no special "resource" type. *UETF:* the homogeneous entity graph. *Ref model:* every agent, workload, human, service, and target is an entity.
+**I1 — Entity is the primitive.** Every actor *and* every resource is an entity with its own tree (four node-types — Entity → Persona → Identity → Account). There is no special "resource" type. An **Entity is anything that can hold or be held to a contract** (a distinct locus of accountability); an **Identity** is the smallest *authority*-bearing unit, an **Entity** the smallest *accountability*-bearing unit; decompose only to the atomic component (smallest unit with its own identity + entitlements). An **agent** is not a separate primitive — it is an application-Entity holding a runtime self-authoring entitlement via a model-edge. *UETF:* the homogeneous entity graph. *Ref model:* every agent, workload, human, service, and target is an entity.
 
 **I2 — Self-similarity (one rule at every scale).** The same authority rule applies at every tier and across every boundary. A child grant can only be **narrower** than its parent grant; widening is impossible by construction.
 
@@ -24,7 +24,7 @@ Rules of use:
 
 **I4 — Entitlement is an edge; ownership is holding governance personas.** Authority to act is an edge between two entity-trees (account-to-account / port-to-port). Ownership = one entity holding another's governance personas; it **connects** trees, it never **absorbs** them — the owned entity stays its own complete tree.
 
-**I5 — Three governance personas.** *Optimisation* (mission/objective — where AI alignment lives; co-authored by external factors), *Control* (structural authority over the tree), *Operational Integrity* (observe/verify — a witness, not an oracle; bounded by requisite variety). Cross-persona use is **entity-mediated**; lateral persona↔persona edges are forbidden.
+**I5 — Four governance personas (separation of powers).** *Optimisation* (the ends/purpose — where AI alignment lives; closes the world to the entity's scope), *Policy* (the permitted means — translates charter + inherited restrictions + purpose into "what may be done"; the legislature / 2nd-line compliance / moral compass; tightens within the floor, never loosens), *Control* (execution &amp; structure — mints grants and shapes the tree within Policy's rules), *Operational Integrity* (assurance — verifies fit and conduct, detects breach; a witness, not an oracle, bounded by requisite variety). Ends → permitted means → execution → assurance: four mutually-checking branches, all floored by the charter. Cross-persona use is **entity-mediated**; lateral persona↔persona edges are forbidden.
 
 **I6 — Contracts are the universal edge algebra.** Every relationship is a contract: scoped, conditional, observable, and revocable, carrying attenuation as caveats. Not a one-shot token — a living governance relationship.
 
